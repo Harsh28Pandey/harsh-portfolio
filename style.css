@@ -46,67 +46,53 @@ body {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  perspective: 1200px;
 }
 
-/* 3D horizontal layout */
-.loader-horizontal-3d {
+/* Small spinning circle */
+.circle-loader {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255, 140, 0, 0.3);
+  border-top-color: #ff8c00; /* highlighted color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
   display: flex;
-  gap: 20px;
-  transform-style: preserve-3d;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 3D block */
-.block {
-  width: 20px;
-  height: 44px;
-  border-radius: 6px;
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 12px currentColor; */
-  box-shadow: 0 0 6px #d2691e, 0 0 8px #004080;
-  animation: rotate3D 1.8s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.2s);
-  transform-origin: center;
-  transform-style: preserve-3d;
+/* Logo in the center */
+.circle-loader .logo {
+  position: absolute;
+  font-size: 1.5rem; /* increased from 1rem */
+  color: #fff;
+  text-shadow: 0 0 4px #d2691e, 0 0 6px #00008b;
 }
 
-/* Fancy loading text */
-.loader-text {
-  margin-top: 30px;
-  font-family: "Kode Mono", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.4rem;
-  color: #ffffff;
-  /* text-shadow: 0 0 4px #dc143c, 0 0 8px #ff8c00; */
-  text-shadow: 0 0 2px #8b0000, 0 0 6px #d2691e, 0 0 10px #d2691e;
-  letter-spacing: 1.2px;
-}
-
-/* 3D spin with slight bounce */
-@keyframes rotate3D {
+/* Spin animation */
+@keyframes spin {
   0% {
-    transform: rotateY(0deg) rotateX(0deg) translateY(0);
+    transform: rotate(0deg);
   }
-
-  25% {
-    transform: rotateY(90deg) rotateX(10deg) translateY(-4px);
-  }
-
-  50% {
-    transform: rotateY(180deg) rotateX(0deg) translateY(0);
-  }
-
-  75% {
-    transform: rotateY(270deg) rotateX(-10deg) translateY(4px);
-  }
-
   100% {
-    transform: rotateY(360deg) rotateX(0deg) translateY(0);
+    transform: rotate(360deg);
   }
+}
+
+/* Loader text */
+.loader-text {
+  margin-top: 10px;
+  font-family: "Kode Mono", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  text-shadow: 0 0 2px #8b0000, 0 0 5px #d2691e;
 }
 
 /* home section css codes starts */
