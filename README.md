@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio! Here, you’ll find my projects, skills, and experience as a passionate developer and problem solver. 💻✨
 
-![Project Screenshot](./images/car.png)
+![Project Screenshot](./images/portfolio_image.png)
 
 
 ## 👨‍💻 About Me  
