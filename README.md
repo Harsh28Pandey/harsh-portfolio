@@ -2,6 +2,9 @@
 
 Welcome to my personal portfolio! Here, you’ll find my projects, skills, and experience as a passionate developer and problem solver. 💻✨
 
+![Project Screenshot](./images/car.png)
+
+
 ## 👨‍💻 About Me  
 I’m a developer who loves building scalable and beautiful web applications using modern technologies. Always eager to learn and innovate! 🌟
 
