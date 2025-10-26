@@ -4,7 +4,7 @@ const sections = document.querySelectorAll('section');
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('header nav');
 
-// ===== GSAP Custom Cursor =====
+// ===== GSAP Custom Cursor Animation =====
 const cursor = document.querySelector(".cursor");
 
 window.addEventListener("mousemove", (e) => {
@@ -35,6 +35,8 @@ hoverTargets.forEach((el) => {
     }
     );
 });
+
+// GSAP Animation ends here
 
 
 menuIcon.addEventListener('click', () => {
