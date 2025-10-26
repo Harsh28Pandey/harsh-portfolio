@@ -38,14 +38,45 @@ body {
   min-height: 100vh;
 }
 
-/* Loader container with blurred background */
-#loader {
+/* ===== Custom Cursor Style ===== */
+.cursor {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  background-color: var(--main-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
+}
+
+.cursor.hovered {
+  transform: scale(1.8);
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+/* Hide custom cursor on small screens (like mobile/tablet) */
+@media (max-width: 1023px) {
+  .cursor {
+    display: none;
+  }
+}
+
+/* ===== Custom Cursor Style Ends ===== */
+
+
+/* Fullscreen Loader Container */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
@@ -54,45 +85,79 @@ body {
   z-index: 9999;
 }
 
-/* Small spinning circle */
-.circle-loader {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  border: 5px solid rgba(255, 140, 0, 0.3);
-  border-top-color: #ff8c00; /* highlighted color */
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+/* Loader Wrapper */
+.card-loader {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 12px;
 }
 
-/* Logo in the center */
-.circle-loader .logo {
-  position: absolute;
-  font-size: 1.5rem; /* increased from 1rem */
-  color: #fff;
-  text-shadow: 0 0 4px #d2691e, 0 0 6px #00008b;
+/* Individual Cards */
+.card {
+  width: 35px;
+  height: 60px;
+  border-radius: 8px;
+  background: #ff8c00;
+  animation: blink 1.2s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(250, 138, 2, 0.607);
 }
 
-/* Spin animation */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+/* Colors for Each Card */
+.c1 {
+  background: #c40d0d;
+  animation-delay: 0s;
+}
+
+.c2 {
+  background: #bc6903;
+  animation-delay: 0.2s;
+}
+
+.c3 {
+  background: #b69b03;
+  animation-delay: 0.4s;
+}
+
+.c4 {
+  background: #04d104;
+  animation-delay: 0.6s;
+}
+
+.c5 {
+  background: #06427f;
+  animation-delay: 0.8s;
+}
+
+.c6 {
+  background: #660895;
+  animation-delay: 1s;
+}
+
+/* Blinking Animation */
+@keyframes blink {
+
+  0%,
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
+    opacity: 0.8;
+    filter: brightness(0.6);
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: brightness(1.4);
   }
 }
 
-/* Loader text */
+/* Text Under Loader */
 .loader-text {
-  margin-top: 10px;
-  font-family: "Kode Mono", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem;
-  color: #ffffff;
-  text-shadow: 0 0 2px #8b0000, 0 0 5px #d2691e;
+  margin-top: 15px;
+  /* font-family: "Kode Mono", Tahoma, sans-serif; */
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 4px #000000, 0 0 6px #f19c34;
+  letter-spacing: 1.7px;
 }
 
 /* home section css codes starts */
@@ -357,6 +422,7 @@ section.active {
 }
 
 @keyframes display-text {
+
   25%,
   100% {
     display: none;
@@ -375,6 +441,7 @@ section.active {
 }
 
 @keyframes fill-text {
+
   10%,
   100% {
     width: 0;
@@ -457,12 +524,10 @@ section.active {
   position: absolute;
   width: 50rem;
   height: 50rem;
-  background: conic-gradient(
-    transparent,
-    transparent,
-    transparent,
-    var(--main-color)
-  );
+  background: conic-gradient(transparent,
+      transparent,
+      transparent,
+      var(--main-color));
   transform: rotate(0deg);
   animation: rotate-border 10s linear infinite;
 }
@@ -570,12 +635,10 @@ section.active {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    135deg,
-    transparent 45%,
-    var(--highlight-color) 50%,
-    transparent 55%
-  );
+  background: linear-gradient(135deg,
+      transparent 45%,
+      var(--highlight-color) 50%,
+      transparent 55%);
   opacity: 1;
   transform: rotate(25deg);
   pointer-events: none;
@@ -585,11 +648,9 @@ section.active {
 .services-container .services-box:hover {
   border-color: var(--main-color);
   transform: scale(1.04);
-  background: linear-gradient(
-    135deg,
-    var(--second-bg-color) 0%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--second-bg-color) 0%,
+      rgba(255, 255, 255, 0.03) 100%);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
@@ -1297,6 +1358,7 @@ section.active {
 }
 
 @media screen and (max-width: 400px) {
+
   .home-detail,
   .overview-box,
   .overview-box .heading,

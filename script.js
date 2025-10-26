@@ -4,6 +4,38 @@ const sections = document.querySelectorAll('section');
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('header nav');
 
+// ===== GSAP Custom Cursor =====
+const cursor = document.querySelector(".cursor");
+
+window.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.2,
+        ease: "power3.out"
+    });
+});
+
+
+// Optional: Add hover effect on clickable elements
+const hoverTargets = document.querySelectorAll("a, button, .btn, .overview-btn");
+
+hoverTargets.forEach((el) => {
+    el.addEventListener("mouseenter", function () {
+        gsap.to(cursor, {
+            // scale: 4,
+            backgroundColor: "orange"
+        })
+    });
+    el.addEventListener("mouseleave", function () {
+        gsap.to(cursor, {
+            // scale: 1,
+            backgroundColor: "orange"
+        })
+    }
+    );
+});
+
 
 menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');

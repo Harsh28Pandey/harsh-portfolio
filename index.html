@@ -28,13 +28,21 @@
 
 <body>
 
-    <!-- Small Circle Loader -->
+    <div class="cursor"></div>
+
+    <!-- Six-Card Loader -->
     <div id="loader">
-        <div class="circle-loader">
-            <div class="logo">⚡</div> <!-- replace with your logo -->
+        <div class="card-loader">
+            <div class="card c1"></div>
+            <div class="card c2"></div>
+            <div class="card c3"></div>
+            <div class="card c4"></div>
+            <div class="card c5"></div>
+            <div class="card c6"></div>
         </div>
-        <div class="loader-text">Please Wait While Loading...</div>
+        <div class="loader-text">Loading awesome content...</div>
     </div>
+
 
     <!-- header section starts  -->
     <header class="active">
@@ -1222,6 +1230,9 @@
 
 
     <!-- script file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="loader.js"></script>
     <script src="script.js"></script>
 </body>
