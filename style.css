@@ -13,7 +13,8 @@
   outline: none;
   /* font-family: "Poppins", sans-serif; */
   /* font-family: "Kode Mono", sans-serif; */
-  font-family: "Montserrat Alternates", sans-serif;
+  /* font-family: "Montserrat Alternates", sans-serif; */
+  font-family: "Consolas", sans-serif;
 }
 
 :root {
@@ -184,7 +185,8 @@ body {
 .loader-text {
   margin-top: 15px;
   /* font-family: "Kode Mono", Tahoma, sans-serif; */
-  font-family: "Montserrat Alternates", sans-serif;
+  /* font-family: "Montserrat Alternates", sans-serif; */
+  font-family: "Consolas", sans-serif;
   font-size: 1.5rem;
   color: #fff;
   text-shadow: 0 0 4px #000000, 0 0 6px #f19c34;
