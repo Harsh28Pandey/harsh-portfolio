@@ -154,7 +154,7 @@ arrowRight.addEventListener('click', () => {
     }
     else {
         // when we add a new project then update this index when we upload 12 projects the index value should be 11 (projects-1)
-        index = 15;
+        index = 17;
         arrowRight.classList.add('disabled');
     }
 
