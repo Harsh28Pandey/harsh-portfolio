@@ -124,6 +124,35 @@ overviewBtns.forEach((btn, idx) => {
     });
 });
 
+/* ===== Overview Mobile Dropdown Logic ===== */
+const overviewDropdown = document.querySelector(".overview-dropdown");
+const overviewButtonsBox = document.querySelector(".overview-buttons");
+
+if (overviewDropdown && overviewButtonsBox) {
+
+    // Toggle dropdown
+    overviewDropdown.addEventListener("click", () => {
+        overviewButtonsBox.classList.toggle("open");
+        overviewDropdown.classList.toggle("open");
+    });
+
+    // Close dropdown on button click (MOBILE ONLY)
+    overviewBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                overviewButtonsBox.classList.remove("open");
+                overviewDropdown.classList.remove("open");
+
+                // Update dropdown title text
+                const title = overviewDropdown.querySelector(".dropdown-title");
+                title.textContent = btn.textContent;
+            }
+        });
+    });
+}
+
+
+
 const arrowRight = document.querySelector('.project-box .navigation .arrow-right');
 const arrowLeft = document.querySelector('.project-box .navigation .arrow-left');
 
