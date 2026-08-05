@@ -48,6 +48,9 @@ const activePage = () => {
     const header = document.querySelector('header');
     const barsBox = document.querySelector('.bars-box');
 
+    header.style.animationDelay = '0s';
+    barsBox.style.animationDelay = '0s';
+
     header.classList.remove('active');
     // setTimeout(() => { // for delay to opening website
     //     header.classList.add('active');
@@ -70,6 +73,7 @@ const activePage = () => {
 
     sections.forEach(section => {
         section.classList.remove('active');
+        section.style.animationDelay = '0s';
     });
 
     menuIcon.classList.remove('bx-x');
@@ -86,7 +90,10 @@ navLinks.forEach((link, idx) => {
             //     sections[idx].classList.add('active');
             // }, 1100);
 
-            sections[idx].classList.add('active'); // for fast opening
+            // sections[idx].classList.add('active'); // for fast opening
+            setTimeout(() => {
+                sections[idx].classList.add('active');
+            }, 1200);
 
         }
     });
@@ -101,8 +108,11 @@ logoLink.addEventListener('click', () => {
         //     sections[0].classList.add('active');
         // }, 1100);
 
-        sections[0].classList.add('active'); // for fast opening
+        // sections[0].classList.add('active'); // for fast opening
 
+        setTimeout(() => {
+            sections[0].classList.add('active');
+        }, 1200);
     }
 });
 
@@ -205,14 +215,14 @@ arrowLeft.addEventListener('click', () => {
     activeProject();
 });
 
-window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
+// window.addEventListener("load", () => {
+//     const loader = document.getElementById("loader");
 
-    // Fade out loader
-    loader.style.opacity = "0";
+//     // Fade out loader
+//     loader.style.opacity = "0";
 
-    // After 500ms (transition time), hide it from layout
-    setTimeout(() => {
-        loader.style.visibility = "hidden";
-    }, 500);
-});
+//     // After 500ms (transition time), hide it from layout
+//     setTimeout(() => {
+//         loader.style.visibility = "hidden";
+//     }, 500);
+// });

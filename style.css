@@ -100,6 +100,109 @@ body {
   border-color: var(--main-color);
 }
 
+
+/* hello typing intro showing while loading */
+/* ===== Hello Typing Intro (new, additive) ===== */
+.intro-hello {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: introHelloFade 0.8s ease forwards;
+  animation-delay: 2.6s;
+}
+
+@keyframes introHelloFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.hello-svg-wrap {
+  position: relative;
+  width: 80%;
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hello__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  fill: none;
+  stroke: var(--white-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-width: 30px;
+  stroke-dasharray: 5800px;
+  stroke-dashoffset: 5800px;
+  animation: helloDraw 2s ease forwards;
+}
+
+@keyframes helloDraw {
+  0% {
+    stroke-dashoffset: 5800px;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Blinking typing cursor next to hello */
+.hello-cursor {
+  display: inline-block;
+  width: 0.7rem;
+  height: 6rem;
+  background: var(--white-color);
+  margin-left: 1.2rem;
+  opacity: 0;
+  animation: cursorAppear 0.01s linear 2s forwards,
+    cursorBlink 0.7s step-end infinite 2s;
+}
+
+@keyframes cursorAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+
+/* Background Video */
+.bg-universe-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  filter: brightness(0.45);
+}
+
+
+
+
+
+
+
 /* Hide custom cursor on small screens (like mobile/tablet) */
 @media (max-width: 1023px) {
   .cursor {
@@ -111,7 +214,7 @@ body {
 
 
 /* Fullscreen Loader Container */
-#loader {
+/* #loader {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -121,26 +224,26 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-}
+} */
 
 /* Loader Wrapper */
-.card-loader {
+/* .card-loader {
   display: flex;
   gap: 12px;
-}
+} */
 
 /* Individual Cards */
-.card {
+/* .card {
   width: 24px;
   height: 42px;
   border-radius: 8px;
   background: #ff8c00;
   animation: blink 1.2s infinite ease-in-out;
   box-shadow: 0 0 10px rgba(250, 138, 2, 0.607);
-}
+} */
 
 /* Colors for Each Card */
-.c1 {
+/* .c1 {
   background: #e90202;
   animation-delay: 0s;
 }
@@ -168,10 +271,10 @@ body {
 .c6 {
   background: #8103c0;
   animation-delay: 1s;
-}
+} */
 
 /* Blinking Animation */
-@keyframes blink {
+/* @keyframes blink {
 
   0%,
   100% {
@@ -185,19 +288,163 @@ body {
     opacity: 1;
     filter: brightness(1.4);
   }
-}
+} */
 
 /* Text Under Loader */
-.loader-text {
-  margin-top: 15px;
+/* .loader-text { */
+  /* margin-top: 15px; */
   /* font-family: "Kode Mono", Tahoma, sans-serif; */
-  font-family: "Montserrat Alternates", sans-serif;
+  /* font-family: "Montserrat Alternates", sans-serif; */
   /* font-family: "Consolas", sans-serif; */
-  font-size: 1.0rem;
+  /* font-size: 1.0rem;
   color: #fff;
   text-shadow: 0 0 4px #000000, 0 0 6px #f19c34;
   letter-spacing: 1.7px;
+} */
+
+
+
+
+
+
+/* Fullscreen Loader Container — video jhalakta hai, initial load pe hidden rehta hai */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
+
+/* Developer-style terminal loader card */
+.dev-loader {
+  width: 34rem;
+  max-width: 85vw;
+  background: rgba(20, 20, 20, 0.85);
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 0 3rem rgba(255, 140, 0, 0.25);
+}
+
+.dev-loader-bar-top {
+  display: flex;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 0.1rem solid rgba(255, 140, 0, 0.2);
+}
+
+.dev-loader-bar-top .dot {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: #ff5f56;
+}
+
+.dot-yellow {
+  background: #ffbd2e;
+}
+
+.dot-green {
+  background: #27c93f;
+}
+
+.dev-loader-body {
+  padding: 1.8rem 1.6rem;
+}
+
+.dev-loader-line {
+  font-size: 1.5rem;
+  color: var(--main-color);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dev-loader-prompt {
+  color: var(--white-color);
+  margin-right: 0.6rem;
+}
+
+.dev-loader-typed {
+  color: var(--white-color);
+}
+
+.dev-loader-cursor {
+  display: inline-block;
+  width: 0.9rem;
+  height: 1.6rem;
+  background: var(--main-color);
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  animation: devCursorBlink 0.8s step-end infinite;
+}
+
+@keyframes devCursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.dev-loader-progress {
+  margin-top: 1.6rem;
+  height: 0.6rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.dev-loader-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--main-color), #ffcf6b);
+  border-radius: 1rem;
+  animation: progressFill 1.4s ease-in-out infinite;
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0%;
+  }
+
+  60% {
+    width: 85%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Responsive tweak for small screens */
+@media screen and (max-width: 480px) {
+  .dev-loader {
+    width: 28rem;
+  }
+
+  .dev-loader-line {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+
+
+
+
 
 /* home section css codes starts */
 /* another effect that i should from chatgpt ends */
@@ -307,11 +554,14 @@ header {
   z-index: 100;
   visibility: hidden;
   opacity: 0;
+  background: rgba(26, 26, 26, 0.15) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 header.active {
   animation: show-header 1.5s linear forwards;
-  animation-delay: 1.2s;
+  animation-delay: 3.2s;
 }
 
 @keyframes show-header {
@@ -453,7 +703,7 @@ section {
 
 section.active {
   animation: show-content 1.5s linear forwards;
-  animation-delay: 1.6s;
+  animation-delay: 3.4s;
 }
 
 @keyframes show-content {
@@ -1120,7 +1370,7 @@ section.active {
 
 .tech-section {
   padding: 10rem 9% 5rem;
-  background: var(--bg-color);
+  /* background: var(--bg-color); */
   min-height: 100vh;
   visibility: hidden;
   opacity: 0;
@@ -1128,7 +1378,7 @@ section.active {
 
 .tech-section.active {
   animation: show-content 1.5s linear forwards;
-  animation-delay: 1.6s;
+  animation-delay: 3.4s;
 }
 
 /* grid holds six cards, behaves like services-container */
