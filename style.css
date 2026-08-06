@@ -292,11 +292,11 @@ body {
 
 /* Text Under Loader */
 /* .loader-text { */
-  /* margin-top: 15px; */
-  /* font-family: "Kode Mono", Tahoma, sans-serif; */
-  /* font-family: "Montserrat Alternates", sans-serif; */
-  /* font-family: "Consolas", sans-serif; */
-  /* font-size: 1.0rem;
+/* margin-top: 15px; */
+/* font-family: "Kode Mono", Tahoma, sans-serif; */
+/* font-family: "Montserrat Alternates", sans-serif; */
+/* font-family: "Consolas", sans-serif; */
+/* font-size: 1.0rem;
   color: #fff;
   text-shadow: 0 0 4px #000000, 0 0 6px #f19c34;
   letter-spacing: 1.7px;
@@ -1892,3 +1892,96 @@ section.active {
 }
 
 /* responsive css codes ends */
+
+
+
+
+/* ================= HIDDEN TERMINAL UI (EASTER EGG) ================= */
+#terminal-ui {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 45rem;
+  max-width: 90vw;
+  height: 35rem;
+  background-color: rgba(15, 15, 15, 0.95);
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  box-shadow: 0 0 2rem rgba(255, 140, 0, 0.3);
+  font-family: 'Consolas', 'Kode Mono', monospace;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.terminal-hidden {
+  transform: translateY(150%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.terminal-header {
+  background: #2a2a2a;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: #ddd;
+  font-size: 1.4rem;
+  border-bottom: 0.1rem solid #444;
+}
+
+#close-terminal {
+  background: none;
+  color: #ff5f56;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: 0.3s ease;
+}
+
+#close-terminal:hover {
+  color: #ff3322;
+  transform: scale(1.1);
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  color: #27c93f;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.terminal-body p {
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+}
+
+.terminal-input-line {
+  display: flex;
+  padding: 1rem 1.5rem;
+  border-top: 0.1rem solid #333;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.terminal-input-line .prompt {
+  color: var(--main-color);
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+#terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: 'Consolas', 'Kode Mono', monospace;
+}
