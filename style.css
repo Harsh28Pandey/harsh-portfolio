@@ -1469,11 +1469,75 @@ section.active {
   font-size: 1.6rem;
 }
 
-.project-box .tech {
-  margin: 2rem 0;
-  color: var(--main-color);
-  border-bottom: 0.1rem solid var(--white-color);
-  padding-bottom: 2rem;
+/* ========================================= */
+/* PROJECT STATUS BADGES, PILLS & DESC       */
+/* ========================================= */
+
+/* Title & Badge Alignment */
+.project-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0.8rem 0 1.5rem;
+    flex-wrap: wrap;
+}
+
+.project-title-wrapper h3 {
+    margin: 0 !important; /* Overrides old default margin */
+}
+
+/* Base Pill Shape for Badges */
+.status-badge {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem; /* Clean pill shape */
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+/* 🟢 Live Badge Styling */
+.status-badge.live {
+    background: rgba(39, 201, 63, 0.15);
+    color: #27c93f;
+    border: 0.1rem solid rgba(39, 201, 63, 0.3);
+}
+
+/* 🛠️ Local Build / Dev Badge Styling */
+.status-badge.dev {
+    background: rgba(255, 189, 46, 0.15);
+    color: #ffbd2e;
+    border: 0.1rem solid rgba(255, 189, 46, 0.3);
+}
+
+/* Clean & Readable Description */
+.project-desc {
+    font-size: 1.5rem;
+    line-height: 1.7; /* Improved spacing for readability */
+    color: #cccccc; /* Slightly softer white for professional look */
+    margin-bottom: 2.2rem;
+}
+
+/* Tech Stack Pill Shapes (No Hover) */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.784);
+}
+
+.tech-stack span {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--main-color);
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem; /* Proper Pill Shape */
+    font-size: 1.3rem;
+    font-family: 'Consolas', monospace; /* Developer vibe */
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
 }
 
 .project-box .live-github a {
@@ -1898,90 +1962,358 @@ section.active {
 
 /* ================= HIDDEN TERMINAL UI (EASTER EGG) ================= */
 #terminal-ui {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 45rem;
-  max-width: 90vw;
-  height: 35rem;
-  background-color: rgba(15, 15, 15, 0.95);
-  border: 0.1rem solid var(--main-color);
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  z-index: 10000;
-  box-shadow: 0 0 2rem rgba(255, 140, 0, 0.3);
-  font-family: 'Consolas', 'Kode Mono', monospace;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  backdrop-filter: blur(10px);
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 50rem;
+    max-width: calc(100vw - 4rem); /* Responsive width */
+    height: 40rem;
+    max-height: calc(100vh - 4rem); /* Responsive height */
+    
+    /* Premium Dark Glassmorphism */
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+    
+    /* Curved like Command Palette */
+    border-radius: 2.4rem; 
+    display: flex;
+    flex-direction: column;
+    z-index: 10000;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    font-family: 'Consolas', 'Kode Mono', monospace;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
 .terminal-hidden {
-  transform: translateY(150%);
-  opacity: 0;
-  pointer-events: none;
+    transform: translateY(150%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .terminal-header {
-  background: #2a2a2a;
-  padding: 0.8rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  color: #ddd;
-  font-size: 1.4rem;
-  border-bottom: 0.1rem solid #444;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 2.3rem; /* Matches container curve */
+    border-top-right-radius: 2.3rem;
+    color: #aaa;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.06);
 }
 
+/* Upgraded Mac-Style Close Button */
 #close-terminal {
-  background: none;
-  color: #ff5f56;
-  cursor: pointer;
-  font-size: 2rem;
-  transition: 0.3s ease;
+    background: rgba(255, 95, 86, 0.15);
+    color: #ff5f56;
+    border: 0.1rem solid rgba(255, 95, 86, 0.3);
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
 }
 
 #close-terminal:hover {
-  color: #ff3322;
-  transform: scale(1.1);
+    background: #ff5f56;
+    color: #fff;
+    transform: scale(1.1) rotate(90deg); /* Cool rotation effect */
+    box-shadow: 0 0 1rem rgba(255, 95, 86, 0.4);
 }
 
 .terminal-body {
-  flex: 1;
-  padding: 1.5rem;
-  overflow-y: auto;
-  color: #27c93f;
-  font-size: 1.4rem;
-  line-height: 1.5;
+    flex: 1;
+    padding: 1.5rem 2rem;
+    overflow-y: auto;
+    color: #27c93f; /* Hacker Green */
+    font-size: 1.45rem;
+    line-height: 1.6;
+}
+
+/* Custom Sleek Scrollbar for Terminal */
+.terminal-body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+.terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
 }
 
 .terminal-body p {
-  margin-bottom: 0.5rem;
-  word-wrap: break-word;
+    margin-bottom: 0.6rem;
+    word-wrap: break-word;
 }
 
 .terminal-input-line {
-  display: flex;
-  padding: 1rem 1.5rem;
-  border-top: 0.1rem solid #333;
-  background: rgba(0, 0, 0, 0.3);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom-left-radius: 2.3rem;
+    border-bottom-right-radius: 2.3rem;
 }
 
 .terminal-input-line .prompt {
-  color: var(--main-color);
-  margin-right: 1rem;
-  font-size: 1.5rem;
+    color: var(--main-color);
+    margin-right: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
 #terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.55rem;
+    font-family: 'Consolas', 'Kode Mono', monospace;
+}
+
+#terminal-input:focus {
+    outline: none;
+}
+
+/* ================= RESPONSIVE TERMINAL (Mobile/Tablet) ================= */
+@media screen and (max-width: 768px) {
+    #terminal-ui {
+        width: 90vw;
+        height: 50vh; /* Takes half screen on mobile */
+        bottom: 5vh;
+        right: 5vw; /* Perfectly centered */
+        border-radius: 2rem;
+    }
+    
+    .terminal-header {
+        border-top-left-radius: 1.9rem;
+        border-top-right-radius: 1.9rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .terminal-input-line {
+        border-bottom-left-radius: 1.9rem;
+        border-bottom-right-radius: 1.9rem;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .terminal-body {
+        font-size: 1.3rem; /* Slightly smaller text for mobile readability */
+        padding: 1.2rem 1.5rem;
+    }
+    
+    #close-terminal {
+        width: 2.4rem;
+        height: 2.4rem;
+        font-size: 1.5rem;
+    }
+}
+
+
+/* ================================================= */
+/* ADVANCED COMMAND PALETTE STYLING (Curved Dark Glass)*/
+/* ================================================= */
+
+#cmd-palette-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#cmd-palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#cmd-palette-modal {
+  width: 65rem;
+  max-width: 90vw;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 0.1rem solid rgba(255, 255, 255, 0.08);
+
+  /* More curved edges for advanced look */
+  border-radius: 2.4rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Consolas', monospace;
+  transform: scale(0.96) translateY(1rem);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#cmd-palette-overlay.active #cmd-palette-modal {
+  transform: scale(1) translateY(0);
+}
+
+.cmd-search-box {
+  display: flex;
+  align-items: center;
+  padding: 2rem 2.4rem;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+}
+
+.cmd-search-box i.bx-search {
+  font-size: 2.4rem;
+  color: var(--disabled-color);
+  margin-right: 1.5rem;
+}
+
+#cmd-palette-input {
   flex: 1;
   background: transparent;
   border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  font-family: 'Consolas', 'Kode Mono', monospace;
+  outline: none;
+  color: var(--white-color);
+  font-size: 1.7rem;
+  font-family: 'Consolas', monospace;
+}
+
+#cmd-palette-input::placeholder {
+  color: var(--disabled-color);
+}
+
+.cmd-kbd {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--disabled-color);
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  border: 0.1rem solid rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+}
+
+#cmd-palette-results {
+  max-height: 38rem;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+#cmd-palette-results::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+#cmd-palette-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+}
+
+.cmd-group-title {
+  font-size: 1.1rem;
+  color: var(--disabled-color);
+  padding: 1.2rem 1.4rem 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.cmd-item {
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  color: #a0a0a0;
+  font-size: 1.45rem;
+  transition: all 0.2s ease;
+  margin-bottom: 0.4rem;
+}
+
+.cmd-item i {
+  font-size: 2.2rem;
+  margin-right: 1.5rem;
+  color: #777;
+  transition: color 0.2s ease;
+}
+
+.cmd-item span.cmd-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Rounded Pill Badges */
+.cmd-shortcut {
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: #777;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  /* Perfect rounded pill */
+  border: 0.1rem solid rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* AI Specific Badge */
+.cmd-shortcut.ai-badge {
+  background: rgba(39, 201, 63, 0.1);
+  color: #27c93f;
+  border-color: rgba(39, 201, 63, 0.2);
+}
+
+/* Pure Dark Hover State */
+.cmd-item.active,
+.cmd-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white-color);
+}
+
+/* Highlight icon to orange on hover */
+.cmd-item.active i:not(.bx-bot),
+.cmd-item:hover i:not(.bx-bot) {
+  color: var(--main-color);
+}
+
+.cmd-item.active .cmd-shortcut:not(.ai-badge),
+.cmd-item:hover .cmd-shortcut:not(.ai-badge) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white-color);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.cmd-palette-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem 2.4rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.04);
+  font-size: 1.15rem;
+  color: #666;
+}
+
+.cmd-palette-footer b {
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  margin: 0 0.3rem;
+  font-family: inherit;
 }

@@ -273,6 +273,26 @@ function processCommand(cmd) {
     response.style.color = "#ddd";
 
     switch (cmd) {
+        case 'search':
+        case 'find':
+            response.innerText = "> Launching Advanced AI Search Palette...";
+            terminalBody.appendChild(response);
+
+            // Pehle smoothly terminal ko hide karenge
+            setTimeout(() => {
+                terminalUI.classList.add('terminal-hidden');
+            }, 300);
+
+            // Phir background mein 'Ctrl + K' press karne ka fake event fire karenge
+            setTimeout(() => {
+                window.dispatchEvent(new KeyboardEvent('keydown', {
+                    key: 'k',
+                    ctrlKey: true,
+                    bubbles: true
+                }));
+            }, 600);
+            return; // Return zaroori hai taaki terminal body scroll na ho
+
         // ==========================================
         // 1. PROFILE & INFO COMMANDS
         // ==========================================
@@ -483,7 +503,7 @@ function processCommand(cmd) {
             <span style="color: var(--main-color);">// --- Fun & Extra ---</span><br>
             &nbsp;&nbsp; joke, weather, hireme<br><br>
             <span style="color: var(--main-color);">// --- System Utility ---</span><br>
-            &nbsp;&nbsp; ls, date, pwd, ping, theme, echo, clear, cls, exit, help, commands`;
+            &nbsp;&nbsp; search, find, ls, date, pwd, ping, theme, echo, clear, cls, exit, help, commands`;
             break;
 
         // ==========================================
@@ -533,6 +553,88 @@ function processCommand(cmd) {
     // Auto-scroll to bottom
     terminalBody.scrollTop = terminalBody.scrollHeight;
 }
+
+/* ================================================= */
+/* 🕵️ ELITE CONSOLE.LOG ASCII ART & EASTER EGG       */
+/* ================================================= */
+
+(function () {
+    // 1. Sleek ASCII Art
+    const asciiArt = `
+ ██╗  ██╗ █████╗ ██████╗ ███████╗██╗  ██╗
+ ██║  ██║██╔══██╗██╔══██╗██╔════╝██║  ██║
+ ███████║███████║██████╔╝███████╗███████║
+ ██╔══██║██╔══██║██╔══██╗╚════██║██╔══██║
+ ██║  ██║██║  ██║██║  ██║███████║██║  ██║
+ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+    `;
+
+    // 2. Clean Status Badge
+    console.log(
+        "\n%c 🚀 HARSH.DEV %c SYSTEM ONLINE \n",
+        "background: #ff8c00; color: #000; font-weight: bold; padding: 4px 8px; border-radius: 4px 0 0 4px; font-size: 12px;",
+        "background: #222; color: #27c93f; font-weight: bold; padding: 4px 8px; border-radius: 0 4px 4px 0; font-size: 12px;"
+    );
+
+    // 3. ASCII with Neon Glow
+    console.log(asciiArt, "color: #ff8c00; font-weight: 900; font-size: 12px; text-shadow: 0 0 8px rgba(255, 140, 0, 0.4);");
+
+    // 4. Minimalist Prompt
+    console.log(
+        "%c> Hello, curious dev. Type %csudo.hire_harsh()%c and press ENTER.",
+        "color: #a0a0a0; font-size: 14px;",
+        "color: #ff8c00; font-family: monospace; font-weight: bold; background: #1a1a1a; padding: 2px 6px; border-radius: 4px;",
+        "color: #a0a0a0; font-size: 14px;"
+    );
+
+    // 5. The Command Implementation (Clean Fake Boot)
+    window.sudo = {
+        hire_harsh: function () {
+            console.clear();
+
+            const logStyle = "color: #ffbd2e; font-family: 'Consolas', monospace; font-size: 13px;";
+            const successStyle = "color: #27c93f; font-weight: bold; font-size: 16px; text-shadow: 0 0 5px rgba(39,201,63,0.5);";
+
+            // Clean Card Styles
+            const lbl = "color: #777; font-size: 14px; font-family: sans-serif;";
+            const val = "color: #fff; font-size: 14px; font-weight: bold; font-family: sans-serif;";
+            const lnk = "color: #3498db; font-size: 14px; font-weight: bold; text-decoration: underline; font-family: sans-serif;";
+
+            console.log("%c> Authenticating guest session...", logStyle);
+
+            setTimeout(() => {
+                console.log("%c> Decrypting developer payload...", logStyle);
+            }, 600);
+
+            setTimeout(() => {
+                console.clear();
+                console.log("%c[+] ACCESS GRANTED\n", successStyle);
+
+                // Elite Developer Card (Short, Crisp, Readable)
+                console.log(
+                    "%c HARSH PANDEY %c Full-Stack Developer \n\n" +
+                    "%c📍 Location : %cKanpur, India\n" +
+                    "%c💻 Tech     : %cReact, Node.js, Express, MongoDB, C++ (DSA)\n" +
+                    "%c📫 Email    : %charsh28.knp@gmail.com\n" +
+                    "%c💼 LinkedIn : %chttps://linkedin.com/in/harsh28pandey/\n\n" +
+                    "%c> Clean code. Scalable architecture. Let's build. ⚡",
+
+                    "background: #ff8c00; color: #000; font-weight: bold; padding: 4px 10px; border-radius: 4px 0 0 4px; font-size: 14px;", // Name badge
+                    "background: #111; color: #fff; font-weight: bold; padding: 4px 10px; border-radius: 0 4px 4px 0; font-size: 14px;", // Title badge
+                    lbl, val, // Location
+                    lbl, val, // Tech
+                    lbl, lnk, // Email
+                    lbl, lnk, // LinkedIn
+                    "color: #ff8c00; font-style: italic; font-size: 14px;" // Footer
+                );
+
+            }, 1400);
+
+            return "Executing...";
+        }
+    };
+})();
+
 
 
 
