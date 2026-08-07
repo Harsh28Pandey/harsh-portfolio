@@ -2317,3 +2317,54 @@ section.active {
   margin: 0 0.3rem;
   font-family: inherit;
 }
+
+/* ========================================= */
+/* DEVELOPER SHORTCUTS HINT BOX              */
+/* ========================================= */
+
+.dev-shortcuts-hint {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 0.1rem solid rgba(255, 140, 0, 0.2);
+    border-radius: 1.2rem;
+    font-size: 1.3rem;
+    color: #aaa;
+    display: inline-block;
+    font-family: 'Consolas', monospace;
+}
+
+.dev-shortcuts-hint kbd {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--main-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.dev-shortcuts-hint .logo-trigger {
+    color: var(--main-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Responsive Switching */
+.mobile-hint {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-hint {
+        display: none;
+    }
+    .mobile-hint {
+        display: inline-block;
+    }
+    .dev-shortcuts-hint {
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+    }
+}
