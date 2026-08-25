@@ -4,7 +4,7 @@
 })();
 
 document.getElementById('contact-form').addEventListener('submit', function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const btn = this.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
@@ -16,7 +16,7 @@ document.getElementById('contact-form').addEventListener('submit', function (eve
             btn.innerHTML = "Message Sent! <i class='bx bxs-check-circle'></i>";
             btn.style.backgroundColor = "#27c93f";
             btn.style.color = "#fff";
-            document.getElementById('contact-form').reset(); 
+            document.getElementById('contact-form').reset();
 
             setTimeout(() => {
                 btn.innerHTML = originalText;
