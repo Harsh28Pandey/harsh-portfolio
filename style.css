@@ -1475,69 +1475,75 @@ section.active {
 
 /* Title & Badge Alignment */
 .project-title-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 0.8rem 0 1.5rem;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0.8rem 0 1.5rem;
+  flex-wrap: wrap;
 }
 
 .project-title-wrapper h3 {
-    margin: 0 !important; /* Overrides old default margin */
+  margin: 0 !important;
+  /* Overrides old default margin */
 }
 
 /* Base Pill Shape for Badges */
 .status-badge {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0.4rem 1.2rem;
-    border-radius: 2rem; /* Clean pill shape */
-    display: inline-flex;
-    align-items: center;
-    letter-spacing: 0.05rem;
-    text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  /* Clean pill shape */
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
 }
 
 /* 🟢 Live Badge Styling */
 .status-badge.live {
-    background: rgba(39, 201, 63, 0.15);
-    color: #27c93f;
-    border: 0.1rem solid rgba(39, 201, 63, 0.3);
+  background: rgba(39, 201, 63, 0.15);
+  color: #27c93f;
+  border: 0.1rem solid rgba(39, 201, 63, 0.3);
 }
 
 /* 🛠️ Local Build / Dev Badge Styling */
 .status-badge.dev {
-    background: rgba(255, 189, 46, 0.15);
-    color: #ffbd2e;
-    border: 0.1rem solid rgba(255, 189, 46, 0.3);
+  background: rgba(255, 189, 46, 0.15);
+  color: #ffbd2e;
+  border: 0.1rem solid rgba(255, 189, 46, 0.3);
 }
 
 /* Clean & Readable Description */
 .project-desc {
-    font-size: 1.5rem;
-    line-height: 1.7; /* Improved spacing for readability */
-    color: #cccccc; /* Slightly softer white for professional look */
-    margin-bottom: 2.2rem;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  /* Improved spacing for readability */
+  color: #cccccc;
+  /* Slightly softer white for professional look */
+  margin-bottom: 2.2rem;
 }
 
 /* Tech Stack Pill Shapes (No Hover) */
 .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.784);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.784);
 }
 
 .tech-stack span {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--main-color);
-    padding: 0.5rem 1.4rem;
-    border-radius: 2rem; /* Proper Pill Shape */
-    font-size: 1.3rem;
-    font-family: 'Consolas', monospace; /* Developer vibe */
-    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--main-color);
+  padding: 0.5rem 1.4rem;
+  border-radius: 2rem;
+  /* Proper Pill Shape */
+  font-size: 1.3rem;
+  font-family: 'Consolas', monospace;
+  /* Developer vibe */
+  border: 0.1rem solid rgba(255, 255, 255, 0.1);
 }
 
 .project-box .live-github a {
@@ -1962,159 +1968,168 @@ section.active {
 
 /* ================= HIDDEN TERMINAL UI (EASTER EGG) ================= */
 #terminal-ui {
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
-    width: 50rem;
-    max-width: calc(100vw - 4rem); /* Responsive width */
-    height: 40rem;
-    max-height: calc(100vh - 4rem); /* Responsive height */
-    
-    /* Premium Dark Glassmorphism */
-    background: rgba(15, 15, 15, 0.75);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 0.1rem solid rgba(255, 255, 255, 0.08);
-    
-    /* Curved like Command Palette */
-    border-radius: 2.4rem; 
-    display: flex;
-    flex-direction: column;
-    z-index: 10000;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    font-family: 'Consolas', 'Kode Mono', monospace;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 50rem;
+  max-width: calc(100vw - 4rem);
+  /* Responsive width */
+  height: 40rem;
+  max-height: calc(100vh - 4rem);
+  /* Responsive height */
+
+  /* Premium Dark Glassmorphism */
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 0.1rem solid rgba(255, 255, 255, 0.08);
+
+  /* Curved like Command Palette */
+  border-radius: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'Consolas', 'Kode Mono', monospace;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
 .terminal-hidden {
-    transform: translateY(150%) scale(0.9);
-    opacity: 0;
-    pointer-events: none;
+  transform: translateY(150%) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .terminal-header {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top-left-radius: 2.3rem; /* Matches container curve */
-    border-top-right-radius: 2.3rem;
-    color: #aaa;
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: 0.05rem;
-    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 2.3rem;
+  /* Matches container curve */
+  border-top-right-radius: 2.3rem;
+  color: #aaa;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.06);
 }
 
 /* Upgraded Mac-Style Close Button */
 #close-terminal {
-    background: rgba(255, 95, 86, 0.15);
-    color: #ff5f56;
-    border: 0.1rem solid rgba(255, 95, 86, 0.3);
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.8rem;
-    transition: all 0.3s ease;
+  background: rgba(255, 95, 86, 0.15);
+  color: #ff5f56;
+  border: 0.1rem solid rgba(255, 95, 86, 0.3);
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
 }
 
 #close-terminal:hover {
-    background: #ff5f56;
-    color: #fff;
-    transform: scale(1.1) rotate(90deg); /* Cool rotation effect */
-    box-shadow: 0 0 1rem rgba(255, 95, 86, 0.4);
+  background: #ff5f56;
+  color: #fff;
+  transform: scale(1.1) rotate(90deg);
+  /* Cool rotation effect */
+  box-shadow: 0 0 1rem rgba(255, 95, 86, 0.4);
 }
 
 .terminal-body {
-    flex: 1;
-    padding: 1.5rem 2rem;
-    overflow-y: auto;
-    color: #27c93f; /* Hacker Green */
-    font-size: 1.45rem;
-    line-height: 1.6;
+  flex: 1;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  color: #27c93f;
+  /* Hacker Green */
+  font-size: 1.45rem;
+  line-height: 1.6;
 }
 
 /* Custom Sleek Scrollbar for Terminal */
 .terminal-body::-webkit-scrollbar {
-    width: 0.5rem;
+  width: 0.5rem;
 }
+
 .terminal-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
 }
 
 .terminal-body p {
-    margin-bottom: 0.6rem;
-    word-wrap: break-word;
+  margin-bottom: 0.6rem;
+  word-wrap: break-word;
 }
 
 .terminal-input-line {
-    display: flex;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    border-top: 0.1rem solid rgba(255, 255, 255, 0.06);
-    background: rgba(0, 0, 0, 0.25);
-    border-bottom-left-radius: 2.3rem;
-    border-bottom-right-radius: 2.3rem;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom-left-radius: 2.3rem;
+  border-bottom-right-radius: 2.3rem;
 }
 
 .terminal-input-line .prompt {
-    color: var(--main-color);
-    margin-right: 1.2rem;
-    font-size: 1.6rem;
-    font-weight: bold;
+  color: var(--main-color);
+  margin-right: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 #terminal-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.55rem;
-    font-family: 'Consolas', 'Kode Mono', monospace;
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.55rem;
+  font-family: 'Consolas', 'Kode Mono', monospace;
 }
 
 #terminal-input:focus {
-    outline: none;
+  outline: none;
 }
 
 /* ================= RESPONSIVE TERMINAL (Mobile/Tablet) ================= */
 @media screen and (max-width: 768px) {
-    #terminal-ui {
-        width: 90vw;
-        height: 50vh; /* Takes half screen on mobile */
-        bottom: 5vh;
-        right: 5vw; /* Perfectly centered */
-        border-radius: 2rem;
-    }
-    
-    .terminal-header {
-        border-top-left-radius: 1.9rem;
-        border-top-right-radius: 1.9rem;
-        padding: 1rem 1.5rem;
-    }
-    
-    .terminal-input-line {
-        border-bottom-left-radius: 1.9rem;
-        border-bottom-right-radius: 1.9rem;
-        padding: 1.2rem 1.5rem;
-    }
-    
-    .terminal-body {
-        font-size: 1.3rem; /* Slightly smaller text for mobile readability */
-        padding: 1.2rem 1.5rem;
-    }
-    
-    #close-terminal {
-        width: 2.4rem;
-        height: 2.4rem;
-        font-size: 1.5rem;
-    }
+  #terminal-ui {
+    width: 90vw;
+    height: 50vh;
+    /* Takes half screen on mobile */
+    bottom: 5vh;
+    right: 5vw;
+    /* Perfectly centered */
+    border-radius: 2rem;
+  }
+
+  .terminal-header {
+    border-top-left-radius: 1.9rem;
+    border-top-right-radius: 1.9rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .terminal-input-line {
+    border-bottom-left-radius: 1.9rem;
+    border-bottom-right-radius: 1.9rem;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .terminal-body {
+    font-size: 1.3rem;
+    /* Slightly smaller text for mobile readability */
+    padding: 1.2rem 1.5rem;
+  }
+
+  #close-terminal {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.5rem;
+  }
 }
 
 
@@ -2323,48 +2338,50 @@ section.active {
 /* ========================================= */
 
 .dev-shortcuts-hint {
-    margin-top: 2rem;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 0.1rem solid rgba(255, 140, 0, 0.2);
-    border-radius: 1.2rem;
-    font-size: 1.3rem;
-    color: #aaa;
-    display: inline-block;
-    font-family: 'Consolas', monospace;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.1rem solid rgba(255, 140, 0, 0.2);
+  border-radius: 1.2rem;
+  font-size: 1.3rem;
+  color: #aaa;
+  display: inline-block;
+  font-family: 'Consolas', monospace;
 }
 
 .dev-shortcuts-hint kbd {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--main-color);
-    padding: 0.2rem 0.5rem;
-    border-radius: 0.4rem;
-    border: 0.1rem solid rgba(255, 255, 255, 0.15);
-    font-size: 1.1rem;
-    font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--main-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid rgba(255, 255, 255, 0.15);
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .dev-shortcuts-hint .logo-trigger {
-    color: var(--main-color);
-    font-weight: bold;
-    cursor: pointer;
+  color: var(--main-color);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* Responsive Switching */
 .mobile-hint {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
-    .desktop-hint {
-        display: none;
-    }
-    .mobile-hint {
-        display: inline-block;
-    }
-    .dev-shortcuts-hint {
-        font-size: 1.2rem;
-        text-align: center;
-        width: 100%;
-    }
+  .desktop-hint {
+    display: none;
+  }
+
+  .mobile-hint {
+    display: inline-block;
+  }
+
+  .dev-shortcuts-hint {
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+  }
 }
