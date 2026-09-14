@@ -55,6 +55,24 @@ function showLoader() {
         void fill.offsetWidth; // force reflow
         fill.style.animation = '';
     }
+
+    // Fire up the 3D badge + count the percentage up to 100 in sync
+    // with the ~1.2s window the loader stays on screen.
+    if (window.loaderBadge) {
+        window.loaderBadge.show();
+        window.loaderBadge.setProgress(0);
+        const counter = { value: 0 };
+        if (typeof gsap !== 'undefined') {
+            gsap.to(counter, {
+                value: 100,
+                duration: 1.05,
+                ease: 'power2.out',
+                onUpdate: () => window.loaderBadge.setProgress(counter.value)
+            });
+        } else {
+            window.loaderBadge.setProgress(100);
+        }
+    }
 }
 
 // Function to hide loader with fadeout
@@ -64,6 +82,7 @@ function hideLoader() {
     setTimeout(() => {
         loader.style.visibility = 'hidden';
         clearTimeout(devTypeTimeout);
+        if (window.loaderBadge) window.loaderBadge.hide();
     }, 600);
 }
 
