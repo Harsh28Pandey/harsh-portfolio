@@ -39,10 +39,9 @@ hoverTargets.forEach((el) => {
 // GSAP Animation ends here
 
 
-menuIcon.addEventListener('click', () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-});
+// Mobile menu open/close is now handled by nav3d.js (GSAP 3D panel +
+// animated hamburger-to-close morph + backdrop). Kept navLinks/navbar
+// references above for the rest of this file's section-switching logic.
 
 const activePage = () => {
     const header = document.querySelector('header');
@@ -76,7 +75,8 @@ const activePage = () => {
         section.style.animationDelay = '0s';
     });
 
-    menuIcon.classList.remove('bx-x');
+    // Mobile nav close (icon morph + backdrop) is kept in sync by
+    // nav3d.js's MutationObserver whenever navbar loses "active" here.
     navbar.classList.remove('active');
 }
 
