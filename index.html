@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harsh Pandey - Developer Portfolio</title>
 
+    <!-- Performance: warm up connections to third-party origins early -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
     <!-- Meta description: shows in Google search snippet -->
     <meta name="description"
         content="Portfolio of Harsh Pandey — showcasing projects, skills, and achievements in web development.">
@@ -47,9 +54,12 @@
     <div class="cursor"></div>
 
     <!-- Background Video -->
-    <video class="bg-universe-video" autoplay muted loop playsinline>
+    <!-- <video class="bg-universe-video" autoplay muted loop playsinline>
         <source src="videos/background_video.mp4" type="video/mp4">
-    </video>
+    </video> -->
+
+    <!-- Three.js 3D animated background (particles + wireframe shapes) -->
+    <canvas id="three-bg-canvas"></canvas>
 
     <!-- Six-Card Loader -->
     <!-- <div id="loader">
@@ -64,8 +74,12 @@
         <div class="loader-text">Loading Awesome Content...</div>
     </div> -->
 
-    <!-- Developer-Style Loader -->
+    <!-- Developer-Style Loader, now with a live Three.js 3D badge -->
     <div id="loader">
+        <div class="loader3d-stage">
+            <canvas id="loader-3d-canvas"></canvas>
+            <div class="loader-percent" id="loaderPercent">00</div>
+        </div>
         <div class="dev-loader">
             <div class="dev-loader-bar-top">
                 <span class="dot dot-red"></span>
@@ -89,7 +103,13 @@
     <header class="active">
         <a href="#" class="logo"><img src="images/PersonalizedLearn.svg" alt="logo_image"> Harsh.</a>
 
-        <i class='bx bx-menu' id="menu-icon"></i>
+        <button id="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-line line-1"></span>
+            <span class="menu-line line-2"></span>
+            <span class="menu-line line-3"></span>
+        </button>
+
+        <div class="nav-overlay" id="navOverlay"></div>
 
         <nav>
             <a href="#intro" class="active">✨ Intro</a>
@@ -151,16 +171,16 @@
             </div>
 
             <!-- Developer Shortcut Hint Box -->
-            <div class="dev-shortcuts-hint">
+            <!-- <div class="dev-shortcuts-hint"> -->
                 <!-- Desktop View -->
-                <span class="desktop-hint">
+                <!-- <span class="desktop-hint">
                     💡 Pro tip: <kbd>Ctrl</kbd> + <kbd>K</kbd> (Search) • <kbd>Ctrl</kbd> + <kbd>J</kbd> / <kbd>`</kbd> (Terminal) • Click <span class="logo-trigger" onclick="document.querySelector('.logo').click()">Harsh.</span>
-                </span>
+                </span> -->
                 <!-- Mobile View -->
-                <span class="mobile-hint">
+                <!-- <span class="mobile-hint">
                     💡 Double-tap on the <span class="logo-trigger">Harsh.</span> logo (top-left) to open terminal!
                 </span>
-            </div>
+            </div> -->
 
         </div>
 
@@ -1671,10 +1691,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
         integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Three.js library (for 3D background) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <script src="loader3d.js"></script>
     <script src="loader.js"></script>
     <script src="script.js"></script>
-    <script src="command_palette.js"></script>
-    <script src="contact.js"></script>
+    <script src="three-bg.js"></script>
+    <script src="tilt-3d.js"></script>
+    <script src="nav3d.js"></script>
+    <script src="section-fx.js"></script>
+    <script src="command_palette.js" defer></script>
+    <script src="contact.js" defer></script>
 </body>
 
 </html>
