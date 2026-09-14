@@ -18,7 +18,8 @@
   /* font-family: "Poppins", sans-serif; */
   /* font-family: "Kode Mono", sans-serif; */
   /* font-family: "Montserrat Alternates", sans-serif; */
-  font-family: "Consolas", sans-serif;
+  /* font-family: "Consolas", sans-serif; */
+  font-family: "JetBrains Mono", monospace;
   /* font-family: "Space Grotesk", sans-serif; */
   /* font-family: "Urbanist", sans-serif; */
 }
@@ -68,12 +69,26 @@ html {
   font-size: 62.5%;
 }
 
+/* ===== GLOBAL HORIZONTAL-SCROLLBAR GUARD =====
+   Root cause of most horizontal scroll bugs on this site was `100vw`
+   (which includes the scrollbar width) on fixed full-bleed elements.
+   This block is a hard safety net so NO element, animation or 3D
+   transform can ever create horizontal overflow, on any screen size. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   color: var(--white-color);
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  width: 100%;
 }
 
 /* ===== Custom Cursor Style ===== */
@@ -189,13 +204,195 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+  filter: brightness(0.35);
+}
+
+/* ============================================= */
+/* ===== THREE.JS 3D BACKGROUND CANVAS ========== */
+/* ============================================= */
+#three-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   z-index: -1;
   pointer-events: none;
-  filter: brightness(0.45);
+  mix-blend-mode: screen;
+  opacity: 0.9;
 }
+
+/* ============================================= */
+/* ===== GLOBAL 3D DEPTH / PERSPECTIVE SETUP ==== */
+/* NOTE: perspective is deliberately NOT put on   */
+/* <body> — that would create a new containing    */
+/* block and break position:fixed elements like   */
+/* the header, cursor and terminal.                */
+/* ============================================= */
+.services-container,
+.tech-container,
+.overview-list,
+.connect-container,
+.project-container {
+  perspective: 120rem;
+}
+
+/* ============================================= */
+/* ===== 3D TILT CARD BASE (JS adds rotation) === */
+/* ============================================= */
+.tilt-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out, box-shadow 0.35s ease, border-color 0.35s ease;
+  position: relative;
+}
+
+.tilt-3d>*:not(.tilt-glare) {
+  transform: translateZ(2rem);
+  transform-style: preserve-3d;
+}
+
+.tilt-3d .icon,
+.tilt-3d h3,
+.tilt-3d .btn {
+  transform: translateZ(3.5rem);
+}
+
+/* glossy glare sweep that JS positions on hover */
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tilt-3d:hover .tilt-glare {
+  opacity: 1;
+}
+
+/* Elevated glow shadow on hover for 3D "lift" feel */
+.services-container .services-box.tilt-3d:hover,
+.tech-box.tilt-3d:hover,
+.connect-box.tilt-3d:hover {
+  box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.45), 0 0 3rem rgba(255, 140, 0, 0.18);
+}
+
+.overview-list .overview-item.tilt-3d:hover {
+  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4), 0 0 1.8rem rgba(255, 140, 0, 0.15);
+}
+
+/* ============================================= */
+/* ===== 3D FLOATING PROFILE IMAGE ============== */
+/* ============================================= */
+.home-img {
+  perspective: 100rem;
+}
+
+.home-img .img-box {
+  transform-style: preserve-3d;
+  animation: float-3d 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 2rem 3rem rgba(255, 140, 0, 0.25));
+  will-change: transform;
+}
+
+@keyframes float-3d {
+
+  0%,
+  100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+
+  50% {
+    transform: translateY(-1.2rem) rotateX(3deg);
+  }
+}
+
+.home-img .img-box .img-item img {
+  transform: translateZ(4rem);
+}
+
+/* ============================================= */
+/* ===== 3D PROJECT / TECH IMAGES ================ */
+/* ============================================= */
+.project-carousel .img-item {
+  perspective: 80rem;
+}
+
+.project-carousel .img-item img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.project-carousel .img-item:hover img {
+  transform: scale(1.04) rotateX(2deg) rotateY(-2deg) translateZ(1rem);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+/* Reduce motion / disable tilt on touch or if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .tilt-3d,
+  .home-img .img-box {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .tilt-3d:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================= */
+/* ===== ALTERNATE COLOR PALETTES ================ */
+/* Copy any ONE block below into :root (top of file) */
+/* to change the entire site's color combination.    */
+/* ============================================= */
+
+/* --- Palette B: Cyber Purple (violet + cyan glow) ---
+:root {
+  --bg-color: #0d0b1a;
+  --second-bg-color: #15122b;
+  --main-color: #8b5cf6;
+  --white-color: #ece9f7;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(139, 92, 246, 0.08);
+}
+*/
+
+/* --- Palette C: Neon Teal (deep green-black + aqua) ---
+:root {
+  --bg-color: #08120f;
+  --second-bg-color: #0f1f1a;
+  --main-color: #2dd4bf;
+  --white-color: #e6fff9;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(45, 212, 191, 0.08);
+}
+*/
+
+/* --- Palette D: Royal Rose Gold (charcoal + rose gold) ---
+:root {
+  --bg-color: #161314;
+  --second-bg-color: #201b1c;
+  --main-color: #e0a96d;
+  --white-color: #f7ece0;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(224, 169, 109, 0.08);
+}
+*/
 
 
 
@@ -322,6 +519,46 @@ body {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.6s ease;
+}
+
+/* ===== Live Three.js 3D badge above the terminal loader card ===== */
+.loader3d-stage {
+  position: relative;
+  width: 13rem;
+  height: 13rem;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.loader-percent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: var(--white-color);
+  text-shadow: 0 0 1.5rem rgba(255, 140, 0, 0.75);
+  pointer-events: none;
+}
+
+.loader-percent::after {
+  content: "%";
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
+  color: var(--main-color);
+  align-self: flex-start;
+  margin-top: 0.6rem;
 }
 
 /* Developer-style terminal loader card */
@@ -608,27 +845,138 @@ nav a.active {
   display: none;
 }
 
+
+/* ===== Premium Floating Mobile Menu Button ===== */
 #menu-icon {
-  font-size: 3.6rem;
-  color: var(--main-color);
+  position: relative;
+  width: 4.8rem;
+  height: 4.8rem;
 
-  background: hsla(33, 100%, 50%, 0.443);
-  background-color: #ff8c00;
-  backdrop-filter: blur(10px);
-  color: #000000;
+  display: none;
+  align-items: center;
+  justify-content: center;
 
-  padding: 0.8rem 1rem;
-  border-radius: 1.2rem;
+  padding: 0;
+  border: 0.1rem solid rgba(255, 140, 0, 0.45);
+  border-radius: 1.5rem;
 
-  box-shadow: 0 15px 35px rgba(253, 118, 0, 0.105);
-  transition: all 0.35s ease;
+  background: rgba(255, 140, 0, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0.8rem 2.5rem rgba(0, 0, 0, 0.35),
+    0 0 1.5rem rgba(255, 140, 0, 0.12);
+
+  cursor: pointer;
+  z-index: 1001;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-/* Hover effect */
+
+/* Hover */
 #menu-icon:hover {
+  background: rgba(255, 140, 0, 0.22);
+  border-color: var(--main-color);
+
+  transform: translateY(-2px) scale(1.06);
+
+  box-shadow:
+    0 1rem 3rem rgba(0, 0, 0, 0.45),
+    0 0 2rem rgba(255, 140, 0, 0.28);
+}
+
+
+/* ===== Hamburger Lines ===== */
+#menu-icon .menu-line {
+  display: block;
+
+  width: 2.4rem;
+  height: 0.28rem;
+
+  border-radius: 1rem;
   background: var(--main-color);
-  color: var(--bg-color);
-  transform: scale(1.08) rotate(3deg);
+
+  transition:
+    transform 0.4s cubic-bezier(0.68, -0.4, 0.32, 1.4),
+    opacity 0.25s ease,
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* Hamburger container */
+#menu-icon {
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+
+/* Hover lines */
+#menu-icon:hover .menu-line {
+  background: var(--white-color);
+}
+
+
+/* ===== Hamburger → X ===== */
+#menu-icon.active .line-1 {
+  transform: translateY(0.83rem) rotate(45deg);
+}
+
+#menu-icon.active .line-2 {
+  opacity: 0;
+  width: 0;
+}
+
+#menu-icon.active .line-3 {
+  transform: translateY(-0.83rem) rotate(-45deg);
+}
+
+
+/* ===== Active Button ===== */
+#menu-icon.active {
+  background: rgba(255, 140, 0, 0.18);
+  border-color: var(--main-color);
+
+  box-shadow:
+    0 0 2rem rgba(255, 140, 0, 0.25),
+    inset 0 0 1rem rgba(255, 140, 0, 0.08);
+}
+
+
+/* ===== Mobile ===== */
+@media screen and (max-width: 768px) {
+  #menu-icon {
+    display: flex;
+  }
+}
+
+/* ===== Backdrop overlay behind the sliding-in mobile nav ===== */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 999;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Lock background scroll while the 3D nav panel is open */
+body.nav-open {
+  overflow: hidden;
 }
 
 
@@ -1159,10 +1507,11 @@ section.active {
 
 .overview-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
   gap: 2rem;
   height: 45rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .overview-list::-webkit-scrollbar {
@@ -1791,7 +2140,7 @@ section.active {
 
   /* for nav bar open from right to left side in mobile screen */
   #menu-icon {
-    display: block;
+    display: flex;
     cursor: pointer;
     z-index: 1001;
   }
@@ -1812,6 +2161,8 @@ section.active {
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 5.5rem 0 0 5.5rem;
     z-index: 1000;
+    transform-origin: right center;
+    perspective: 900px;
   }
 
   nav.active {
