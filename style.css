@@ -1638,7 +1638,7 @@ section.active {
 
 .overview-detail.about .overview-item {
   height: auto;
-  padding: 0 0 0.5rem;
+  padding: 0 1rem 0.5rem;
   background: transparent;
 }
 
