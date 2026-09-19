@@ -1,0 +1,347 @@
+/* =====================================================================
+   SINGLE PAGE (SCROLL) MODE  —  additive stylesheet
+   Ye file style.css ke BAAD link karni hai.
+   Multi-page mode (default) bilkul waisa hi rehta hai jaisa pehle tha.
+   ===================================================================== */
+
+/* ---------- Animated view switch (Multi | Single) ---------- */
+#view-toggle {
+  position: fixed;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 96;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0.4rem;
+  isolation: isolate;
+  background: rgba(26, 26, 26, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 0.1rem solid rgba(255, 140, 0, 0.45);
+  border-radius: 4rem;
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  white-space: nowrap;
+  /* intro khatam hone ke baad dikhega (header ki tarah) */
+  visibility: hidden;
+  opacity: 0;
+  animation: sp-toggle-show 0.8s ease 3.4s forwards;
+  transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
+}
+
+#view-toggle:hover {
+  transform: translateY(-0.2rem);
+  border-color: var(--main-color);
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.4), 0 0 2rem rgba(255, 140, 0, 0.3);
+}
+
+#view-toggle:active {
+  transform: scale(0.96);
+}
+
+#view-toggle:focus-visible {
+  outline: 0.2rem solid var(--main-color);
+  outline-offset: 0.3rem;
+}
+
+/* sliding thumb */
+#view-toggle .vt-thumb {
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0.4rem;
+  width: calc(50% - 0.4rem);
+  border-radius: 4rem;
+  background: linear-gradient(135deg, var(--main-color), #ffb347);
+  box-shadow: 0 0 1.4rem rgba(255, 140, 0, 0.55);
+  z-index: -1;
+  transition: transform 0.5s cubic-bezier(0.68, -0.35, 0.27, 1.35);
+}
+
+#view-toggle[data-mode="single"] .vt-thumb {
+  transform: translateX(100%);
+}
+
+/* options */
+#view-toggle .vt-opt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+#view-toggle:hover .vt-opt {
+  color: var(--white-color);
+}
+
+#view-toggle .vt-opt i {
+  font-size: 2rem;
+}
+
+#view-toggle[data-mode="multi"] .vt-multi,
+#view-toggle[data-mode="single"] .vt-single,
+#view-toggle:hover[data-mode="multi"] .vt-multi,
+#view-toggle:hover[data-mode="single"] .vt-single {
+  color: var(--bg-color);
+}
+
+#view-toggle[data-mode="multi"] .vt-multi i,
+#view-toggle[data-mode="single"] .vt-single i {
+  animation: vt-pop 0.5s ease;
+}
+
+@keyframes vt-pop {
+  0% {
+    transform: scale(0.6) rotate(-25deg);
+  }
+
+  60% {
+    transform: scale(1.25) rotate(8deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes sp-toggle-show {
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* ---------- Circular reveal curtain (mode switch transition) ---------- */
+#view-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  pointer-events: none;
+  background: var(--bg-color);
+  -webkit-clip-path: circle(0 at var(--cx, 50%) var(--cy, 50%));
+  clip-path: circle(0 at var(--cx, 50%) var(--cy, 50%));
+  transition: clip-path 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-clip-path 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#view-curtain.is-in {
+  -webkit-clip-path: circle(150vmax at var(--cx, 50%) var(--cy, 50%));
+  clip-path: circle(150vmax at var(--cx, 50%) var(--cy, 50%));
+}
+
+/* ---------- Mini terminal loader card (site ke dev-loader jaisa) ---------- */
+#view-loader {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 97;
+  width: 32rem;
+  max-width: 85vw;
+  transform: translate(-50%, -44%) scale(0.94);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: rgba(20, 20, 20, 0.92);
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 0 3rem rgba(255, 140, 0, 0.25);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+#view-loader.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0s;
+}
+
+#view-loader .vl-bar {
+  display: flex;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 0.1rem solid rgba(255, 140, 0, 0.2);
+}
+
+#view-loader .vl-dot {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+}
+
+#view-loader .vl-dot.r {
+  background: #ff5f56;
+}
+
+#view-loader .vl-dot.y {
+  background: #ffbd2e;
+}
+
+#view-loader .vl-dot.g {
+  background: #27c93f;
+}
+
+#view-loader .vl-body {
+  padding: 1.8rem 1.6rem;
+}
+
+#view-loader .vl-line {
+  font-size: 1.4rem;
+  color: var(--white-color);
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 2rem;
+}
+
+#view-loader .vl-prompt {
+  color: var(--main-color);
+  margin-right: 0.6rem;
+}
+
+#view-loader .vl-cursor {
+  display: inline-block;
+  width: 0.8rem;
+  height: 1.5rem;
+  background: var(--main-color);
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  animation: vl-blink 0.8s step-end infinite;
+}
+
+@keyframes vl-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#view-loader .vl-track {
+  margin-top: 1.5rem;
+  height: 0.6rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#view-loader .vl-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--main-color), #ffcf6b);
+  border-radius: 1rem;
+  /* fade-out ke baad hi reset ho, taaki bar peeche jaata hua na dikhe */
+  transition: width 0s linear 0.35s;
+}
+
+#view-loader.is-show .vl-fill {
+  width: 100%;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Single page layout ---------- */
+body.single-page {
+  display: block;
+  min-height: 0;
+}
+
+/* multi-page ke sliding bars single mode me nahi chahiye */
+body.single-page .bars-box {
+  display: none;
+}
+
+/* Har section ab normal flow me ek ke neeche ek aayega */
+body.single-page section {
+  position: relative !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 10rem 9% 3rem;
+  visibility: visible !important;
+  overflow: visible !important;
+  animation: sp-fade 0.7s ease both !important;
+}
+
+/* first load par intro "hello" khatam hone tak sections chhupe rahenge */
+body.single-page.sp-boot section {
+  animation-delay: 3.2s !important;
+}
+
+@keyframes sp-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Intro poori screen le */
+body.single-page section.home {
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  padding-bottom: 5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 992px) {
+  body.single-page section {
+    padding: 10rem 4% 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #view-toggle {
+    left: 1.6rem;
+    bottom: 1.6rem;
+  }
+
+  #view-toggle .vt-opt {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.2rem;
+  }
+
+  body.single-page section.home {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  /* bahut chhoti screen: sirf icons dikhao */
+  #view-toggle .vt-label {
+    display: none;
+  }
+
+  #view-toggle .vt-opt {
+    padding: 0.8rem 1.1rem;
+  }
+
+  #view-loader .vl-line {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+  #view-toggle .vt-thumb,
+  #view-curtain,
+  #view-loader,
+  #view-loader .vl-fill {
+    transition: none !important;
+  }
+
+  #view-toggle .vt-opt i {
+    animation: none !important;
+  }
+}
