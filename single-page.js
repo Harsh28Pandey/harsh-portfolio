@@ -1,13 +1,3 @@
-/* =====================================================================
-   SINGLE PAGE (SCROLL) MODE  —  additive script
-   - Default: multi-page (jaisa pehle tha).
-   - Sliding switch se single-page (scroll) mode on/off hota hai.
-     Switch par: circular reveal + mini terminal loader card.
-   - Mode localStorage me save hota hai. URL se bhi force kar sakte ho:
-       index.html?view=single   ya   index.html?view=multi
-   - script.js ko touch nahi karta: single mode me nav clicks ko
-     capture phase me pakad kar smooth-scroll karta hai.
-   ===================================================================== */
 (function () {
     'use strict';
 
@@ -113,7 +103,6 @@
     function closeMobileNav() {
         if (!navbar) return;
         navbar.classList.remove('active');
-        // nav3d.js ka observer normally sab sync kar deta hai; ye sirf safety net hai
         setTimeout(function () {
             if (navbar.classList.contains('active')) return;
             if (menuIcon) {
@@ -125,7 +114,7 @@
         }, 500);
     }
 
-    /* ---------- scroll spy (navbar me current section highlight) ---------- */
+    /* ---------- scroll spy  ---------- */
     var ticking = false;
 
     function updateSpy() {
@@ -166,7 +155,6 @@
         }
         if (idx < 0) return;
 
-        // script.js ke multi-page handlers ko rok do
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -182,7 +170,6 @@
 
         body.classList.add('single-page');
 
-        // sabhi sections ko "active" de do (section-fx.js jaise effects ke liye)
         for (var i = 0; i < sections.length; i++) {
             sections[i].classList.add('active');
         }
@@ -190,11 +177,9 @@
         updateToggleUI();
 
         if (isInit) {
-            // first load: intro animation khatam hone tak sections hidden rahenge
             body.classList.add('sp-boot');
             setTimeout(function () { body.classList.remove('sp-boot'); }, 4500);
         } else {
-            // multi se aaye ho to usi section par le jao jo abhi khula tha
             requestAnimationFrame(function () {
                 scrollToSection(idx, false);
                 updateSpy();
@@ -203,7 +188,6 @@
     }
 
     function enableMulti() {
-        // jis section par scroll kiya hua tha wahi multi mode me khule
         updateSpy();
         var idx = activeNavIndex();
 
@@ -239,7 +223,6 @@
             }
         }
 
-        // thumb turant slide karega
         setToggleState(toSingle);
 
         if (reduceMotion) {
@@ -248,19 +231,16 @@
             return;
         }
 
-        // 1) curtain button ke center se phailega
         var r = toggleBtn.getBoundingClientRect();
         curtain.style.setProperty('--cx', (r.left + r.width / 2) + 'px');
         curtain.style.setProperty('--cy', (r.top + r.height / 2) + 'px');
         curtain.classList.add('is-in');
 
-        // 2) screen dhakne ke baad: mode badlo + terminal card dikhao
         setTimeout(function () {
             apply();
             loader.classList.add('is-show');
             typeText(loaderText, toSingle ? ' switch --view=single-page' : ' switch --view=multi-page', 26);
 
-            // 3) card hatao, phir curtain wapas simat jaye
             setTimeout(function () {
                 loader.classList.remove('is-show');
 
