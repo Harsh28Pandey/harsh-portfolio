@@ -1,4 +1,3 @@
-// Terminal-style phrases jo loader me type honge
 const devPhrases = [
     "compiling_components.js",
     "optimizing_assets.css",
@@ -45,14 +44,12 @@ function showLoader() {
     loader.style.opacity = '1';
 
     clearTimeout(devTypeTimeout);
-    // devPhraseIndex = 0;
     typeDevPhrase();
 
-    // Progress bar animation ko restart karo har baar
     const fill = document.querySelector('.dev-loader-progress-fill');
     if (fill) {
         fill.style.animation = 'none';
-        void fill.offsetWidth; // force reflow
+        void fill.offsetWidth; 
         fill.style.animation = '';
     }
 
@@ -86,7 +83,6 @@ function hideLoader() {
     }, 600);
 }
 
-// Sirf nav link click par loader show/hide hoga — initial page load par nahi
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
         showLoader();
