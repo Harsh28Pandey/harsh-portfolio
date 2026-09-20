@@ -69,11 +69,6 @@ html {
   font-size: 62.5%;
 }
 
-/* ===== GLOBAL HORIZONTAL-SCROLLBAR GUARD =====
-   Root cause of most horizontal scroll bugs on this site was `100vw`
-   (which includes the scrollbar width) on fixed full-bleed elements.
-   This block is a hard safety net so NO element, animation or 3D
-   transform can ever create horizontal overflow, on any screen size. */
 html,
 body {
   max-width: 100%;
@@ -503,8 +498,6 @@ body {
 
 
 
-
-/* Fullscreen Loader Container — video jhalakta hai, initial load pe hidden rehta hai */
 #loader {
   position: fixed;
   inset: 0;
@@ -684,7 +677,6 @@ body {
 
 
 /* home section css codes starts */
-/* another effect that i should from chatgpt ends */
 /* ==== Animated Underline on Navbar ==== */
 nav a {
   position: relative;
@@ -719,7 +711,6 @@ nav a.active::after {
 }
 
 /* animated pulse underline hover effect starts */
-
 nav a::after {
   content: "";
   position: absolute;
@@ -776,8 +767,6 @@ nav a:hover::before {
   opacity: 1;
 }
 
-/* another effect that i should from chatgpt ends*/
-
 header {
   position: fixed;
   top: 0;
@@ -816,9 +805,7 @@ header.active {
 
 .logo img {
   height: 0.8em;
-  /* same height as text */
   width: auto;
-  /* maintain aspect ratio */
   object-fit: contain;
 }
 
@@ -1071,14 +1058,12 @@ section.active {
 .animated-text {
   font-size: 3rem;
   font-weight: 700;
-  /* spacing between first and last name */
 }
 
 /* Gradient text for first name */
 .first-name {
   background: linear-gradient(90deg, var(--main-color));
   -webkit-background-clip: text;
-  /* Chrome/Safari */
   background-clip: text;
   color: transparent;
   display: inline-block;
@@ -1087,7 +1072,6 @@ section.active {
 /* Plain color for last name */
 .last-name {
   color: var(--white-color);
-  /* or any neutral color */
 }
 
 
@@ -1155,14 +1139,11 @@ section.active {
 .btn {
   display: inline-block;
   padding: 1rem 3rem;
-  /* margin-right: 1rem; */
-  /* margin-bottom: 1rem; */
   background: var(--main-color);
   border: 0.2rem solid var(--main-color);
   border-radius: 4rem;
   box-shadow: 0 0 1rem var(--main-color);
   font-size: 1.6rem;
-  /* color: black; */
   color: var(--bg-color);
   font-weight: 500;
   transition: 0.5s;
@@ -1306,7 +1287,6 @@ section.active {
   transform: scale(1.02);
 }
 
-/* this code will generated from chatgpr starts */
 
 .services-container .services-box {
   padding: 3rem 2.5rem;
@@ -1350,8 +1330,6 @@ section.active {
   position: relative;
   z-index: 1;
 }
-
-/* this code will generated from chatgpr ends */
 
 .services-box .icon {
   display: flex;
@@ -1433,7 +1411,6 @@ section.active {
   margin: 2rem 0 2.5rem;
 }
 
-/* another effect that i should from chatgpt starts*/
 /* === Enhanced overview Buttons with Emoji Styling === */
 
 .overview-box .overview-btn {
@@ -1493,7 +1470,6 @@ section.active {
   }
 }
 
-/* another effect that i should from chatgpt ends*/
 
 .overview-detail {
   display: none;
@@ -1522,7 +1498,6 @@ section.active {
 }
 
 .overview-list::-webkit-scrollbar-thumb {
-  /* background: transparent; */
   background: var(--main-color);
   border-radius: 1rem;
 }
@@ -1578,15 +1553,10 @@ section.active {
 
 .overview-item h3 img {
   width: 24px;
-  /* Set the desired width */
   height: 24px;
-  /* Keep height proportional */
   vertical-align: middle;
-  /* Align the image with the text */
   margin-right: 8px;
-  /* Space between image and text */
   border-radius: 4px;
-  /* Optional: slightly rounded corners */
   margin-bottom: 8px;
 }
 
@@ -1722,7 +1692,6 @@ section.active {
 
 .tech-section {
   padding: 10rem 9% 5rem;
-  /* background: var(--bg-color); */
   min-height: 100vh;
   visibility: hidden;
   opacity: 0;
@@ -1836,7 +1805,6 @@ section.active {
 
 .project-title-wrapper h3 {
   margin: 0 !important;
-  /* Overrides old default margin */
 }
 
 /* Base Pill Shape for Badges */
@@ -1845,7 +1813,6 @@ section.active {
   font-weight: 600;
   padding: 0.4rem 1.2rem;
   border-radius: 2rem;
-  /* Clean pill shape */
   display: inline-flex;
   align-items: center;
   letter-spacing: 0.05rem;
@@ -1870,9 +1837,7 @@ section.active {
 .project-desc {
   font-size: 1.5rem;
   line-height: 1.7;
-  /* Improved spacing for readability */
   color: #cccccc;
-  /* Slightly softer white for professional look */
   margin-bottom: 2.2rem;
 }
 
@@ -1891,10 +1856,8 @@ section.active {
   color: var(--main-color);
   padding: 0.5rem 1.4rem;
   border-radius: 2rem;
-  /* Proper Pill Shape */
   font-size: 1.3rem;
   font-family: 'Consolas', monospace;
-  /* Developer vibe */
   border: 0.1rem solid rgba(255, 255, 255, 0.1);
 }
 
@@ -2262,7 +2225,6 @@ section.active {
 /* DESKTOP VIEW */
 .overview-dropdown {
   display: none;
-  /* 🔥 Desktop me HIDE */
 }
 
 /* MOBILE VIEW */
@@ -2327,10 +2289,8 @@ section.active {
   right: 2.5rem;
   width: 50rem;
   max-width: calc(100vw - 4rem);
-  /* Responsive width */
   height: 40rem;
   max-height: calc(100vh - 4rem);
-  /* Responsive height */
 
   /* Premium Dark Glassmorphism */
   background: rgba(15, 15, 15, 0.75);
@@ -2361,7 +2321,6 @@ section.active {
   justify-content: space-between;
   align-items: center;
   border-top-left-radius: 2.3rem;
-  /* Matches container curve */
   border-top-right-radius: 2.3rem;
   color: #aaa;
   font-size: 1.35rem;
@@ -2390,7 +2349,6 @@ section.active {
   background: #ff5f56;
   color: #fff;
   transform: scale(1.1) rotate(90deg);
-  /* Cool rotation effect */
   box-shadow: 0 0 1rem rgba(255, 95, 86, 0.4);
 }
 
@@ -2399,7 +2357,6 @@ section.active {
   padding: 1.5rem 2rem;
   overflow-y: auto;
   color: #27c93f;
-  /* Hacker Green */
   font-size: 1.45rem;
   line-height: 1.6;
 }
@@ -2454,10 +2411,8 @@ section.active {
   #terminal-ui {
     width: 90vw;
     height: 50vh;
-    /* Takes half screen on mobile */
     bottom: 5vh;
     right: 5vw;
-    /* Perfectly centered */
     border-radius: 2rem;
   }
 
@@ -2475,7 +2430,6 @@ section.active {
 
   .terminal-body {
     font-size: 1.3rem;
-    /* Slightly smaller text for mobile readability */
     padding: 1.2rem 1.5rem;
   }
 
@@ -2630,7 +2584,6 @@ section.active {
   color: #777;
   padding: 0.4rem 1.2rem;
   border-radius: 2rem;
-  /* Perfect rounded pill */
   border: 0.1rem solid rgba(255, 255, 255, 0.05);
   font-weight: 600;
   text-transform: uppercase;
