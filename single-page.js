@@ -31,6 +31,8 @@
     toggleBtn.setAttribute('role', 'switch');
     toggleBtn.innerHTML =
         "<span class='vt-thumb'></span>" +
+        "<span class='vt-fx' aria-hidden='true'><span class='vt-glow'></span></span>" +
+        "<span class='vt-pulse' aria-hidden='true'></span>" +
         "<span class='vt-opt vt-multi'><i class='bx bx-columns'></i><span class='vt-label'>Multi</span></span>" +
         "<span class='vt-opt vt-single'><i class='bx bx-layout'></i><span class='vt-label'>Single</span></span>";
     document.body.appendChild(toggleBtn);
@@ -58,14 +60,37 @@
         toggleBtn.setAttribute('data-mode', single ? 'single' : 'multi');
         toggleBtn.setAttribute('aria-checked', single ? 'true' : 'false');
         var label = single ? 'Single page view on. Switch to multi page view'
-                           : 'Multi page view on. Switch to single page scroll view';
+            : 'Multi page view on. Switch to single page scroll view';
         toggleBtn.setAttribute('aria-label', label);
-        toggleBtn.title = label;
+        toggleBtn.setAttribute('data-tip', single ? 'Switch to Multi Page' : 'Switch to Single Page');
+        toggleBtn.removeAttribute('title');
     }
 
     function updateToggleUI() {
         setToggleState(isSingle());
     }
+
+    /* ---------- button effects: mouse spotlight + click ripple ---------- */
+    var fx = toggleBtn.querySelector('.vt-fx');
+
+    toggleBtn.addEventListener('pointermove', function (e) {
+        var r = toggleBtn.getBoundingClientRect();
+        toggleBtn.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        toggleBtn.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+
+    toggleBtn.addEventListener('pointerdown', function (e) {
+        if (reduceMotion || !fx) return;
+        var r = toggleBtn.getBoundingClientRect();
+        var size = Math.max(r.width, r.height) * 1.6;
+        var rip = document.createElement('span');
+        rip.className = 'vt-ripple';
+        rip.style.width = rip.style.height = size + 'px';
+        rip.style.left = (e.clientX - r.left - size / 2) + 'px';
+        rip.style.top = (e.clientY - r.top - size / 2) + 'px';
+        fx.appendChild(rip);
+        setTimeout(function () { if (rip.parentNode) rip.parentNode.removeChild(rip); }, 700);
+    });
 
     function typeText(el, text, speed) {
         el.textContent = '';
@@ -211,6 +236,9 @@
         if (busy) return;
         busy = true;
 
+        toggleBtn.classList.add('is-used');
+        if (navigator.vibrate) { try { navigator.vibrate(12); } catch (err) { /* ignore */ } }
+
         var toSingle = !isSingle();
 
         function apply() {
@@ -231,6 +259,8 @@
             return;
         }
 
+        toggleBtn.classList.add('is-busy');
+
         var r = toggleBtn.getBoundingClientRect();
         curtain.style.setProperty('--cx', (r.left + r.width / 2) + 'px');
         curtain.style.setProperty('--cy', (r.top + r.height / 2) + 'px');
@@ -246,7 +276,10 @@
 
                 setTimeout(function () {
                     curtain.classList.remove('is-in');
-                    setTimeout(function () { busy = false; }, 600);
+                    setTimeout(function () {
+                        busy = false;
+                        toggleBtn.classList.remove('is-busy');
+                    }, 600);
                 }, 250);
             }, 1000);
         }, 600);
