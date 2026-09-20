@@ -276,7 +276,7 @@
     var urlMode = null;
     try { urlMode = new URLSearchParams(window.location.search).get('view'); } catch (e) { /* ignore */ }
 
-    var startMode = urlMode === 'single' || urlMode === 'multi' ? urlMode : (readSavedMode() || 'multi');
+    var startMode = urlMode === 'single' || urlMode === 'multi' ? urlMode : (readSavedMode() || 'single');
 
     if (startMode === 'single') {
         enableSingle(true);
