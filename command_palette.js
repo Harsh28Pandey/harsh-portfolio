@@ -291,7 +291,7 @@
                 togglePalette(false);
                 textSpan.innerText = originalText;
             }, 1000);
-            return; // Exit here so it doesn't close instantly
+            return; 
         }
 
         togglePalette(false);
