@@ -1,3 +1,14 @@
+/* =====================================================================
+   VIEW SWITCH BUTTON  (Multi | Single)
+   Effects: rotating comet border, glass body, gel-stretch thumb + shine,
+   mouse spotlight, click ripple, idle pulse, tooltip, busy state.
+   ===================================================================== */
+@property --vt-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 #view-toggle {
   position: fixed;
   left: 2rem;
@@ -8,25 +19,91 @@
   align-items: center;
   padding: 0.4rem;
   isolation: isolate;
-  background: rgba(26, 26, 26, 0.78);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 0.1rem solid rgba(255, 140, 0, 0.45);
+  background: linear-gradient(145deg, rgba(40, 40, 40, 0.82), rgba(18, 18, 18, 0.82));
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 0.1rem solid rgba(255, 255, 255, 0.08);
   border-radius: 4rem;
-  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35),
-    inset 0 0.1rem 0 rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4),
+    0 0 0 0.1rem rgba(255, 140, 0, 0.08),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.08);
   cursor: pointer;
   white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   visibility: hidden;
   opacity: 0;
-  animation: sp-toggle-show 0.8s ease 3.4s forwards;
+  animation: sp-toggle-show 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 3.4s forwards;
   transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
+}
+
+/* rotating comet-style border */
+#view-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -0.1rem;
+  box-sizing: border-box;
+  padding: 0.15rem;
+  border-radius: inherit;
+  background: conic-gradient(from var(--vt-angle),
+      transparent 0deg,
+      transparent 190deg,
+      rgba(255, 140, 0, 0.18) 250deg,
+      var(--main-color) 320deg,
+      #ffd9a0 350deg,
+      transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: vt-spin 4s linear infinite;
+}
+
+@keyframes vt-spin {
+  to {
+    --vt-angle: 360deg;
+  }
+}
+
+/* tooltip */
+#view-toggle::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 1.1rem);
+  padding: 0.7rem 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  color: var(--white-color);
+  background: rgba(20, 20, 20, 0.92);
+  border: 0.1rem solid rgba(255, 140, 0, 0.35);
+  border-radius: 1rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(0.6rem);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#view-toggle:hover::after,
+#view-toggle:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#view-toggle.is-busy::after {
+  opacity: 0;
 }
 
 #view-toggle:hover {
   transform: translateY(-0.2rem);
-  border-color: var(--main-color);
-  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.4), 0 0 2rem rgba(255, 140, 0, 0.3);
+  border-color: rgba(255, 140, 0, 0.5);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.45), 0 0 2.4rem rgba(255, 140, 0, 0.32),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.1);
 }
 
 #view-toggle:active {
@@ -35,7 +112,82 @@
 
 #view-toggle:focus-visible {
   outline: 0.2rem solid var(--main-color);
-  outline-offset: 0.3rem;
+  outline-offset: 0.4rem;
+}
+
+/* busy: transition chal rahi hai */
+#view-toggle.is-busy {
+  pointer-events: none;
+}
+
+#view-toggle.is-busy::before {
+  animation-duration: 0.9s;
+}
+
+/* effects layer: spotlight + ripples (clipped to pill) */
+#view-toggle .vt-fx {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#view-toggle .vt-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(9rem circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 170, 60, 0.28), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#view-toggle:hover .vt-glow {
+  opacity: 1;
+}
+
+#view-toggle .vt-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: vt-ripple 0.65s ease-out forwards;
+}
+
+@keyframes vt-ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* idle pulse (first click ke baad band) */
+#view-toggle .vt-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 0.15rem solid rgba(255, 140, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  animation: vt-pulse 3.4s ease-out 6s infinite;
+}
+
+#view-toggle:hover .vt-pulse,
+#view-toggle.is-used .vt-pulse {
+  animation: none;
+}
+
+@keyframes vt-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.25, 1.7);
+    opacity: 0;
+  }
 }
 
 /* sliding thumb */
@@ -46,18 +198,72 @@
   left: 0.4rem;
   width: calc(50% - 0.4rem);
   border-radius: 4rem;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--main-color), #ffb347);
-  box-shadow: 0 0 1.4rem rgba(255, 140, 0, 0.55);
+  box-shadow: 0 0 1.6rem rgba(255, 140, 0, 0.6),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.35);
   z-index: -1;
   transition: transform 0.5s cubic-bezier(0.68, -0.35, 0.27, 1.35);
 }
 
+/* shine sweep */
+#view-toggle .vt-thumb::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-160%) skewX(-20deg);
+}
+
+/* mode change par animation restart karne ke liye do alag keyframes */
 #view-toggle[data-mode="single"] .vt-thumb {
   transform: translateX(100%);
+  animation: vt-gel-a 0.55s ease;
+}
+
+#view-toggle[data-mode="multi"] .vt-thumb {
+  animation: vt-gel-b 0.55s ease;
+}
+
+#view-toggle[data-mode="single"] .vt-thumb::after {
+  animation: vt-shine-a 0.8s ease 0.05s;
+}
+
+#view-toggle[data-mode="multi"] .vt-thumb::after {
+  animation: vt-shine-b 0.8s ease 0.05s;
+}
+
+@keyframes vt-gel-a {
+  40% {
+    scale: 1.18 0.86;
+  }
+}
+
+@keyframes vt-gel-b {
+  40% {
+    scale: 1.18 0.86;
+  }
+}
+
+@keyframes vt-shine-a {
+  to {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+@keyframes vt-shine-b {
+  to {
+    transform: translateX(260%) skewX(-20deg);
+  }
 }
 
 /* options */
 #view-toggle .vt-opt {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +271,7 @@
   padding: 0.9rem 1.6rem;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #aaa;
+  color: #9a9a9a;
   transition: color 0.3s ease;
 }
 
@@ -82,6 +288,7 @@
 #view-toggle:hover[data-mode="multi"] .vt-multi,
 #view-toggle:hover[data-mode="single"] .vt-single {
   color: var(--bg-color);
+  font-weight: 700;
 }
 
 #view-toggle[data-mode="multi"] .vt-multi i,
@@ -103,10 +310,25 @@
   }
 }
 
+/* entrance: neeche se slide-up + fade (translate property, hover transform se conflict nahi) */
 @keyframes sp-toggle-show {
-  100% {
+  from {
+    translate: 0 2rem;
+  }
+
+  to {
+    translate: 0 0;
     visibility: visible;
     opacity: 1;
+  }
+}
+
+/* touch devices par hover-only effects band */
+@media (hover: none) {
+
+  #view-toggle::after,
+  #view-toggle .vt-glow {
+    display: none;
   }
 }
 
@@ -287,7 +509,7 @@ body.single-page section.home {
 @media screen and (max-width: 768px) {
   #view-toggle {
     left: 1.6rem;
-    bottom: 1.6rem;
+    bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px));
   }
 
   #view-toggle .vt-opt {
@@ -326,7 +548,11 @@ body.single-page section.home {
     transition: none !important;
   }
 
-  #view-toggle .vt-opt i {
+  #view-toggle .vt-opt i,
+  #view-toggle::before,
+  #view-toggle .vt-pulse,
+  #view-toggle .vt-thumb,
+  #view-toggle .vt-thumb::after {
     animation: none !important;
   }
 }
