@@ -258,12 +258,10 @@ terminalInput.addEventListener('keypress', (e) => {
 });
 
 function processCommand(cmd) {
-    // Print User Command
     const newOutput = document.createElement('p');
     newOutput.innerHTML = `<span style="color:var(--main-color)">harsh@portfolio:~$</span> <span style="color:#fff">${cmd}</span>`;
     terminalBody.appendChild(newOutput);
 
-    // Welcome message ka HTML jo clear hone ke baad bhi rahega
     const welcomeMessage = `
         <p style="color: var(--main-color);">Welcome to Harsh's Terminal! 🚀</p>
         <p>Type 'help' or 'commands' to see available commands.</p>
@@ -278,12 +276,10 @@ function processCommand(cmd) {
             response.innerText = "> Launching Advanced AI Search Palette...";
             terminalBody.appendChild(response);
 
-            // Pehle smoothly terminal ko hide karenge
             setTimeout(() => {
                 terminalUI.classList.add('terminal-hidden');
             }, 300);
 
-            // Phir background mein 'Ctrl + K' press karne ka fake event fire karenge
             setTimeout(() => {
                 window.dispatchEvent(new KeyboardEvent('keydown', {
                     key: 'k',
@@ -291,7 +287,7 @@ function processCommand(cmd) {
                     bubbles: true
                 }));
             }, 600);
-            return; // Return zaroori hai taaki terminal body scroll na ho
+            return;
 
         // ==========================================
         // 1. PROFILE & INFO COMMANDS
