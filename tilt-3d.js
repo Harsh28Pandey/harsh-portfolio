@@ -30,6 +30,7 @@
         // add glare overlay once
         const glare = document.createElement("div");
         glare.className = "tilt-glare";
+        glare.setAttribute("aria-hidden", "true");
         el.appendChild(glare);
 
         let rect = null;
