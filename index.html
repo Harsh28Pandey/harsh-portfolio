@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<html lang="en-IN">
 
 <head>
     <meta charset="UTF-8">
@@ -174,7 +175,8 @@
                             class='bx bxl-linkedin'></i></a>
                     <a href="https://github.com/Harsh28Pandey" target="_blank"><i class='bx bxl-github'></i></a>
                     <a href="https://www.leetcode.com/harsh28pandey" target="_blank"><i class='bxl bx-leetcode'></i></a>
-                    <a href="https://www.instagram.com/pandey28harsh" target="_blank"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.instagram.com/pandey28harsh" target="_blank"><i
+                            class='bx bxl-instagram'></i></a>
                     <a href="https://www.facebook.com/pandey28harsh" target="_blank"><i class='bx bxl-facebook'></i></a>
                     <a href="https://www.x.com/pandey28harsh" target="_blank"><i class='bx bxl-twitter'></i></a>
                 </div>
@@ -182,12 +184,12 @@
 
             <!-- Developer Shortcut Hint Box -->
             <!-- <div class="dev-shortcuts-hint"> -->
-                <!-- Desktop View -->
-                <!-- <span class="desktop-hint">
+            <!-- Desktop View -->
+            <!-- <span class="desktop-hint">
                     💡 Pro tip: <kbd>Ctrl</kbd> + <kbd>K</kbd> (Search) • <kbd>Ctrl</kbd> + <kbd>J</kbd> / <kbd>`</kbd> (Terminal) • Click <span class="logo-trigger" onclick="document.querySelector('.logo').click()">Harsh.</span>
                 </span> -->
-                <!-- Mobile View -->
-                <!-- <span class="mobile-hint">
+            <!-- Mobile View -->
+            <!-- <span class="mobile-hint">
                     💡 Double-tap on the <span class="logo-trigger">Harsh.</span> logo (top-left) to open terminal!
                 </span>
             </div> -->
@@ -1056,7 +1058,8 @@
                     </div>
 
                     <!-- Clean Description -->
-                    <p class="project-desc">AI assistant that auto-generates READMEs, reviews PRs, tracks docs and repo health for every GitHub project — MERN + LangGraph + multi-LLM powered.
+                    <p class="project-desc">AI assistant that auto-generates READMEs, reviews PRs, tracks docs and repo
+                        health for every GitHub project — MERN + LangGraph + multi-LLM powered.
                     </p>
 
                     <!-- Tech Stack Pills -->
@@ -1091,7 +1094,8 @@
                             <span class="status-badge live">Under Development</span>
                         </div>
 
-                        <p class="project-desc">Think Flow is an intelligent agent platform built with LangGraph and LangChain for automated reasoning, workflows, and AI-powered decision-making.
+                        <p class="project-desc">Think Flow is an intelligent agent platform built with LangGraph and
+                            LangChain for automated reasoning, workflows, and AI-powered decision-making.
                         </p>
                         <div class="tech-stack">
                             <span>React.js</span>
@@ -1592,7 +1596,8 @@
 
             <div class="tech-box">
                 <h3>Think Flow</h3>
-                <p style="text-align: center;">Think Flow is an intelligent agent platform built with LangGraph and LangChain for automated reasoning, workflows, and AI-powered decision-making.
+                <p style="text-align: center;">Think Flow is an intelligent agent platform built with LangGraph and
+                    LangChain for automated reasoning, workflows, and AI-powered decision-making.
                 </p>
                 <a href="https://github.com/Harsh28Pandey/think-flow" target="_blank" class="btn">Explore Think Flow
                     <i class='bx bxs-right-top-arrow-circle'></i></a>
@@ -1809,21 +1814,32 @@
     <!-- Three.js library (for 3D background) -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
+    <!-- 1. GSAP + ScrollTrigger (sabse pehle, baaki scripts inpe depend karte hain) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
+    <!-- 2. Three.js (loader3d aur three-bg dono inpe depend karte hain) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <!-- 3. Loader (page dikhne se pehle ready hona chahiye) -->
     <script src="loader3d.js"></script>
     <script src="loader.js"></script>
+
+    <!-- 4. Core site logic -->
     <script src="script.js"></script>
+
+    <!-- 5. Visual enhancements (DOM ready hone ke baad) -->
     <script src="three-bg.js"></script>
     <script src="tilt-3d.js"></script>
+    <script src="magnetic-btn.js"></script>
     <script src="nav3d.js"></script>
+
+    <!-- 6. Section & scroll animations (GSAP+ScrollTrigger dono upar load ho chuke hain) -->
     <script src="section-fx.js"></script>
     <script src="single-page.js"></script>
-
-    <!-- GSAP ScrollTrigger plugin (needed only by scroll-fx.js) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     <script src="scroll-fx.js"></script>
 
-    <script src="magnetic-btn.js"></script>
-
+    <!-- 7. Non-critical (defer se last mein load honge) -->
     <script src="command_palette.js" defer></script>
     <script src="contact.js" defer></script>
 </body>
