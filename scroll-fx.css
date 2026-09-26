@@ -1,0 +1,63 @@
+/* =====================================================================
+   SCROLL-FX SUPPORT STYLES
+   Goes with scroll-fx.js. Sirf structural/perspective helpers rakhe hain
+   yahan — saari actual animation GSAP (transform/opacity) se chalti hai,
+   isliye yeh file bahut halki hai aur kisi bhi existing layout/CSS ko
+   overwrite nahi karti.
+===================================================================== */
+
+/* Bubble-float ke liye har card ko ek invisible wrapper diya jata hai
+   (scroll-fx.js dynamically inject karta hai). Wrapper khud grid item
+   banta hai, andar wala .services-box/.tech-box bilkul waise hi rehta
+   hai jaise pehle tha — isliye layout/design me koi farak nahi aata. */
+.bubble-wrap {
+    display: block;
+    will-change: auto;
+}
+
+/* Thoda sa 3D depth dene ke liye — bubble float, overview 3D-reveal,
+   project/connect slide-in aur home parallax — sab isi perspective
+   ka use karte hain taaki poore page me depth ka feel consistent rahe. */
+.services-container,
+.tech-container,
+.overview-list,
+.project-container,
+.connect-container {
+    perspective: 1400px;
+}
+
+/* Home section: parallax sirf parent wrappers (.home-img / .home-detail)
+   par lagta hai, is liye unhe apni hi stacking context do — GSAP ke
+   transform/opacity ko crisp aur artifact-free render karne ke liye. */
+.home-img,
+.home-detail {
+    will-change: auto;
+    backface-visibility: hidden;
+}
+
+/* Section headings ke clip-reveal ke liye — overflow visible hi rehta
+   hai (koi clipping side-effect nahi), bas GSAP ke clip-path ko smooth
+   render karne ke liye hint de rahe hain. */
+.services>.heading,
+.project>.heading,
+.tech-section>.heading {
+    will-change: auto;
+}
+
+/* Animation start hone se pehle flash/flicker na dikhe, isliye jab tak
+   JS load na ho, cards apni normal state me hi rehte hain — koi
+   base "hidden" CSS class yahan jaan-bujh kar nahi rakhi. Agar kabhi
+   JS fail ho jaaye (blocked / slow network), to cards turant normal
+   visible state me hi dikhte rahenge, kuch bhi break nahi hoga. */
+
+@media (prefers-reduced-motion: reduce) {
+    .bubble-wrap {
+        will-change: auto !important;
+    }
+
+    .home-img,
+    .home-detail {
+        transform: none !important;
+        filter: none !important;
+    }
+}

@@ -33,6 +33,7 @@
     <!-- custom css file link -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="single-page.css">
+    <link rel="stylesheet" href="scroll-fx.css">
     <!-- favicon  link -->
     <!-- <link rel="icon" href="favicon.png" type="image/x-icon"> -->
     <!-- <link rel="shortcut icon" href="images/profile_bg.png" type="image/x-icon"> -->
@@ -1023,11 +1024,47 @@
 
                 <div class="project-detail">
                     <p class="numb">05</p>
+
+                    <!-- Title & Live Badge -->
+                    <div class="project-title-wrapper">
+                        <h3>RepoSense</h3>
+                        <span class="status-badge live">Under Development</span>
+                    </div>
+
+                    <!-- Clean Description -->
+                    <p class="project-desc">AI assistant that auto-generates READMEs, reviews PRs, tracks docs and repo health for every GitHub project — MERN + LangGraph + multi-LLM powered.
+                    </p>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="tech-stack">
+                        <span>React.js</span>
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                        <span>Tailwind CSS</span>
+                        <span>LangGraph</span>
+                        <span>LangChain</span>
+                        <span>Microservices</span>
+                        <span>Redis</span>
+                        <span>Docker</span>
+                    </div>
+
+                    <div class="live-github">
+                        <a href="https://github.com/Harsh28Pandey/RepoSense" target="_blank"><i
+                                class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                        <a href="https://github.com/Harsh28Pandey/RepoSense" target="_blank"><i
+                                class='bx bxl-github'></i><span>GitHub
+                                Repository</span></a>
+                    </div>
+                </div>
+
+                <div class="project-detail">
+                    <p class="numb">06</p>
                     <div class="content">
 
                         <div class="project-title-wrapper">
                             <h3>Think Flow</h3>
-                            <span class="status-badge live">Live</span>
+                            <span class="status-badge live">Under Development</span>
                         </div>
 
                         <p class="project-desc">Think Flow is an intelligent agent platform built with LangGraph and LangChain for automated reasoning, workflows, and AI-powered decision-making.
@@ -1054,7 +1091,7 @@
                 </div>
 
                 <div class="project-detail">
-                    <p class="numb">06</p>
+                    <p class="numb">07</p>
 
                     <div class="project-title-wrapper">
                         <h3>Library Management System</h3>
@@ -1079,7 +1116,7 @@
                 </div>
 
                 <div class="project-detail">
-                    <p class="numb">07</p>
+                    <p class="numb">08</p>
 
                     <div class="project-title-wrapper">
                         <h3>Dynamic Website</h3>
@@ -1105,7 +1142,7 @@
                 </div>
 
                 <div class="project-detail">
-                    <p class="numb">08</p>
+                    <p class="numb">09</p>
                     <div class="content">
 
                         <div class="project-title-wrapper">
@@ -1417,7 +1454,11 @@
                         </div>
 
                         <div class="img-item">
-                            <img src="./images" alt="Think Flow" loading="lazy">
+                            <img src="./images/reposense.png" alt="RepoSense" loading="lazy">
+                        </div>
+
+                        <div class="img-item">
+                            <img src="./images/think-flow.png" alt="Think Flow" loading="lazy">
                         </div>
 
                         <div class="img-item">
@@ -1749,6 +1790,10 @@
     <script src="nav3d.js"></script>
     <script src="section-fx.js"></script>
     <script src="single-page.js"></script>
+
+    <!-- GSAP ScrollTrigger plugin (needed only by scroll-fx.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="scroll-fx.js"></script>
 
     <script src="magnetic-btn.js"></script>
 
