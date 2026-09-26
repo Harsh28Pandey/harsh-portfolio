@@ -110,7 +110,8 @@
 
         overviewBatch = ScrollTrigger.batch(items, {
             start: "top 88%",
-            once: true,
+            // once: true,
+            once: false,
             onEnter: (batch) => {
                 gsap.fromTo(
                     batch,
