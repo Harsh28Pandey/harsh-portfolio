@@ -213,7 +213,8 @@
 
     // ---- animation loop (capped ~45fps) ----
     const clock = new THREE.Clock();
-    const frameInterval = 1 / 45;
+    // const frameInterval = 1 / 45;
+    const frameInterval = isMobile ? 1 / 30 : 1 / 45;
     let accumulator = 0;
     let frameCount = 0;
 
