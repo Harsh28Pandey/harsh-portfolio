@@ -86,7 +86,8 @@ function hideLoader() {
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
         showLoader();
-        setTimeout(hideLoader, 1200);
+        // setTimeout(hideLoader, 1200);
+        setTimeout(hideLoader, 800);
     });
 });
 
