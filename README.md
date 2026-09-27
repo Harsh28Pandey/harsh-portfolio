@@ -28,8 +28,8 @@ I'm **Harsh Pandey**, a passionate full-stack developer and problem solver from 
 
 | Home Page | Projects Section | Contact Section |
 |:---------:|:----------------:|:---------------:|
-| ![Home](./images/home.png) | ![Projects](./images/projects.png) | ![Contact](./images/contact.png) |
-| *Animated intro with 3D background* | *Interactive project cards* | *Contact form with EmailJS* |
+| ![Home](./images/home.png) | ![Projects](./images/projects.png) | ![Contact](./images/connect.png) |
+| *Animated intro with 3D background* | *Interactive project cards* | *Connect form with EmailJS* |
 
 ---
 
