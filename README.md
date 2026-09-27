@@ -7,7 +7,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Harsh28Pandey-181717?style=for-the-badge&logo=github)](https://github.com/Harsh28Pandey)
 [![LeetCode](https://img.shields.io/badge/LeetCode-harsh28pandey-FFA116?style=for-the-badge&logo=leetcode)](https://www.leetcode.com/harsh28pandey)
 
-*Final Year Student @ Kanpur Institute of Technology | MERN Stack Developer | DSA with C++*
+_Final Year Student @ Kanpur Institute of Technology | MERN Stack Developer | DSA with C++_
 
 </div>
 
@@ -26,33 +26,34 @@ I'm **Harsh Pandey**, a passionate full-stack developer and problem solver from 
 
 ## 🖼️ Screenshots
 
-| Home Page | Projects Section | Contact Section |
-|:---------:|:----------------:|:---------------:|
-| ![Home](./images/home.png) | ![Projects](./images/projects.png) | ![Contact](./images/connect.png) |
-| *Animated intro with 3D background* | *Interactive project cards* | *Connect form with EmailJS* |
+|              Home Page              |          Projects Section          |         Connect Section          |
+| :---------------------------------: | :--------------------------------: | :------------------------------: |
+|     ![Home](./images/home.png)      | ![Projects](./images/projects.png) | ![Contact](./images/connect.png) |
+| _Animated intro with 3D background_ |    _Interactive project cards_     |   _Connect form with EmailJS_    |
 
 ---
 
 ## ✨ Features
 
-| Feature | Description |
-|--------|-------------|
-| 🎨 **3D Animated Background** | Powered by Three.js for an immersive visual experience |
-| ⚡ **GSAP Animations** | Scroll-triggered animations and smooth transitions throughout |
-| 🤖 **AI Chatbot** | Groq LLM-powered assistant (desktop only) built into the portfolio |
-| 🖥️ **Hidden Terminal** | Easter egg terminal UI — type `help` to explore commands |
-| 📱 **Fully Responsive** | Mobile-first design, works beautifully on all screen sizes |
-| 🌀 **3D Loader** | Custom Three.js 3D badge loader with animated progress |
-| 🧲 **Magnetic Buttons** | Smooth magnetic hover effects on interactive elements |
-| 🗂️ **Case Study Modal** | Deep-dive project breakdowns via interactive modal |
-| 📧 **Contact Form** | EmailJS-powered contact form with validation |
-| 🎮 **Tilt 3D Cards** | Interactive 3D tilt effect on project and tech cards |
+| Feature                       | Description                                                        |
+| ----------------------------- | ------------------------------------------------------------------ |
+| 🎨 **3D Animated Background** | Powered by Three.js for an immersive visual experience             |
+| ⚡ **GSAP Animations**        | Scroll-triggered animations and smooth transitions throughout      |
+| 🤖 **AI Chatbot**             | Groq LLM-powered assistant (desktop only) built into the portfolio |
+| 🖥️ **Hidden Terminal**        | Easter egg terminal UI — type `help` to explore commands           |
+| 📱 **Fully Responsive**       | Mobile-first design, works beautifully on all screen sizes         |
+| 🌀 **3D Loader**              | Custom Three.js 3D badge loader with animated progress             |
+| 🧲 **Magnetic Buttons**       | Smooth magnetic hover effects on interactive elements              |
+| 🗂️ **Case Study Modal**       | Deep-dive project breakdowns via interactive modal                 |
+| 📧 **Contact Form**           | EmailJS-powered contact form with validation                       |
+| 🎮 **Tilt 3D Cards**          | Interactive 3D tilt effect on project and tech cards               |
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### 💻 Languages
+
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -60,20 +61,24 @@ I'm **Harsh Pandey**, a passionate full-stack developer and problem solver from 
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 
 ### 🎨 Frontend
+
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
 ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
 
 ### 🔧 Backend
+
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
 
 ### 🗄️ Databases
+
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 
 ### 🧰 Tools & Libraries
+
 ![EmailJS](https://img.shields.io/badge/EmailJS-EA4335?style=flat-square&logo=gmail&logoColor=white)
 ![GSAP ScrollTrigger](https://img.shields.io/badge/ScrollTrigger-88CE02?style=flat-square&logo=greensock&logoColor=black)
 ![Boxicons](https://img.shields.io/badge/Boxicons-000000?style=flat-square)
@@ -124,14 +129,14 @@ portfolio/
 
 ## 📬 Contact
 
-| Platform | Link |
-|---------|------|
-| 📧 Email | harsh28.knp@gmail.com |
-| 📞 Phone | +91 95699 10421 |
-| 📍 Location | Kanpur, Uttar Pradesh, India |
-| 💼 LinkedIn | [harsh28pandey](https://www.linkedin.com/in/harsh28pandey/) |
-| 🐦 Twitter/X | [@pandey28harsh](https://www.x.com/pandey28harsh) |
-| 📸 Instagram | [@pandey28harsh](https://www.instagram.com/pandey28harsh) |
+| Platform     | Link                                                        |
+| ------------ | ----------------------------------------------------------- |
+| 📧 Email     | harsh28.knp@gmail.com                                       |
+| 📞 Phone     | +91 95699 10421                                             |
+| 📍 Location  | Kanpur, Uttar Pradesh, India                                |
+| 💼 LinkedIn  | [harsh28pandey](https://www.linkedin.com/in/harsh28pandey/) |
+| 🐦 Twitter/X | [@pandey28harsh](https://www.x.com/pandey28harsh)           |
+| 📸 Instagram | [@pandey28harsh](https://www.instagram.com/pandey28harsh)   |
 
 ---
 
@@ -139,6 +144,6 @@ portfolio/
 
 Made with ❤️ by **Harsh Pandey**
 
-⭐ *If you like this portfolio, consider giving it a star!*
+⭐ _If you like this portfolio, consider giving it a star!_
 
 </div>
