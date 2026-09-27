@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     const externalConfig = (typeof window !== 'undefined' && window.CHATBOT_CONFIG) ? window.CHATBOT_CONFIG : {};
-    const rawKey = (externalConfig.GROQ_API_KEY || "").trim();
+    const rawKey = (externalConfig.GROQ_API_KEY || "");
 
     const CONFIG = {
         GROQ_API_KEY: rawKey,
@@ -11,7 +11,7 @@
             "openai/gpt-oss-120b"
         ],
         GROQ_ENDPOINT: "https://api.groq.com/openai/v1/chat/completions",
-        RESUME_URL: (externalConfig.RESUME_URL).trim(),
+        RESUME_URL: (externalConfig.RESUME_URL),
         MAX_TOKENS: 500,
         TEMPERATURE: 0.4,
         DESKTOP_BREAKPOINT: 1024 
@@ -132,7 +132,7 @@ robust backends (Node.js/Express), scalable databases (MongoDB/MySQL), and high-
 frontends. He has hands-on experience with role-based access control (RBAC), JWT authentication, and integrating
 AI-driven features into real products. He has completed 12+ projects and is available for freelance, part-time,
 and remote work.
-`.trim();
+`
 
     function isDesktop() {
         return window.innerWidth >= CONFIG.DESKTOP_BREAKPOINT;
