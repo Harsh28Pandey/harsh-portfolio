@@ -1562,7 +1562,8 @@ section.active {
 }
 
 .overview-detail.skills .overview-list {
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   height: auto;
   overflow: visible;
 }
@@ -1574,7 +1575,8 @@ section.active {
 }
 
 .overview-detail.skills .overview-item i {
-  font-size: 8.5rem;
+  /* font-size: 8.5rem; */
+  font-size: 6rem;
   transition: 0.5s;
 }
 
