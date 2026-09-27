@@ -33,6 +33,8 @@
 
     <!-- custom css file link -->
     <link rel="stylesheet" href="style.css">
+    <!-- AI chatbot css (desktop only) -->
+    <link rel="stylesheet" href="chatbot.css">
     <link rel="stylesheet" href="case-studies.css">
     <link rel="stylesheet" href="single-page.css">
     <link rel="stylesheet" href="scroll-fx.css">
@@ -1486,6 +1488,11 @@
     <script src="command_palette.js" defer></script>
     <script src="contact.js" defer></script>
     <script src="case-studies.js"></script>
+
+    <!-- 8. AI Chatbot (Groq LLM, desktop only) -->
+    <!-- config.js holds the real API key/resume URL and is git-ignored — must load BEFORE chatbot.js -->
+    <script src="config.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 
 </html>
