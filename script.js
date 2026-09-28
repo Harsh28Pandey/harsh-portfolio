@@ -631,6 +631,19 @@ function processCommand(cmd) {
     };
 })();
 
+const terminalFab = document.getElementById('terminal-fab');
+
+const syncFab = () => {
+    terminalFab.classList.toggle('hide-fab', !terminalUI.classList.contains('terminal-hidden'));
+};
+
+terminalFab.addEventListener('click', () => {
+    terminalUI.classList.remove('terminal-hidden');
+    setTimeout(() => terminalInput.focus(), 100);
+    syncFab();
+});
+
+new MutationObserver(syncFab).observe(terminalUI, { attributes: true, attributeFilter: ['class'] });
 
 
 
