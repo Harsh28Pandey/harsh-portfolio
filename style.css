@@ -2697,3 +2697,48 @@ section.active {
     width: 100%;
   }
 }
+
+#terminal-fab {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 0.15rem solid var(--main-color);
+  color: var(--main-color);
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 1.5rem rgba(255, 140, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+#terminal-fab i {
+  color: inherit;
+}
+
+#terminal-fab:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+  transform: scale(1.1);
+  box-shadow: 0 0 2.5rem var(--main-color);
+}
+
+#terminal-fab.hide-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.6);
+}
+
+@media screen and (max-width: 1023px) {
+  #terminal-fab {
+    display: none;
+  }
+}
