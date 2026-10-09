@@ -39,6 +39,15 @@ const caseStudiesData = {
         challenges: "The biggest challenge was designing a single AI pipeline that could reason over three very different inputs (JD, resume, self-intro) together and still return a consistent, structured output — a resume score plus tailored questions — instead of three disconnected results.",
         result: "A working AI-driven prep tool that goes a step further than standard question generators by tying the candidate's own resume and introduction into the plan, showing the ability to design multi-input AI pipelines, not just single-prompt features."
     },
+    "stowly": {
+        title: "Stowly",
+        status: "Live",
+        tech: ["React.js", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "Tailwind CSS", "JWT Authentication", "Multer"],
+        problem: "Most people keep files in one app and passwords in another, and trust both providers with data they can fully read. Public cloud tools also let anyone sign up freely, which is a poor fit for a private, invite-style workspace where the owner wants control over who gets in.",
+        approach: "Built a full-stack MERN platform that combines personal cloud storage, a zero-knowledge password Keyring, and private Drop Boxes in one dashboard. Files get smart collections, a recycle bin, recent and pinned views, and a storage-insights page. Every new account starts as PENDING and must be approved by an admin from a Control Room before it can sign in. Auth uses JWT in HTTP-only cookies with server-side session tracking, and the Keyring encrypts every entry in the browser before anything reaches the server.",
+        challenges: "The hardest part was the Keyring: deriving a key from the master password with PBKDF2 (600,000 iterations) via the Web Crypto API, keeping it in memory only, encrypting each entry with AES-256-GCM using a fresh IV, and adding auto-lock plus clipboard clearing, so the server never sees plaintext. On the backend, the approval gate had to be re-checked on every protected call so suspending a user revokes their sessions immediately, and every file, folder and vault query needed per-user ownership checks to prevent IDOR. File uploads also needed random on-disk names, blocked executables, quota enforcement and SHA-256 duplicate detection.",
+        result: "A live, deployed product with three distinct systems in one app: file storage, an encrypted password vault, and an admin-gated onboarding flow. It shows security-first engineering beyond typical CRUD: client-side cryptography, rate limiting, bcrypt, Helmet headers, session revocation, and a storage layer isolated in one module so it can be swapped to S3 or Cloudflare R2 later."
+    },
     "library-management": {
         title: "Library Management System",
         status: "Completed",
