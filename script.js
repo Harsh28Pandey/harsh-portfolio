@@ -365,7 +365,7 @@ function processCommand(cmd) {
         case 'resume':
         case 'cv':
             response.innerText = "> Initializing download sequence...";
-            window.open("https://drive.google.com/file/d/1HFUKZR8k2OoCshMwO9cbcN1iHVHkTfWJ/view?usp=sharing", "_blank");
+            window.open("https://drive.google.com/file/d/1frmmg6MYvkJsfw9fA57RjVb_KsdzOT4G/view?usp=sharing", "_blank");
             break;
 
         // ==========================================
