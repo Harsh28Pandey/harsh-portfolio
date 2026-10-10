@@ -1,18 +1,5 @@
-/* =====================================================
-   TEAM MEMBERS (Projects section)
-   - "Team Project" badge  (sirf tab jab members >= 2)
-   - Team icon button (case-study button ke right side me) + member count
-   - Click -> modal with member info (desktop + mobile)
-   - Project key = case-study button ka data-project value,
-     isliye index.html me koi markup change nahi karna.
-   Naya project add karna ho -> neeche TEAM_DATA me ek entry.
-===================================================== */
 (function () {
     'use strict';
-
-    /* ---------------- DATA: yaha edit karo ----------------
-       key  = data-project (index.html ke case-study-btn se)
-       Apni real links / role yahan bhar do.               */
     const ME = {
         name: 'Harsh Pandey',
         role: 'Full Stack Developer',
@@ -29,6 +16,10 @@
             ME,
             { name: 'Abhay Singh', role: 'Contributor', github: 'https://github.com/Abhay2110s', linkedin: 'https://www.linkedin.com/in/abhay-singh-btech/' },
             { name: 'Ayansh Yadav', role: 'Contributor', github: 'https://github.com/Ayansh252yadav', linkedin: 'https://www.linkedin.com/in/ayansh-yadav/' }
+        ],
+        'light-brain-os': [
+            ME,
+            { name: 'Anshuman Sharma', role: 'Contributor', github: 'https://github.com/Anshuman-sharma2006', linkedin: 'https://www.linkedin.com/in/anshuman-sharma-b886a3371/' }
         ]
     };
 
@@ -43,7 +34,7 @@
         });
     }
 
-    /* ---------------- modal (ek hi baar bnta hai) ---------------- */
+    /* ---------------- modal ---------------- */
     const overlay = document.createElement('div');
     overlay.className = 'tm-overlay';
     overlay.setAttribute('aria-hidden', 'true');
@@ -113,7 +104,6 @@
             var projectName = (detail.querySelector('h3') || {}).textContent || 'Project';
             var isTeam = members.length >= 2;
 
-            // 1) "Team Project" badge (title ke saath)
             if (isTeam && wrapper) {
                 var badge = document.createElement('span');
                 badge.className = 'status-badge tm-team-badge';
@@ -121,7 +111,6 @@
                 wrapper.appendChild(badge);
             }
 
-            // 2) Team icon button: case-study button ke RIGHT side me
             var row = document.createElement('button');
             row.type = 'button';
             row.className = 'tm-trigger';
