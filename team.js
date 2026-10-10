@@ -19,7 +19,8 @@
         ],
         'light-brain-os': [
             ME,
-            { name: 'Anshuman Sharma', role: 'Contributor', github: 'https://github.com/Anshuman-sharma2006', linkedin: 'https://www.linkedin.com/in/anshuman-sharma-b886a3371/' }
+            { name: 'Anshuman Sharma', role: 'Contributor', github: 'https://github.com/Anshuman-sharma2006', linkedin: 'https://www.linkedin.com/in/anshuman-sharma-b886a3371/' },
+            { name: 'Ayansh Yadav', role: 'Contributor', github: 'https://github.com/Ayansh252yadav', linkedin: 'https://www.linkedin.com/in/ayansh-yadav/' }
         ]
     };
 
