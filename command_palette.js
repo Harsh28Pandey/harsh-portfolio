@@ -39,8 +39,8 @@
                 <div class="cmd-item" data-target="project" data-search="projects work portfolio live apps showcase">
                     <i class='bx bx-briefcase-alt-2'></i><span class="cmd-text">Projects</span><span class="cmd-shortcut">Section</span>
                 </div>
-                <div class="cmd-item" data-target="nexode" data-search="nexode tech innovations explore play docs links">
-                    <i class='bx bx-planet'></i><span class="cmd-text">Tech Innovations</span><span class="cmd-shortcut">Section</span>
+                <div class="cmd-item" data-target="lab" data-search="devlab lab github activity contributions commits streak playground experiments demos 3d">
+                    <i class='bx bx-bolt-circle'></i><span class="cmd-text">DevLab</span>
                 </div>
                 <div class="cmd-item" data-target="connect" data-search="connect contact email phone message hire collaborate">
                     <i class='bx bx-envelope'></i><span class="cmd-text">Contact Me</span><span class="cmd-shortcut">Section</span>
@@ -291,7 +291,7 @@
                 togglePalette(false);
                 textSpan.innerText = originalText;
             }, 1000);
-            return; 
+            return;
         }
 
         togglePalette(false);
