@@ -1,0 +1,790 @@
+.lab-section:not(.active) {
+    display: none !important;
+}
+
+.lab-section .lab-intro {
+    text-align: center;
+    font-size: 1.6rem;
+    max-width: 72rem;
+    margin: 1.2rem auto 0;
+}
+
+.lab-block {
+    margin-top: 5rem;
+}
+
+.lab-block-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.lab-block-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.6rem;
+    color: var(--white-color);
+}
+
+.lab-block-head h3 i {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.lab-hint {
+    font-size: 1.3rem;
+    color: #888;
+}
+
+.lab-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.6rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--main-color);
+    border: 0.1rem solid rgba(255, 140, 0, 0.35);
+    border-radius: 4rem;
+    transition: 0.3s;
+}
+
+.lab-link:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.lab-subtitle {
+    font-size: 2rem;
+    color: var(--white-color);
+    margin: 3.4rem 0 1.6rem;
+}
+
+/* ---------- GitHub: stat cards ---------- */
+.gh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem;
+    margin-bottom: 1.8rem;
+}
+
+.gh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    background: var(--second-bg-color);
+    border: 0.2rem solid var(--second-bg-color);
+    border-radius: 2rem;
+    transition: 0.3s;
+}
+
+.gh-stat:hover {
+    border-color: var(--main-color);
+}
+
+.gh-stat-value {
+    font-size: 3.4rem;
+    font-weight: 700;
+    color: var(--main-color);
+    line-height: 1.1;
+}
+
+.gh-stat-label {
+    font-size: 1.3rem;
+    color: #999;
+}
+
+/* ---------- GitHub: graph card ---------- */
+.gh-card {
+    position: relative;
+    padding: 2.4rem;
+    background: var(--second-bg-color);
+    border: 0.2rem solid var(--second-bg-color);
+    border-radius: 2.5rem;
+}
+
+.gh-scroll {
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) transparent;
+}
+
+.gh-scroll::-webkit-scrollbar {
+    height: 0.6rem;
+}
+
+.gh-scroll::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 1rem;
+}
+
+.gh-inner {
+    min-width: 72rem;
+}
+
+.gh-months,
+.gh-graph {
+    display: grid;
+    grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr));
+    gap: 0.3rem;
+}
+
+.gh-months {
+    height: 1.8rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.gh-months span {
+    grid-row: 1;
+    white-space: nowrap;
+}
+
+.gh-graph {
+    grid-template-rows: repeat(7, auto);
+    grid-auto-flow: column;
+}
+
+.gh-cell {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    border-radius: 0.3rem;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.gh-cell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--main-color);
+    opacity: 0;
+}
+
+.gh-cell[data-l="1"]::before { opacity: 0.25; }
+.gh-cell[data-l="2"]::before { opacity: 0.5; }
+.gh-cell[data-l="3"]::before { opacity: 0.75; }
+.gh-cell[data-l="4"]::before { opacity: 1; }
+
+.gh-cell.is-blank {
+    background: transparent;
+}
+
+.gh-graph .gh-cell:not(.is-blank):hover {
+    outline: 0.15rem solid var(--white-color);
+    outline-offset: 0.1rem;
+}
+
+.gh-loading,
+.gh-empty {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding: 4rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #888;
+}
+
+.gh-fallback-img {
+    width: 100%;
+    min-width: 72rem;
+    display: block;
+    border-radius: 1rem;
+}
+
+.gh-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.gh-legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.gh-legend .gh-cell {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.gh-scroll-hint {
+    display: none;
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 0.6rem;
+}
+
+.gh-tip {
+    position: absolute;
+    z-index: 5;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    color: var(--bg-color);
+    background: var(--white-color);
+    border-radius: 0.6rem;
+    pointer-events: none;
+    transform: translate(-50%, -100%);
+}
+
+/* ---------- GitHub: languages ---------- */
+.gh-lang-card {
+    margin-top: 1.8rem;
+}
+
+.gh-langbar {
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.gh-langbar span {
+    display: block;
+    height: 100%;
+}
+
+.gh-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 2rem;
+    margin-top: 1.4rem;
+    list-style: none;
+    font-size: 1.3rem;
+    color: var(--white-color);
+}
+
+.gh-langs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.gh-langs i {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.gh-langs em {
+    font-style: normal;
+    color: #888;
+}
+
+/* ---------- GitHub: repos ---------- */
+.gh-repos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 2rem;
+}
+
+.gh-repo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2.2rem 2.4rem;
+    background: var(--second-bg-color);
+    border: 0.2rem solid var(--second-bg-color);
+    border-radius: 2.2rem;
+    color: inherit;
+    transition: 0.35s ease;
+}
+
+.gh-repo:hover {
+    border-color: var(--main-color);
+    transform: translateY(-0.4rem);
+}
+
+.gh-repo-name {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--white-color);
+    word-break: break-word;
+}
+
+.gh-repo-name i {
+    color: var(--main-color);
+    font-size: 2.2rem;
+}
+
+.gh-repo-desc {
+    flex: 1;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #aaa;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.gh-repo-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.6rem;
+    font-size: 1.3rem;
+    color: #999;
+}
+
+.gh-repo-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gh-repo-meta .gh-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.gh-skeleton {
+    height: 13rem;
+    border-radius: 2.2rem;
+    background: linear-gradient(100deg, var(--second-bg-color) 30%, #2a2a2a 50%, var(--second-bg-color) 70%);
+    background-size: 200% 100%;
+    animation: lab-shimmer 1.4s linear infinite;
+}
+
+@keyframes lab-shimmer {
+    to { background-position: -200% 0; }
+}
+
+/* ---------- Playground ---------- */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.lab-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    min-width: 0;
+    padding: 2.4rem;
+    background: var(--second-bg-color);
+    border: 0.2rem solid var(--second-bg-color);
+    border-radius: 2.5rem;
+    transition: border-color 0.3s;
+}
+
+.lab-card:hover {
+    border-color: rgba(255, 140, 0, 0.5);
+}
+
+.lab-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.lab-card-head h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 2rem;
+    color: var(--white-color);
+}
+
+.lab-card-head h4 i {
+    font-size: 2.4rem;
+    color: var(--main-color);
+}
+
+.lab-tag {
+    flex: none;
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: var(--main-color);
+    background: rgba(255, 140, 0, 0.1);
+    border: 0.1rem solid rgba(255, 140, 0, 0.3);
+    border-radius: 2rem;
+}
+
+.lab-card > p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+.lab-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22rem;
+    overflow: hidden;
+    background: #111;
+    border: 0.1rem solid rgba(255, 255, 255, 0.07);
+    border-radius: 1.6rem;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.lab-readout {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 1rem;
+    font-size: 1.15rem;
+    color: #777;
+    pointer-events: none;
+}
+
+.lab-controls-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.6rem;
+}
+
+.lab-control {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+    color: #999;
+}
+
+.lab-control.grow {
+    flex: 1;
+    min-width: 16rem;
+}
+
+.lab-control span {
+    flex: none;
+}
+
+.lab-control input[type="range"] {
+    flex: 1;
+    min-width: 0;
+    accent-color: var(--main-color);
+    cursor: pointer;
+}
+
+.lab-control output {
+    flex: none;
+    min-width: 3.6rem;
+    text-align: right;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.lab-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.6rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--main-color);
+    background: transparent;
+    border: 0.1rem solid rgba(255, 140, 0, 0.4);
+    border-radius: 4rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lab-chip:hover:not(:disabled) {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.lab-chip:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* magnetic demo */
+.lab-magnet-zone {
+    display: inline-block;
+    padding: 2.4rem;
+}
+
+.lab-btn {
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    background: var(--main-color);
+    border: 0.2rem solid var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    cursor: pointer;
+    transition: transform 0.2s ease-out, background 0.3s, color 0.3s, box-shadow 0.3s;
+    will-change: transform;
+}
+
+.lab-btn.spring {
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s, color 0.3s;
+}
+
+.lab-btn.is-near {
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: none;
+}
+
+/* tilt demo */
+.lab-tilt-wrap {
+    perspective: 90rem;
+}
+
+.lab-tilt-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 20rem;
+    height: 13rem;
+    overflow: hidden;
+    color: var(--white-color);
+    background: linear-gradient(145deg, #262626, #151515);
+    border: 0.1rem solid rgba(255, 140, 0, 0.4);
+    border-radius: 1.6rem;
+    box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-out;
+    will-change: transform;
+}
+
+.lab-tilt-card.spring {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lab-tilt-card i {
+    font-size: 3.2rem;
+    color: var(--main-color);
+}
+
+.lab-tilt-card strong {
+    font-size: 1.6rem;
+}
+
+.lab-tilt-card small {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.lab-tilt-glare {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(18rem circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.22), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lab-tilt-card.is-hot .lab-tilt-glare {
+    opacity: 1;
+}
+
+/* 3D demo */
+.lab-stage-3d {
+    cursor: grab;
+}
+
+.lab-stage-3d.is-dragging {
+    cursor: grabbing;
+}
+
+.lab-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.lab-fallback {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #888;
+}
+
+/* terminal demo */
+.lab-term {
+    width: calc(100% - 3rem);
+    max-width: 36rem;
+    overflow: hidden;
+    background: rgba(20, 20, 20, 0.95);
+    border: 0.1rem solid var(--main-color);
+    border-radius: 1.2rem;
+    box-shadow: 0 0 3rem rgba(255, 140, 0, 0.2);
+}
+
+.lab-term-bar {
+    display: flex;
+    gap: 0.7rem;
+    padding: 1rem 1.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 0.1rem solid rgba(255, 140, 0, 0.2);
+}
+
+.lab-term-bar i {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+}
+
+.lab-term-bar i:nth-child(1) { background: #ff5f56; }
+.lab-term-bar i:nth-child(2) { background: #ffbd2e; }
+.lab-term-bar i:nth-child(3) { background: #27c93f; }
+
+.lab-term-body {
+    padding: 1.6rem;
+}
+
+.lab-term-line {
+    min-height: 2rem;
+    font-size: 1.4rem;
+    color: var(--white-color);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.lab-term-prompt {
+    margin-right: 0.8rem;
+    color: var(--main-color);
+}
+
+.lab-term-cursor {
+    display: inline-block;
+    width: 0.8rem;
+    height: 1.5rem;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    background: var(--main-color);
+    animation: lab-blink 0.8s step-end infinite;
+}
+
+@keyframes lab-blink {
+    50% { opacity: 0; }
+}
+
+.lab-term-status {
+    min-height: 1.8rem;
+    margin-top: 0.8rem;
+    font-size: 1.25rem;
+    color: #999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lab-term-status.is-done {
+    color: #27c93f;
+}
+
+.lab-term-track {
+    height: 0.6rem;
+    margin-top: 1.2rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+}
+
+.lab-term-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--main-color), #ffcf6b);
+    border-radius: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 992px) {
+    .gh-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lab-block {
+        margin-top: 4rem;
+    }
+
+    .gh-scroll-hint {
+        display: block;
+    }
+
+    .gh-card {
+        padding: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .lab-block-head h3 {
+        font-size: 2.2rem;
+    }
+
+    .lab-card {
+        padding: 1.8rem;
+    }
+
+    .lab-stage {
+        height: 20rem;
+    }
+
+    .gh-stat-value {
+        font-size: 2.8rem;
+    }
+
+    .gh-repos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .gh-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lab-btn,
+    .lab-btn.spring,
+    .lab-tilt-card,
+    .lab-tilt-card.spring,
+    .gh-repo {
+        transition: none;
+    }
+
+    .gh-skeleton,
+    .lab-term-cursor {
+        animation: none;
+    }
+}
