@@ -1,0 +1,287 @@
+/* =====================================================
+   TEAM MEMBERS – badge, trigger, modal (responsive)
+===================================================== */
+
+/* "Team Project" badge */
+.status-badge.tm-team-badge {
+    gap: 0.5rem;
+    background: rgba(255, 140, 0, 0.12);
+    color: var(--main-color);
+    border: 0.1rem solid rgba(255, 140, 0, 0.35);
+}
+
+.status-badge.tm-team-badge i {
+    font-size: 1.5rem;
+}
+
+/* team icon button: case-study button ke right side me (same look) */
+.project-box .live-github .tm-trigger {
+    position: relative;
+    display: inline-flex;
+    padding: 1.3rem;
+    font-size: 3rem;
+    color: var(--white-color);
+    border-radius: 50%;
+    background: var(--second-bg-color);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    margin-left: 1.5rem;
+    transition: 0.5s;
+}
+
+.project-box .live-github .tm-trigger:hover,
+.project-box .live-github .tm-trigger:focus-visible {
+    color: var(--main-color);
+    outline: none;
+}
+
+/* member count badge (corner) */
+.project-box .live-github .tm-trigger .tm-num {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.3rem;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.4rem;
+    border-radius: 2rem;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--bg-color);
+    background: var(--main-color);
+    border: 0.2rem solid var(--bg-color);
+}
+
+/* tooltip (case-study button jaisa) */
+.project-box .live-github .tm-trigger span {
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    font-size: 1.6rem;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    pointer-events: none;
+    background: var(--white-color);
+    color: var(--bg-color);
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.project-box .live-github .tm-trigger:hover span,
+.project-box .live-github .tm-trigger:focus-visible span {
+    top: -70%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* modal */
+.tm-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    /* case-study modal (100000) ke upar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tm-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tm-modal {
+    position: relative;
+    width: 46rem;
+    max-width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 3rem 2.6rem 2.4rem;
+    background: #0d0d0d;
+    border: 0.1rem solid rgba(255, 140, 0, 0.35);
+    border-radius: 2.2rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+    transform: scale(0.94) translateY(1.5rem);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tm-overlay.active .tm-modal {
+    transform: none;
+}
+
+.tm-close {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 2.2rem;
+    color: #ff5f56;
+    background: rgba(255, 95, 86, 0.12);
+    border: 0.1rem solid rgba(255, 95, 86, 0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tm-close:hover {
+    background: #ff5f56;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.tm-head {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    margin-bottom: 2.2rem;
+    padding-right: 4rem;
+}
+
+.tm-head-icon {
+    flex: none;
+    width: 4.6rem;
+    height: 4.6rem;
+    border-radius: 1.4rem;
+    display: grid;
+    place-items: center;
+    font-size: 2.6rem;
+    color: var(--main-color);
+    background: rgba(255, 140, 0, 0.1);
+    border: 0.1rem solid rgba(255, 140, 0, 0.3);
+}
+
+.tm-head h3 {
+    font-size: 2.2rem;
+    color: var(--white-color);
+    margin: 0;
+}
+
+.tm-sub {
+    font-size: 1.3rem;
+    color: var(--main-color);
+    margin-top: 0.3rem;
+}
+
+.tm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.tm-member {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    background: #111;
+    border: 0.1rem solid rgba(255, 255, 255, 0.07);
+    border-radius: 1.4rem;
+    transition: border-color 0.25s;
+}
+
+.tm-member:hover {
+    border-color: rgba(255, 140, 0, 0.35);
+}
+
+.tm-avatar {
+    flex: none;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--bg-color);
+    background: linear-gradient(135deg, var(--main-color), #ffb347);
+}
+
+.tm-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tm-info h4 {
+    font-size: 1.6rem;
+    color: var(--white-color);
+    margin: 0;
+}
+
+.tm-info p {
+    font-size: 1.3rem;
+    color: #888;
+    margin-top: 0.2rem;
+}
+
+.tm-links {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.tm-links a {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    color: var(--white-color);
+    background: var(--second-bg-color);
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+}
+
+.tm-links a:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+/* responsive */
+@media screen and (max-width: 480px) {
+    .tm-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .tm-modal {
+        width: 100%;
+        max-height: 88vh;
+        padding: 2.6rem 1.8rem 2rem;
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .tm-member {
+        flex-wrap: wrap;
+    }
+
+    .tm-links {
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: 6.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .tm-overlay,
+    .tm-modal,
+    .tm-trigger {
+        transition: none;
+    }
+}
