@@ -1,15 +1,15 @@
 (function () {
     'use strict';
     var USERNAME = 'Harsh28Pandey';
-    var PINNED = ['RepoSense', 'think-flow', 'Library-Management']; 
+    var PINNED = ['collab-flow', 'interview-buddy', 'quick-chat', 'stowly']; 
     var MAX_REPOS = 6;                                             
     var CACHE_MIN = 30;
 
-    var FALLBACK_REPOS = [
-        { name: 'RepoSense', description: 'AI assistant that auto-generates READMEs, reviews PRs and tracks repo health.', language: 'JavaScript' },
-        { name: 'think-flow', description: 'Intelligent agent platform built with LangGraph and LangChain.', language: 'Python' },
-        { name: 'Library-Management', description: 'Library Management System in Python with Tkinter and SQLite.', language: 'Python' }
-    ];
+    // var FALLBACK_REPOS = [
+    //     { name: 'RepoSense', description: 'AI assistant that auto-generates READMEs, reviews PRs and tracks repo health.', language: 'JavaScript' },
+    //     { name: 'think-flow', description: 'Intelligent agent platform built with LangGraph and LangChain.', language: 'Python' },
+    //     { name: 'Library-Management', description: 'Library Management System in Python with Tkinter and SQLite.', language: 'Python' }
+    // ];
 
     var LANG_COLORS = {
         JavaScript: '#f1e05a', TypeScript: '#3178c6', Python: '#3572A5', 'C++': '#f34b7d',
