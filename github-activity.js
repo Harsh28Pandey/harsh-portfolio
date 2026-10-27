@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     var USERNAME = 'Harsh28Pandey';
-    var PINNED = ['collab-flow', 'interview-buddy', 'quick-chat', 'stowly']; 
-    var MAX_REPOS = 6;                                             
+    var PINNED = ['collab-flow', 'interview-buddy', 'quick-chat', 'stowly'];
+    var MAX_REPOS = 6;
     var CACHE_MIN = 30;
 
     // var FALLBACK_REPOS = [
