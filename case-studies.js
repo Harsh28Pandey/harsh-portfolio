@@ -44,7 +44,6 @@ const caseStudiesData = {
         challenges: "The hardest part was the Keyring: deriving a key from the master password with PBKDF2 (600,000 iterations) via the Web Crypto API, keeping it in memory only, encrypting each entry with AES-256-GCM using a fresh IV, and adding auto-lock plus clipboard clearing, so the server never sees plaintext. On the backend, the approval gate had to be re-checked on every protected call so suspending a user revokes their sessions immediately, and every file, folder and vault query needed per-user ownership checks to prevent IDOR. File uploads also needed random on-disk names, blocked executables, quota enforcement and SHA-256 duplicate detection.",
         result: "A live, deployed product with three distinct systems in one app: file storage, an encrypted password vault, and an admin-gated onboarding flow. It shows security-first engineering beyond typical CRUD: client-side cryptography, rate limiting, bcrypt, Helmet headers, session revocation, and a storage layer isolated in one module so it can be swapped to S3 or Cloudflare R2 later."
     },
-
     "orbit-os": {
         title: "Orbit — Productivity OS",
         status: "In Development",
