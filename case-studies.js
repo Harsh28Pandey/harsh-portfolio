@@ -44,14 +44,31 @@ const caseStudiesData = {
         challenges: "The hardest part was the Keyring: deriving a key from the master password with PBKDF2 (600,000 iterations) via the Web Crypto API, keeping it in memory only, encrypting each entry with AES-256-GCM using a fresh IV, and adding auto-lock plus clipboard clearing, so the server never sees plaintext. On the backend, the approval gate had to be re-checked on every protected call so suspending a user revokes their sessions immediately, and every file, folder and vault query needed per-user ownership checks to prevent IDOR. File uploads also needed random on-disk names, blocked executables, quota enforcement and SHA-256 duplicate detection.",
         result: "A live, deployed product with three distinct systems in one app: file storage, an encrypted password vault, and an admin-gated onboarding flow. It shows security-first engineering beyond typical CRUD: client-side cryptography, rate limiting, bcrypt, Helmet headers, session revocation, and a storage layer isolated in one module so it can be swapped to S3 or Cloudflare R2 later."
     },
-    "light-brain-os": {
-        title: "Light Brain OS",
+
+    "orbit-os": {
+        title: "Orbit — Productivity OS",
         status: "In Development",
-        tech: ["React.js", "Vite", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Socket.IO", "JWT Authentication", "Gemini API", "Google OAuth 2.0", "Gmail API", "Google Calendar API", "GitHub OAuth", "Electron"],
-        problem: "People's daily work is split across too many disconnected tools: email in one app, calendar in another, code on GitHub, files scattered across folders. Writing and managing email eats time, the same manual steps get repeated every day, and users have little visibility into which apps can access their accounts. Existing AI assistants can chat, but they rarely act safely across a user's real tools, so people either don't trust them or still do the work by hand.",
-        approach: "Built a desktop-style AI workspace that runs on the web and as a Windows app (Electron) from one React codebase, organized into seven tabs: Home, AI Assistant, Mail Studio, App Hub, Automations, File Manager, and Settings & Security. A backend AI service (Gemini API, replaceable provider) turns voice or text commands into structured actions from a fixed Action Registry, and every consequential action (sending email, creating events, deleting files) is previewed and confirmed by the user before it runs. Gmail, Calendar and GitHub connect through real OAuth flows with encrypted server-side tokens, a workflow engine runs scheduled automations, and a security center lets users see and revoke connected apps and active sessions.",
-        challenges: "The hardest part is making AI actions safe: the model can only propose actions from a validated registry, every field is re-checked on the server, and confirmations are tied to the exact payload so nothing can be swapped or executed twice. Emails and documents are treated as untrusted input to resist prompt injection. Other challenges are secure OAuth (state validation, encrypted refresh tokens, handling revoked access), reliable scheduled automations that survive server restarts, and keeping one codebase working in both the browser and Electron with a locked-down preload bridge.",
-        result: "Target outcome: a working AI workspace where a user can ask for an email in plain language, review and approve it, send it through Gmail, run a daily automation, and manage files and connected apps from one interface on web and desktop. (Update this line with real results, links and metrics once it ships.)"
+        tech: [
+            "React.js",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "JWT Authentication",
+            "REST APIs"
+        ],
+
+        problem:
+            "Students, developers, and job seekers often rely on multiple disconnected tools to manage tasks, study schedules, coding activities, projects, and career preparation. This fragmentation makes it difficult to maintain a consistent workflow and track progress from one place.",
+
+        approach:
+            "Designed Orbit as an integrated productivity workspace that brings daily planning, task and project management, notes, goals and habits, learning, developer utilities, career preparation, and productivity insights into one platform. The architecture uses the MERN stack, with reusable React components, Express REST APIs, MongoDB persistence, and authenticated access. The platform is designed to support connected workflows, responsive interfaces, and personalized productivity experiences.",
+
+        challenges:
+            "The main engineering challenge is connecting multiple productivity modules while maintaining consistent UI patterns, reliable data persistence, secure authorization, and a responsive experience across devices. Another challenge is ensuring that dashboard insights reflect actual user data and that incomplete integrations are clearly distinguished from fully working features.",
+
+        result:
+            "Orbit is being developed as a unified productivity OS for everyday student and developer workflows. Its goal is to reduce context switching by connecting planning, learning, project work, coding utilities, and career preparation in one workspace. Feature completion and integration status are tracked through implementation and testing rather than assumed from the UI alone."
     },
     "library-management": {
         title: "Library Management System",
