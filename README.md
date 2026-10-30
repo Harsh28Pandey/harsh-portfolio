@@ -147,3 +147,7 @@ Made with ❤️ by **Harsh Pandey**
 ⭐ _If you like this portfolio, consider giving it a star!_
 
 </div>
+
+## License
+
+Source code is licensed under the [MIT License](LICENSE). Personal information, images, videos, and third-party logos are not covered and may not be reused without permission.
