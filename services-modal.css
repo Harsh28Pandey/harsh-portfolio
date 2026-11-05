@@ -1,9 +1,3 @@
-/* =====================================================
-   SERVICES POPUP MODAL
-   Same theme variables use hote hain (--main-color etc.)
-   ===================================================== */
-
-/* Cards clickable dikhein */
 .services-container .services-box {
     cursor: pointer;
 }
@@ -13,7 +7,6 @@
     outline-offset: 0.3rem;
 }
 
-/* ---------- Overlay ---------- */
 .sv-modal-overlay {
     position: fixed;
     inset: 0;
@@ -35,7 +28,6 @@
     visibility: visible;
 }
 
-/* ---------- Modal box ---------- */
 .sv-modal {
     position: relative;
     width: 80rem;
@@ -58,7 +50,6 @@
     opacity: 1;
 }
 
-/* ---------- Close button ---------- */
 .sv-modal-close {
     position: absolute;
     top: 1.6rem;
@@ -85,7 +76,6 @@
     box-shadow: 0 0 1.2rem rgba(255, 95, 86, 0.45);
 }
 
-/* ---------- Scrollable body ---------- */
 .sv-modal-scroll {
     overflow-y: auto;
     padding: 3.5rem 3.5rem 3rem;
@@ -102,7 +92,6 @@
     border-radius: 1rem;
 }
 
-/* ---------- Header ---------- */
 .sv-head {
     display: flex;
     align-items: center;
@@ -144,7 +133,6 @@
     margin-bottom: 2.6rem;
 }
 
-/* ---------- Blocks ---------- */
 .sv-block {
     margin-bottom: 2.6rem;
 }
@@ -163,7 +151,6 @@
     font-size: 2.4rem;
 }
 
-/* Offers list */
 .sv-offers {
     list-style: none;
     display: grid;
@@ -197,7 +184,6 @@
     transform: translateX(0.3rem);
 }
 
-/* Tech pills (same look as project tech-stack) */
 .sv-tech {
     display: flex;
     flex-wrap: wrap;
@@ -213,8 +199,6 @@
     font-family: 'Consolas', monospace;
     border: 0.1rem solid rgba(255, 255, 255, 0.1);
 }
-
-/* Process steps */
 .sv-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -275,7 +259,6 @@
     border-radius: 2rem;
 }
 
-/* ---------- Footer / CTA ---------- */
 .sv-modal-foot {
     display: flex;
     align-items: center;
@@ -297,7 +280,6 @@
     padding: 0.9rem 2.6rem;
 }
 
-/* ---------- Stagger entrance ---------- */
 .sv-modal-overlay.open .sv-anim {
     animation: svFadeUp 0.5s ease both;
     animation-delay: calc(var(--d, 0) * 0.06s + 0.15s);
@@ -315,7 +297,6 @@
     }
 }
 
-/* ---------- Responsive ---------- */
 @media screen and (max-width: 992px) {
     .sv-steps {
         grid-template-columns: repeat(2, 1fr);
