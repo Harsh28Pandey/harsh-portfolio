@@ -1,9 +1,3 @@
-/* =====================================================
-   SERVICES POPUP DATA
-   Edit each service's content here. The order matches
-   the services cards in index.html.
-   `match` = text of the card's <h3> (auto-matched by title)
-   ===================================================== */
 window.SERVICES_DATA = [
     {
         id: "full-stack",
