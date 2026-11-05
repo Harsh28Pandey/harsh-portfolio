@@ -1,7 +1,3 @@
-/* =====================================================
-   SERVICES POPUP LOGIC
-   Data: services-data.js  |  Style: services-modal.css
-   ===================================================== */
 (function () {
     'use strict';
 
@@ -9,7 +5,6 @@
     const cards = document.querySelectorAll('.services-container .services-box');
     if (!cards.length || !data.length) return;
 
-    // ---------- Build modal shell once ----------
     const overlay = document.createElement('div');
     overlay.className = 'sv-modal-overlay';
     overlay.id = 'service-modal';
@@ -32,7 +27,6 @@
     const ctaBtn = overlay.querySelector('#sv-modal-cta');
     let lastFocused = null;
 
-    // ---------- Helpers ----------
     const norm = (s) => (s || '').replace(/\s+/g, ' ').trim().toLowerCase();
 
     function findData(card, idx) {
@@ -91,7 +85,6 @@
         scrollBox.scrollTop = 0;
     }
 
-    // ---------- Open / Close ----------
     function openModal(s) {
         lastFocused = document.activeElement;
         render(s);
@@ -107,13 +100,11 @@
         if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
-    // ---------- Card events ----------
     cards.forEach((card, idx) => {
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
 
         const handler = (e) => {
-            // arrow icon ka <a href="#"> page jump na kare
             if (e.target.closest('a')) e.preventDefault();
             const s = findData(card, idx);
             if (s) openModal(s);
@@ -127,12 +118,10 @@
             }
         });
     });
-
-    // ---------- Close events ----------
     closeBtn.addEventListener('click', closeModal);
 
     overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeModal(); // bahar click
+        if (e.target === overlay) closeModal(); 
     });
 
     document.addEventListener('keydown', (e) => {
@@ -143,7 +132,6 @@
             return;
         }
 
-        // Tab focus popup ke andar hi rahe
         if (e.key === 'Tab') {
             const focusables = overlay.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
             if (!focusables.length) return;
@@ -159,7 +147,6 @@
         }
     });
 
-    // ---------- CTA: popup band karke Connect section kholo ----------
     ctaBtn.addEventListener('click', () => {
         closeModal();
         const connectLink = document.querySelector('header nav a[href="#connect"]');
