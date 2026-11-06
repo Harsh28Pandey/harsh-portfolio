@@ -116,6 +116,7 @@ const caseStudiesData = {
     }
 };
 
+// ================= MODAL LOGIC =================
 (function () {
     const modal = document.getElementById('case-study-modal');
     const modalContent = document.getElementById('cs-modal-content');
@@ -181,10 +182,12 @@ const caseStudiesData = {
 
     closeBtn.addEventListener('click', closeModal);
 
+    // Close on backdrop click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 
+    // Close on Escape key
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();

@@ -1,3 +1,18 @@
+/* =====================================================
+   3D MOBILE NAV CONTROLLER
+   - Animated hamburger -> X coin-flip (CSS 3D + GSAP)
+   - Nav panel opens with a 3D perspective tilt + slide
+   - Blurred backdrop overlay, staggered link entrance
+   - A genuine tiny Three.js particle burst fires from the
+     button every time it's tapped, so the "3D engine" feels
+     visibly alive and connected to the toggle, not just decor
+   - Body scroll lock while open, closes on link click,
+     backdrop click, or Escape key
+   - Stays in sync even if nav is closed elsewhere (e.g.
+     script.js's activePage() on link click) via a
+     MutationObserver on nav's class list
+===================================================== */
+
 (function () {
     const menuIcon = document.getElementById('menu-icon');
     const nav = document.querySelector('header nav');
@@ -9,6 +24,7 @@
 
     let isOpen = false;
 
+    /* ---------- tiny real Three.js particle burst from the button ---------- */
     const burst = (function setupBurst() {
         if (typeof THREE === 'undefined') return { fire() { } };
 
@@ -150,6 +166,8 @@
         if (e.key === 'Escape') closeNav();
     });
 
+    // Keep the button + overlay in sync if something else (script.js's
+    // activePage()) removes nav's "active" class directly.
     const observer = new MutationObserver(() => {
         const navHasActive = nav.classList.contains('active');
         if (!navHasActive && isOpen) {

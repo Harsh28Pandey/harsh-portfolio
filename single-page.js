@@ -16,6 +16,7 @@
         return body.classList.contains('single-page');
     }
 
+    /* ---------- storage helpers (try/catch for private mode) ---------- */
     function readSavedMode() {
         try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
     }
@@ -23,6 +24,7 @@
         try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) { /* ignore */ }
     }
 
+    /* ---------- sliding switch ---------- */
     var toggleBtn = document.createElement('button');
     toggleBtn.id = 'view-toggle';
     toggleBtn.type = 'button';
@@ -35,11 +37,13 @@
         "<span class='vt-opt vt-single'><i class='bx bx-layout'></i><span class='vt-label'>Single</span></span>";
     document.body.appendChild(toggleBtn);
 
+    // circular reveal curtain
     var curtain = document.createElement('div');
     curtain.id = 'view-curtain';
     curtain.setAttribute('aria-hidden', 'true');
     document.body.appendChild(curtain);
 
+    // mini terminal loader card
     var loader = document.createElement('div');
     loader.id = 'view-loader';
     loader.setAttribute('aria-hidden', 'true');
@@ -66,6 +70,7 @@
         setToggleState(isSingle());
     }
 
+    /* ---------- button effects: mouse spotlight + click ripple ---------- */
     var fx = toggleBtn.querySelector('.vt-fx');
 
     toggleBtn.addEventListener('pointermove', function (e) {
@@ -97,6 +102,7 @@
         }, speed);
     }
 
+    /* ---------- helpers ---------- */
     function activeNavIndex() {
         for (var i = 0; i < navLinks.length; i++) {
             if (navLinks[i].classList.contains('active')) return i;
@@ -133,6 +139,7 @@
         }, 500);
     }
 
+    /* ---------- scroll spy  ---------- */
     var ticking = false;
 
     function updateSpy() {
@@ -158,6 +165,7 @@
 
     window.addEventListener('resize', updateSpy);
 
+    /* ---------- nav / logo clicks in single mode (capture phase) ---------- */
     document.addEventListener('click', function (e) {
         if (!isSingle()) return;
 
@@ -181,6 +189,7 @@
         }, 60);
     }, true);
 
+    /* ---------- mode switching ---------- */
     function enableSingle(isInit) {
         var idx = activeNavIndex();
 
@@ -220,6 +229,7 @@
         updateToggleUI();
     }
 
+    /* ---------- animated switch ---------- */
     var busy = false;
 
     toggleBtn.addEventListener('click', function () {
@@ -275,6 +285,7 @@
         }, 600);
     });
 
+    /* ---------- initial mode ---------- */
     var urlMode = null;
     try { urlMode = new URLSearchParams(window.location.search).get('view'); } catch (e) { /* ignore */ }
 

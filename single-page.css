@@ -1,3 +1,8 @@
+/* =====================================================================
+   VIEW SWITCH BUTTON  (Multi | Single)
+   Effects: rotating comet border, glass body, gel-stretch thumb + shine,
+   mouse spotlight, click ripple, idle pulse, tooltip, busy state.
+   ===================================================================== */
 @property --vt-angle {
   syntax: '<angle>';
   inherits: false;
@@ -34,6 +39,7 @@
   transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
 }
 
+/* rotating comet-style border */
 #view-toggle::before {
   content: "";
   position: absolute;
@@ -62,6 +68,7 @@
   }
 }
 
+/* tooltip */
 #view-toggle::after {
   content: attr(data-tip);
   position: absolute;
@@ -108,6 +115,7 @@
   outline-offset: 0.4rem;
 }
 
+/* busy: transition chal rahi hai */
 #view-toggle.is-busy {
   pointer-events: none;
 }
@@ -116,6 +124,7 @@
   animation-duration: 0.9s;
 }
 
+/* effects layer: spotlight + ripples (clipped to pill) */
 #view-toggle .vt-fx {
   position: absolute;
   inset: 0;
@@ -152,6 +161,7 @@
   }
 }
 
+/* idle pulse (first click ke baad band) */
 #view-toggle .vt-pulse {
   position: absolute;
   inset: 0;
@@ -180,6 +190,7 @@
   }
 }
 
+/* sliding thumb */
 #view-toggle .vt-thumb {
   position: absolute;
   top: 0.4rem;
@@ -195,6 +206,7 @@
   transition: transform 0.5s cubic-bezier(0.68, -0.35, 0.27, 1.35);
 }
 
+/* shine sweep */
 #view-toggle .vt-thumb::after {
   content: "";
   position: absolute;
@@ -206,6 +218,7 @@
   transform: translateX(-160%) skewX(-20deg);
 }
 
+/* mode change par animation restart karne ke liye do alag keyframes */
 #view-toggle[data-mode="single"] .vt-thumb {
   transform: translateX(100%);
   animation: vt-gel-a 0.55s ease;
@@ -247,6 +260,7 @@
   }
 }
 
+/* options */
 #view-toggle .vt-opt {
   position: relative;
   z-index: 1;
@@ -296,6 +310,7 @@
   }
 }
 
+/* entrance: neeche se slide-up + fade (translate property, hover transform se conflict nahi) */
 @keyframes sp-toggle-show {
   from {
     translate: 0 2rem;
@@ -308,6 +323,7 @@
   }
 }
 
+/* touch devices par hover-only effects band */
 @media (hover: none) {
 
   #view-toggle::after,
@@ -316,6 +332,7 @@
   }
 }
 
+/* ---------- Circular reveal curtain (mode switch transition) ---------- */
 #view-curtain {
   position: fixed;
   inset: 0;
@@ -333,6 +350,7 @@
   clip-path: circle(150vmax at var(--cx, 50%) var(--cy, 50%));
 }
 
+/* ---------- Mini terminal loader card  ---------- */
 #view-loader {
   position: fixed;
   left: 50%;
@@ -439,7 +457,8 @@
   width: 100%;
   transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-6
+
+/* ---------- Single page layout ---------- */
 body.single-page {
   display: block;
   min-height: 0;
@@ -480,6 +499,7 @@ body.single-page section.home {
   padding-bottom: 5rem;
 }
 
+/* ---------- Responsive ---------- */
 @media screen and (max-width: 992px) {
   body.single-page section {
     padding: 10rem 4% 3rem;
@@ -518,6 +538,7 @@ body.single-page section.home {
   }
 }
 
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
 
   #view-toggle .vt-thumb,

@@ -1,3 +1,13 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Jost:wght@100..900&family=Montserrat+Alternates:wght@400;600;700;800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Jost:wght@100..900&family=Kode+Mono:wght@400..700&family=Montserrat+Alternates:wght@400;600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Inconsolata:wght@200..900&family=Jost:wght@100..900&family=Kode+Mono:wght@400..700&family=Montserrat+Alternates:wght@400;600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'); */
+
 * {
   margin: 0;
   padding: 0;
@@ -24,27 +34,35 @@
   --highlight-color: rgba(255, 255, 150, 0.05);
 }
 
+/* ===== Custom Scrollbar Styling ===== */
 html {
   scrollbar-width: thin;
+  /* For Firefox */
   scrollbar-color: orange #1a1a1a;
+  /* thumb color | track color */
 }
 
 html::-webkit-scrollbar {
   width: 10px;
+  /* Scrollbar width */
 }
 
 ::-webkit-scrollbar-track {
   background: #1a1a1a;
+  /* Track color */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #ff8c00;
+  /* Scroll thumb color */
   border-radius: 50%;
   border: 2px solid #1a1a1a;
+  /* Small gap look */
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #ff9900;
+  /* Lighter orange on hover */
 }
 
 html {
@@ -68,6 +86,7 @@ body {
   width: 100%;
 }
 
+/* ===== Custom Cursor Style ===== */
 .cursor {
   position: fixed;
   top: 0;
@@ -91,6 +110,9 @@ body {
   border-color: var(--main-color);
 }
 
+
+/* hello typing intro showing while loading */
+/* ===== Hello Typing Intro (new, additive) ===== */
 .intro-hello {
   position: fixed;
   inset: 0;
@@ -146,6 +168,7 @@ body {
   }
 }
 
+/* Blinking typing cursor next to hello */
 .hello-cursor {
   display: inline-block;
   width: 0.7rem;
@@ -169,6 +192,9 @@ body {
   }
 }
 
+
+
+/* Background Video */
 .bg-universe-video {
   position: fixed;
   top: 0;
@@ -181,6 +207,9 @@ body {
   filter: brightness(0.35);
 }
 
+/* ============================================= */
+/* ===== THREE.JS 3D BACKGROUND CANVAS ========== */
+/* ============================================= */
 #three-bg-canvas {
   position: fixed;
   top: 0;
@@ -193,6 +222,13 @@ body {
   opacity: 0.9;
 }
 
+/* ============================================= */
+/* ===== GLOBAL 3D DEPTH / PERSPECTIVE SETUP ==== */
+/* NOTE: perspective is deliberately NOT put on   */
+/* <body> — that would create a new containing    */
+/* block and break position:fixed elements like   */
+/* the header, cursor and terminal.                */
+/* ============================================= */
 .services-container,
 .tech-container,
 .overview-list,
@@ -201,6 +237,9 @@ body {
   perspective: 120rem;
 }
 
+/* ============================================= */
+/* ===== 3D TILT CARD BASE (JS adds rotation) === */
+/* ============================================= */
 .tilt-3d {
   transform-style: preserve-3d;
   will-change: transform;
@@ -219,6 +258,7 @@ body {
   transform: translateZ(3.5rem);
 }
 
+/* glossy glare sweep that JS positions on hover */
 .tilt-glare {
   position: absolute;
   inset: 0;
@@ -236,6 +276,7 @@ body {
   opacity: 1;
 }
 
+/* Elevated glow shadow on hover for 3D "lift" feel */
 .services-container .services-box.tilt-3d:hover,
 .tech-box.tilt-3d:hover,
 .connect-box.tilt-3d:hover {
@@ -246,6 +287,9 @@ body {
   box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4), 0 0 1.8rem rgba(255, 140, 0, 0.15);
 }
 
+/* ============================================= */
+/* ===== 3D FLOATING PROFILE IMAGE ============== */
+/* ============================================= */
 .home-img {
   perspective: 100rem;
 }
@@ -273,6 +317,9 @@ body {
   transform: translateZ(4rem);
 }
 
+/* ============================================= */
+/* ===== 3D PROJECT / TECH IMAGES ================ */
+/* ============================================= */
 .project-carousel .img-item {
   perspective: 80rem;
 }
@@ -287,6 +334,7 @@ body {
   filter: brightness(1.08) saturate(1.1);
 }
 
+/* Reduce motion / disable tilt on touch or if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
   .tilt-3d,
@@ -302,11 +350,153 @@ body {
   }
 }
 
+/* ============================================= */
+/* ===== ALTERNATE COLOR PALETTES ================ */
+/* Copy any ONE block below into :root (top of file) */
+/* to change the entire site's color combination.    */
+/* ============================================= */
+
+/* --- Palette B: Cyber Purple (violet + cyan glow) ---
+:root {
+  --bg-color: #0d0b1a;
+  --second-bg-color: #15122b;
+  --main-color: #8b5cf6;
+  --white-color: #ece9f7;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(139, 92, 246, 0.08);
+}
+*/
+
+/* --- Palette C: Neon Teal (deep green-black + aqua) ---
+:root {
+  --bg-color: #08120f;
+  --second-bg-color: #0f1f1a;
+  --main-color: #2dd4bf;
+  --white-color: #e6fff9;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(45, 212, 191, 0.08);
+}
+*/
+
+/* --- Palette D: Royal Rose Gold (charcoal + rose gold) ---
+:root {
+  --bg-color: #161314;
+  --second-bg-color: #201b1c;
+  --main-color: #e0a96d;
+  --white-color: #f7ece0;
+  --disabled-color: #5c5c5c;
+  --highlight-color: rgba(224, 169, 109, 0.08);
+}
+*/
+
+
+
+
+
+
+
+/* Hide custom cursor on small screens (like mobile/tablet) */
 @media (max-width: 1023px) {
   .cursor {
     display: none;
   }
 }
+
+/* ===== Custom Cursor Style Ends ===== */
+
+
+/* Fullscreen Loader Container */
+/* #loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+} */
+
+/* Loader Wrapper */
+/* .card-loader {
+  display: flex;
+  gap: 12px;
+} */
+
+/* Individual Cards */
+/* .card {
+  width: 24px;
+  height: 42px;
+  border-radius: 8px;
+  background: #ff8c00;
+  animation: blink 1.2s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(250, 138, 2, 0.607);
+} */
+
+/* Colors for Each Card */
+/* .c1 {
+  background: #e90202;
+  animation-delay: 0s;
+}
+
+.c2 {
+  background: #f48600;
+  animation-delay: 0.2s;
+}
+
+.c3 {
+  background: #f0cd04;
+  animation-delay: 0.4s;
+}
+
+.c4 {
+  background: #03ed03;
+  animation-delay: 0.6s;
+}
+
+.c5 {
+  background: #057af0;
+  animation-delay: 0.8s;
+}
+
+.c6 {
+  background: #8103c0;
+  animation-delay: 1s;
+} */
+
+/* Blinking Animation */
+/* @keyframes blink {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+    filter: brightness(0.6);
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: brightness(1.4);
+  }
+} */
+
+/* Text Under Loader */
+/* .loader-text { */
+/* margin-top: 15px; */
+/* font-family: "Kode Mono", Tahoma, sans-serif; */
+/* font-family: "Montserrat Alternates", sans-serif; */
+/* font-family: "Consolas", sans-serif; */
+/* font-size: 1.0rem;
+  color: #fff;
+  text-shadow: 0 0 4px #000000, 0 0 6px #f19c34;
+  letter-spacing: 1.7px;
+} */
+
+
+
+
 
 #loader {
   position: fixed;
@@ -324,6 +514,7 @@ body {
   transition: opacity 0.6s ease;
 }
 
+/* ===== Live Three.js 3D badge above the terminal loader card ===== */
 .loader3d-stage {
   position: relative;
   width: 13rem;
@@ -363,6 +554,7 @@ body {
   margin-top: 0.6rem;
 }
 
+/* Developer-style terminal loader card */
 .dev-loader {
   width: 34rem;
   max-width: 85vw;
@@ -466,6 +658,7 @@ body {
   }
 }
 
+/* Responsive tweak for small screens */
 @media screen and (max-width: 480px) {
   .dev-loader {
     width: 28rem;
@@ -476,6 +669,15 @@ body {
   }
 }
 
+
+
+
+
+
+
+
+/* home section css codes starts */
+/* ==== Animated Underline on Navbar ==== */
 nav a {
   position: relative;
   font-size: 2rem;
@@ -485,6 +687,7 @@ nav a {
   transition: color 0.3s ease;
 }
 
+/* Underline Effect */
 nav a::after {
   content: "";
   position: absolute;
@@ -497,14 +700,17 @@ nav a::after {
   transition: width 0.4s ease;
 }
 
+/* On Hover */
 nav a:hover::after {
   width: 60%;
 }
 
+/* On Click (Active Link) */
 nav a.active::after {
   width: 60%;
 }
 
+/* animated pulse underline hover effect starts */
 nav a::after {
   content: "";
   position: absolute;
@@ -537,6 +743,7 @@ nav a:hover::after {
   }
 }
 
+/* Background highlight on hover */
 nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10rem;
@@ -545,6 +752,7 @@ nav a:hover {
   text-shadow: 0 0 5px var(--main-color);
 }
 
+/* Decorative arrow on hover */
 nav a::before {
   content: "";
   opacity: 0;
@@ -564,6 +772,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  /* padding: 2rem 9%; */
   padding: 1.2rem 9%;
   background: var(--bg-color);
   display: flex;
@@ -614,10 +823,18 @@ nav a.active {
   color: var(--main-color);
 }
 
+/* #menu-icon {
+  font-size: 4rem;
+  display: none;
+} */
+
+/* Hide menu icon on desktop */
 #menu-icon {
   display: none;
 }
 
+
+/* ===== Premium Floating Mobile Menu Button ===== */
 #menu-icon {
   position: relative;
   width: 4.8rem;
@@ -649,6 +866,8 @@ nav a.active {
     box-shadow 0.35s ease;
 }
 
+
+/* Hover */
 #menu-icon:hover {
   background: rgba(255, 140, 0, 0.22);
   border-color: var(--main-color);
@@ -660,6 +879,8 @@ nav a.active {
     0 0 2rem rgba(255, 140, 0, 0.28);
 }
 
+
+/* ===== Hamburger Lines ===== */
 #menu-icon .menu-line {
   display: block;
 
@@ -676,15 +897,21 @@ nav a.active {
     background 0.3s ease;
 }
 
+
+/* Hamburger container */
 #menu-icon {
   flex-direction: column;
   gap: 0.55rem;
 }
 
+
+/* Hover lines */
 #menu-icon:hover .menu-line {
   background: var(--white-color);
 }
 
+
+/* ===== Hamburger → X ===== */
 #menu-icon.active .line-1 {
   transform: translateY(0.83rem) rotate(45deg);
 }
@@ -698,6 +925,8 @@ nav a.active {
   transform: translateY(-0.83rem) rotate(-45deg);
 }
 
+
+/* ===== Active Button ===== */
 #menu-icon.active {
   background: rgba(255, 140, 0, 0.18);
   border-color: var(--main-color);
@@ -707,12 +936,15 @@ nav a.active {
     inset 0 0 1rem rgba(255, 140, 0, 0.08);
 }
 
+
+/* ===== Mobile ===== */
 @media screen and (max-width: 768px) {
   #menu-icon {
     display: flex;
   }
 }
 
+/* ===== Backdrop overlay behind the sliding-in mobile nav ===== */
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -730,9 +962,11 @@ nav a.active {
   visibility: visible;
 }
 
+/* Lock background scroll while the 3D nav panel is open */
 body.nav-open {
   overflow: hidden;
 }
+
 
 header,
 section {
@@ -746,6 +980,46 @@ section {
   transition-delay: 0s;
   animation-delay: 0s;
 }
+
+/* .bars-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.bars-box .bar {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    animation: hide-bars 0.5s ease-in-out both;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes hide-bars {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.bars-box.active .bar {
+    animation: show-bars 0.5s ease-in-out both;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes show-bars {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+} */
 
 .bars-box .bar {
   animation: none;
@@ -787,6 +1061,7 @@ section.active {
   font-weight: 700;
 }
 
+/* Gradient text for first name */
 .first-name {
   background: linear-gradient(90deg, var(--main-color));
   -webkit-background-clip: text;
@@ -795,9 +1070,11 @@ section.active {
   display: inline-block;
 }
 
+/* Plain color for last name */
 .last-name {
   color: var(--white-color);
 }
+
 
 .home-detail h1 {
   font-size: clamp(3.5rem, 10vw, 5.5rem);
@@ -961,6 +1238,8 @@ section.active {
   mix-blend-mode: lighten;
 }
 
+/* logo bounce effects starts */
+
 .logo {
   animation: bounceLogo 2s ease-in-out infinite alternate;
 }
@@ -974,6 +1253,11 @@ section.active {
     transform: translateY(-8px);
   }
 }
+
+/* logo bounce effects ends */
+/* hooe/intro section css codes ends */
+
+/* services section css codes starts */
 
 .heading {
   font-size: 4.5rem;
@@ -1003,6 +1287,7 @@ section.active {
   border-color: var(--main-color);
   transform: scale(1.02);
 }
+
 
 .services-container .services-box {
   padding: 3rem 2.5rem;
@@ -1105,6 +1390,10 @@ section.active {
   text-align: center;
 }
 
+/* services section css codes ends */
+
+/* overview section css codes starts */
+
 .overview-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1122,6 +1411,8 @@ section.active {
 .overview-box desc {
   margin: 2rem 0 2.5rem;
 }
+
+/* === Enhanced overview Buttons with Emoji Styling === */
 
 .overview-box .overview-btn {
   width: 100%;
@@ -1156,10 +1447,12 @@ section.active {
   box-shadow: 0 0 1rem var(--main-color);
 }
 
+/* Optional: Animate emojis on hover */
 .overview-box .overview-btn:hover::before {
   animation: bounce 0.6s ease;
 }
 
+/* Bounce effect for emoji */
 @keyframes bounce {
   0% {
     transform: scale(1) translateY(0);
@@ -1269,6 +1562,7 @@ section.active {
 }
 
 .overview-detail.skills .overview-list {
+  /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   height: auto;
   overflow: visible;
@@ -1281,6 +1575,7 @@ section.active {
 }
 
 .overview-detail.skills .overview-item i {
+  /* font-size: 8.5rem; */
   font-size: 6rem;
   transition: 0.5s;
 }
@@ -1330,7 +1625,23 @@ section.active {
   font-size: 1.8rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Overview Buttons → Mobile Dropdown ===== */
 @media screen and (max-width: 768px) {
+
+  /* Hide dropdown toggle on desktop by default */
   .overview-dropdown-toggle {
     display: flex;
     justify-content: space-between;
@@ -1353,25 +1664,34 @@ section.active {
     transition: transform 0.3s ease;
   }
 
+  /* Buttons hidden initially */
   .overview-btn-group {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
   }
 
+  /* When dropdown is open */
   .overview-btn-group.active {
     max-height: 60rem;
   }
 
+  /* Rotate arrow */
   .overview-btn-group.active+.overview-dropdown-toggle i {
     transform: rotate(180deg);
   }
 
+  /* Buttons spacing */
   .overview-btn {
     width: 100%;
     margin-bottom: 1.2rem;
   }
 }
+
+
+/* overview section css codes ends */
+
+/* ===== Tech Section – matches existing card style starts ===== */
 
 .tech-section {
   padding: 10rem 9% 5rem;
@@ -1385,6 +1705,7 @@ section.active {
   animation-delay: 3.4s;
 }
 
+/* grid holds six cards, behaves like services-container */
 .tech-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -1416,6 +1737,7 @@ section.active {
   margin-bottom: 2rem;
 }
 
+/* Responsive tweak for narrow screens */
 @media screen and (max-width: 768px) {
   .tech-container {
     grid-template-columns: 1fr;
@@ -1436,6 +1758,10 @@ section.active {
 .tech-box .btn {
   margin-top: auto;
 }
+
+/* ===== Tech Section – matches existing card style ends ===== */
+
+/* project section css codes starts */
 
 .project-container {
   display: grid;
@@ -1467,6 +1793,11 @@ section.active {
   font-size: 1.6rem;
 }
 
+/* ========================================= */
+/* PROJECT STATUS BADGES, PILLS & DESC       */
+/* ========================================= */
+
+/* Title & Badge Alignment */
 .project-title-wrapper {
   display: flex;
   align-items: center;
@@ -1479,6 +1810,7 @@ section.active {
   margin: 0 !important;
 }
 
+/* Base Pill Shape for Badges */
 .status-badge {
   font-size: 1.2rem;
   font-weight: 600;
@@ -1490,18 +1822,21 @@ section.active {
   text-transform: uppercase;
 }
 
+/* 🟢 Live Badge Styling */
 .status-badge.live {
   background: rgba(39, 201, 63, 0.15);
   color: #27c93f;
   border: 0.1rem solid rgba(39, 201, 63, 0.3);
 }
 
+/* 🛠️ Local Build / Dev Badge Styling */
 .status-badge.dev {
   background: rgba(255, 189, 46, 0.15);
   color: #ffbd2e;
   border: 0.1rem solid rgba(255, 189, 46, 0.3);
 }
 
+/* Clean & Readable Description */
 .project-desc {
   font-size: 1.5rem;
   line-height: 1.7;
@@ -1509,6 +1844,7 @@ section.active {
   margin-bottom: 2.2rem;
 }
 
+/* Tech Stack Pill Shapes (No Hover) */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -1626,6 +1962,10 @@ section.active {
   margin-left: 1.5rem;
 }
 
+/* project section css codes ends */
+
+/* connect section css codes starts */
+
 .connect-container {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -1711,6 +2051,10 @@ section.active {
   cursor: pointer;
 }
 
+/* connect section css codes ends */
+
+/* responsive css codes starts */
+
 @media screen and (max-width: 1200px) {
   html {
     font-size: 55%;
@@ -1719,6 +2063,7 @@ section.active {
 
 @media screen and (max-width: 992px) {
   header {
+    /* padding: 2rem 4%; */
     padding: 1.2rem 4%;
   }
 
@@ -1734,6 +2079,36 @@ section.active {
 }
 
 @media screen and (max-width: 768px) {
+
+  /* for navbar open top to down side in mobile screen */
+  /* #menu-icon {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: var(--bg-color);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: none;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav a {
+    display: block;
+    margin: 4rem 0;
+  } */
+
+
+  /* for nav bar open from right to left side in mobile screen */
   #menu-icon {
     display: flex;
     cursor: pointer;
@@ -1845,14 +2220,23 @@ section.active {
   }
 }
 
+
+
+
+
+/* ================= OVERVIEW DROPDOWN ================= */
+
+/* DESKTOP VIEW */
 .overview-dropdown {
   display: none;
 }
 
+/* MOBILE VIEW */
 @media screen and (max-width: 768px) {
 
   .overview-dropdown {
     display: flex;
+    /* justify-content: space-between; */
     justify-content: center;
     align-items: center;
 
@@ -1874,26 +2258,36 @@ section.active {
     transition: transform 0.3s ease;
   }
 
+  /* Dropdown CLOSED */
   .overview-buttons {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
   }
 
+  /* Dropdown OPEN */
   .overview-buttons.open {
     max-height: 100rem;
   }
 
+  /* Rotate arrow */
   .overview-dropdown.open i {
     transform: rotate(180deg);
   }
 
+  /* Mobile buttons */
   .overview-btn {
     width: 100%;
     margin-bottom: 1rem;
   }
 }
 
+/* responsive css codes ends */
+
+
+
+
+/* ================= HIDDEN TERMINAL UI (EASTER EGG) ================= */
 #terminal-ui {
   position: fixed;
   bottom: 2.5rem;
@@ -1902,10 +2296,14 @@ section.active {
   max-width: calc(100vw - 4rem);
   height: 40rem;
   max-height: calc(100vh - 4rem);
+
+  /* Premium Dark Glassmorphism */
   background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 0.1rem solid rgba(255, 255, 255, 0.08);
+
+  /* Curved like Command Palette */
   border-radius: 2.4rem;
   display: flex;
   flex-direction: column;
@@ -1936,6 +2334,7 @@ section.active {
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.06);
 }
 
+/* Upgraded Mac-Style Close Button */
 #close-terminal {
   background: rgba(255, 95, 86, 0.15);
   color: #ff5f56;
@@ -1967,6 +2366,7 @@ section.active {
   line-height: 1.6;
 }
 
+/* Custom Sleek Scrollbar for Terminal */
 .terminal-body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -2011,6 +2411,7 @@ section.active {
   outline: none;
 }
 
+/* ================= RESPONSIVE TERMINAL (Mobile/Tablet) ================= */
 @media screen and (max-width: 768px) {
   #terminal-ui {
     width: 90vw;
@@ -2044,6 +2445,11 @@ section.active {
   }
 }
 
+
+/* ================================================= */
+/* ADVANCED COMMAND PALETTE STYLING (Curved Dark Glass)*/
+/* ================================================= */
+
 #cmd-palette-overlay {
   position: fixed;
   inset: 0;
@@ -2072,6 +2478,7 @@ section.active {
   -webkit-backdrop-filter: blur(25px);
   border: 0.1rem solid rgba(255, 255, 255, 0.08);
 
+  /* More curved edges for advanced look */
   border-radius: 2.4rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
@@ -2175,6 +2582,7 @@ section.active {
   text-overflow: ellipsis;
 }
 
+/* Rounded Pill Badges */
 .cmd-shortcut {
   font-size: 1rem;
   background: rgba(255, 255, 255, 0.03);
@@ -2191,18 +2599,21 @@ section.active {
   white-space: nowrap;
 }
 
+/* AI Specific Badge */
 .cmd-shortcut.ai-badge {
   background: rgba(39, 201, 63, 0.1);
   color: #27c93f;
   border-color: rgba(39, 201, 63, 0.2);
 }
 
+/* Pure Dark Hover State */
 .cmd-item.active,
 .cmd-item:hover {
   background: rgba(255, 255, 255, 0.04);
   color: var(--white-color);
 }
 
+/* Highlight icon to orange on hover */
 .cmd-item.active i:not(.bx-bot),
 .cmd-item:hover i:not(.bx-bot) {
   color: var(--main-color);
@@ -2234,6 +2645,10 @@ section.active {
   font-family: inherit;
 }
 
+/* ========================================= */
+/* DEVELOPER SHORTCUTS HINT BOX              */
+/* ========================================= */
+
 .dev-shortcuts-hint {
   margin-top: 2rem;
   padding: 1rem 1.5rem;
@@ -2262,6 +2677,7 @@ section.active {
   cursor: pointer;
 }
 
+/* Responsive Switching */
 .mobile-hint {
   display: none;
 }

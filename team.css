@@ -1,3 +1,8 @@
+/* =====================================================
+   TEAM MEMBERS – badge, trigger, modal (responsive)
+===================================================== */
+
+/* "Team Project" badge */
 .status-badge.tm-team-badge {
     gap: 0.5rem;
     background: rgba(255, 140, 0, 0.12);
@@ -9,6 +14,7 @@
     font-size: 1.5rem;
 }
 
+/* team icon button: case-study button ke right side me (same look) */
 .project-box .live-github .tm-trigger {
     position: relative;
     display: inline-flex;
@@ -30,6 +36,7 @@
     outline: none;
 }
 
+/* member count badge (corner) */
 .project-box .live-github .tm-trigger .tm-num {
     position: absolute;
     top: -0.3rem;
@@ -49,6 +56,7 @@
     border: 0.2rem solid var(--bg-color);
 }
 
+/* tooltip (case-study button jaisa) */
 .project-box .live-github .tm-trigger span {
     position: absolute;
     top: -60%;
@@ -72,10 +80,12 @@
     transform: translateX(-50%) scale(1);
 }
 
+/* modal */
 .tm-overlay {
     position: fixed;
     inset: 0;
     z-index: 100001;
+    /* case-study modal (100000) ke upar */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,6 +252,7 @@
     border-color: var(--main-color);
 }
 
+/* responsive */
 @media screen and (max-width: 480px) {
     .tm-overlay {
         padding: 0;

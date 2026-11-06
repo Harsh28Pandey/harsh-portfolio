@@ -64,6 +64,7 @@
     margin: 3.4rem 0 1.6rem;
 }
 
+/* ---------- GitHub: stat cards ---------- */
 .gh-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -100,6 +101,7 @@
     color: #999;
 }
 
+/* ---------- GitHub: graph card ---------- */
 .gh-card {
     position: relative;
     padding: 2.4rem;
@@ -242,6 +244,7 @@
     transform: translate(-50%, -100%);
 }
 
+/* ---------- GitHub: languages ---------- */
 .gh-lang-card {
     margin-top: 1.8rem;
 }
@@ -286,6 +289,7 @@
     color: #888;
 }
 
+/* ---------- GitHub: repos ---------- */
 .gh-repos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
@@ -367,6 +371,7 @@
     to { background-position: -200% 0; }
 }
 
+/* ---------- Playground ---------- */
 .lab-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -517,6 +522,7 @@
     cursor: default;
 }
 
+/* magnetic demo */
 .lab-magnet-zone {
     display: inline-block;
     padding: 2.4rem;
@@ -548,6 +554,7 @@
     box-shadow: none;
 }
 
+/* tilt demo */
 .lab-tilt-wrap {
     perspective: 90rem;
 }
@@ -603,6 +610,7 @@
     opacity: 1;
 }
 
+/* 3D demo */
 .lab-stage-3d {
     cursor: grab;
 }
@@ -624,6 +632,7 @@
     color: #888;
 }
 
+/* terminal demo */
 .lab-term {
     width: calc(100% - 3rem);
     max-width: 36rem;
@@ -712,6 +721,7 @@
     border-radius: 1rem;
 }
 
+/* ---------- Responsive ---------- */
 @media screen and (max-width: 992px) {
     .gh-stats {
         grid-template-columns: repeat(2, 1fr);
