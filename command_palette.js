@@ -1,11 +1,4 @@
-/* ================================================= */
-/* ADVANCED COMMAND PALETTE (Deep Search & AI)       */
-/* ================================================= */
-
 (function () {
-    // if (window.innerWidth < 1024) return;  (works only on desktop not mobile devices)
-
-    // 1. Create Palette HTML Elements
     const overlay = document.createElement('div');
     overlay.id = 'cmd-palette-overlay';
 
@@ -100,7 +93,6 @@
 
     document.body.appendChild(overlay);
 
-    // 2. Element Selectors
     const paletteInput = document.getElementById('cmd-palette-input');
     const paletteResults = document.getElementById('cmd-palette-results');
     const items = Array.from(paletteResults.querySelectorAll('.cmd-item'));
@@ -110,7 +102,6 @@
     const aiText = document.getElementById('cmd-ai-text');
     let currentIndex = 0;
 
-    // 3. Open / Close Logic
     window.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
             e.preventDefault();
@@ -137,40 +128,31 @@
         }
     }
 
-    // 4. Advanced Deep Search & AI Logic
     paletteInput.addEventListener('input', (e) => {
         filterItems(e.target.value);
     });
 
-    // AI Knowledge Base & Utilities Function
     function generateAIResponse(query, hasSectionMatch) {
         const q = query.toLowerCase().trim();
 
-        // Feature 2: Inline Mini Calculator
-        // Regex to check if query is a mathematical equation
         const mathRegex = /^[0-9\s\+\-\*\/\(\)\.]+$/;
         if (mathRegex.test(q) && q.match(/[0-9]/) && q.match(/[\+\-\*\/]/)) {
             try {
-                // Safe math evaluation
                 const result = Function('"use strict";return (' + q + ')')();
                 if (result !== undefined && !isNaN(result)) {
                     return `🧮 <b>Calculator:</b> ${query} = <span style="color:var(--main-color); font-size:1.6rem; font-weight:bold;">${result}</span>`;
                 }
             } catch (e) {
-                // Ignore incomplete math expressions
             }
         }
 
-        // Feature 4: Live GitHub Contribution Graph
         if (q.includes("contribut") || q.includes("graph") || (q.includes("github") && (q.includes("chart") || q.includes("stat")))) {
-            // using rshah API to render graph in the orange theme (ff8c00)
             return `Here is my real-time <b>GitHub Contribution Graph</b>:<br>
             <div style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.5); border-radius: 0.8rem;">
                 <img src="https://ghchart.rshah.org/ff8c00/Harsh28Pandey" alt="GitHub Contributions" style="width: 100%; filter: drop-shadow(0 0 5px rgba(255,140,0,0.3));">
             </div>`;
         }
 
-        // Standard Text Responses
         const kb = {
             skill: "My technical skills (MERN Stack, C++, DSA) are located in the <b>Overview</b> section under the 'Skills' tab.",
             tech: "My technical skills (MERN Stack, C++, DSA) are located in the <b>Overview</b> section under the 'Skills' tab.",
@@ -204,13 +186,11 @@
         let visibleItems = [];
         let hasSectionMatch = false;
 
-        // Process Static Items
         items.forEach(item => {
             const searchText = item.getAttribute('data-search').toLowerCase();
             const titleText = item.querySelector('.cmd-text').textContent.toLowerCase();
             const fullTarget = searchText + " " + titleText;
 
-            // Deep Search: check if all typed words exist in the target
             const isMatch = terms.every(term => fullTarget.includes(term));
 
             if (isMatch || terms.length === 0) {
@@ -222,7 +202,6 @@
             }
         });
 
-        // AI Response Engine Activation
         if (terms.length > 0) {
             aiResponseBox.style.display = 'block';
             aiText.innerHTML = generateAIResponse(query, hasSectionMatch);
@@ -230,11 +209,9 @@
             aiResponseBox.style.display = 'none';
         }
 
-        // UI toggles
         groupTitles.forEach(title => title.style.display = terms.length > 0 ? 'none' : 'block');
         noResults.style.display = (!hasSectionMatch && terms.length > 0) ? 'block' : 'none';
 
-        // Reset Selection (Default select top actionable item)
         items.forEach(i => i.classList.remove('active'));
         if (visibleItems.length > 0) {
             currentIndex = 0;
@@ -242,7 +219,6 @@
         }
     }
 
-    // 5. Keyboard Navigation
     paletteInput.addEventListener('keydown', (e) => {
         const visibleItems = items.filter(i => i.style.display !== 'none');
         if (visibleItems.length === 0) return;
@@ -267,22 +243,18 @@
         visibleItems[currentIndex].scrollIntoView({ block: 'nearest' });
     }
 
-    // 6. Click support
     items.forEach(item => {
         item.addEventListener('click', () => executeItem(item));
     });
 
-    // 7. Execution Logic
     function executeItem(item) {
         const target = item.getAttribute('data-target');
         const action = item.getAttribute('data-action');
 
-        // Feature 1: Copy to Clipboard Logic
         if (action === 'copy') {
             const valueToCopy = item.getAttribute('data-value');
             navigator.clipboard.writeText(valueToCopy);
 
-            // Temporary Success Animation
             const textSpan = item.querySelector('.cmd-text');
             const originalText = textSpan.innerText;
             textSpan.innerHTML = `<span style="color: #27c93f; font-weight: bold;">✅ Copied to clipboard!</span>`;
@@ -296,7 +268,6 @@
 
         togglePalette(false);
 
-        // Feature 3: Quick Share Logic
         const portfolioUrl = encodeURIComponent(window.location.href);
         const shareMsg = encodeURIComponent("Check out Harsh Pandey's Developer Portfolio! 🚀 ");
 
@@ -308,7 +279,6 @@
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${portfolioUrl}`, "_blank");
         }
 
-        // Standard Actions
         else if (target) {
             const section = document.querySelector(`#${target}`);
             const navLink = document.querySelector(`header nav a[href="#${target}"]`);

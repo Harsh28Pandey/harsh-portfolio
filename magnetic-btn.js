@@ -1,11 +1,3 @@
-/* =====================================================
-   MAGNETIC BUTTONS
-   - .btn / .overview-btn / header-actions buttons gently
-     pull toward the cursor when hovered, spring back on leave.
-   - Skips itself on touch devices & reduced-motion, same
-     pattern as the existing tilt-3d.js.
-===================================================== */
-
 (function () {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;

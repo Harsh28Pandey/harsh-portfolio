@@ -24,7 +24,6 @@
         ]
     };
 
-    /* ---------------- helpers ---------------- */
     function initials(name) {
         return name.trim().split(/\s+/).map(function (w) { return w[0]; })
             .slice(0, 2).join('').toUpperCase();
@@ -35,7 +34,6 @@
         });
     }
 
-    /* ---------------- modal ---------------- */
     const overlay = document.createElement('div');
     overlay.className = 'tm-overlay';
     overlay.setAttribute('aria-hidden', 'true');
@@ -90,7 +88,6 @@
         if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
     });
 
-    /* ---------------- inject into project cards ---------------- */
     function inject() {
         document.querySelectorAll('.project-detail').forEach(function (detail) {
             if (detail.dataset.teamReady) return;

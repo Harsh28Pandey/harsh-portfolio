@@ -46,10 +46,6 @@
     }
 }
 
-
-/* =====================================================
-   CASE STUDY MODAL (Problem -> Approach -> Challenges -> Result)
-   ===================================================== */
 .cs-modal-overlay {
     position: fixed;
     inset: 0;
@@ -87,7 +83,6 @@
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* top accent line */
 .cs-modal::before {
     content: '';
     position: absolute;
@@ -171,7 +166,6 @@
     border: 0.1rem solid rgba(39, 201, 63, 0.3);
 }
 
-/* under-development badge variant */
 .cs-status-badge.under-dev {
     background: rgba(255, 140, 0, 0.1);
     color: var(--main-color);
@@ -204,7 +198,6 @@
     border: 0.1rem solid rgba(255, 140, 0, 0.2);
 }
 
-/* ---- Project stats bar (complexity / scale) ---- */
 .cs-stats {
     display: flex;
     gap: 1.2rem;
@@ -254,7 +247,6 @@
     font-weight: 600;
 }
 
-/* ---- Content blocks ---- */
 .cs-block {
     margin-bottom: 1.6rem;
     background: #111;
@@ -294,7 +286,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Modal Responsive */
 @media screen and (max-width: 768px) {
     .cs-modal {
         max-height: 90vh;

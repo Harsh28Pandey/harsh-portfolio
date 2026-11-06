@@ -1,19 +1,3 @@
-/* =====================================================================
-   extra-3d.js (optimized) — Dev Code Rain + Contact Globe
-   ---------------------------------------------------------------------
-   What changed vs the original:
-   RAIN
-     - Glyphs are pre-rendered once into a sprite atlas and drawn with
-       drawImage (no per-glyph fillText / fillStyle string building)
-     - Starts only after the page has loaded + browser is idle (no LCP/TBT cost)
-     - Skipped on data-saver / very low-end devices; static frame on reduced-motion
-     - Canvas resolution capped, loop fully stops while the tab is hidden
-   GLOBE
-     - Three.js (~600 KB) is NOT in the initial load any more: it is fetched
-       only when the Connect section is opened
-     - Render loop runs only while Connect is active + on screen + tab visible
-     - Fewer dots / segments, lower pixel ratio
-   ===================================================================== */
 (function () {
     'use strict';
 
@@ -40,9 +24,6 @@
     const MAIN_RGB = hexToRgb(cssMain);
     const SOFT_RGB = hexToRgb(SOFT_HEX);
 
-    /* ------------------------------------------------------------------ */
-    /* Injected CSS                                                        */
-    /* ------------------------------------------------------------------ */
     const style = document.createElement('style');
     style.textContent = `
         #devrain-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none}
@@ -54,9 +35,6 @@
     `;
     document.head.appendChild(style);
 
-    /* ------------------------------------------------------------------ */
-    /* 1. DEV CODE RAIN (sprite atlas)                                     */
-    /* ------------------------------------------------------------------ */
     function initCodeRain() {
         if (saveData || lowEnd) return;
 
@@ -81,7 +59,6 @@
         const LEVELS = 12;
         const GLYPHS = 40;
 
-        /* ---- Sprite atlas: rows 0..LEVELS-1 = main colour, LEVELS..2*LEVELS-1 = soft (head) ---- */
         const cellW = Math.ceil(COL_W * RAIN_DPR);
         const cellH = Math.ceil(FONT_SIZE * 1.3 * RAIN_DPR);
         const baseline = Math.round(cellH * 0.8);
@@ -172,7 +149,6 @@
         }, { passive: true });
         document.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
 
-        // Quick warp when navigating
         document.addEventListener('click', (e) => {
             if (e.target.closest && e.target.closest('header nav a, .logo')) boost = 6;
         });
@@ -186,7 +162,6 @@
         function draw(frames, staticFrame) {
             ctx.clearRect(0, 0, W, H);
 
-            // ---- floating tokens ----
             ctx.textAlign = 'left';
             ctx.textBaseline = 'alphabetic';
             for (let i = 0; i < floaters.length; i++) {
@@ -204,7 +179,6 @@
                 ctx.fillText(f.text, f.x + mouse.px * f.depth * 28, f.y + mouse.py * f.depth * 20 + Math.sin(f.phase) * 6);
             }
 
-            // ---- code rain via sprite atlas ----
             const mx = mouse.x, my = mouse.y;
             for (let c = 0; c < columns.length; c++) {
                 const col = columns[c];
@@ -250,7 +224,7 @@
         }
 
         resize();
-        if (reduceMotion) return; // static frame already drawn
+        if (reduceMotion) return; 
 
         let lastDraw = 0;
         let rafId = 0;
@@ -267,7 +241,6 @@
             draw(frames, false);
         }
 
-        // Fully stop (not just skip) while the tab is hidden
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) { cancelAnimationFrame(rafId); rafId = 0; }
             else if (!rafId) { lastDraw = performance.now(); rafId = requestAnimationFrame(frame); }
@@ -276,9 +249,6 @@
         rafId = requestAnimationFrame(frame);
     }
 
-    /* ------------------------------------------------------------------ */
-    /* 2. CONTACT GLOBE (Three.js, lazy)                                   */
-    /* ------------------------------------------------------------------ */
     let threePromise = null;
     function loadThree() {
         if (typeof THREE !== 'undefined') return Promise.resolve();
@@ -406,7 +376,6 @@
 
         globe.rotation.y = -Math.atan2(v.x, v.z);
 
-        // Drag to rotate
         let dragging = false, lx = 0, ly = 0, resumeAt = 0;
         wrap.addEventListener('pointerdown', (e) => {
             dragging = true; lx = e.clientX; ly = e.clientY;
@@ -493,11 +462,8 @@
         onActive();
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Boot — nothing here competes with first paint                        */
-    /* ------------------------------------------------------------------ */
     function boot() {
-        initGlobeLazy(); // only sets up an observer; Three.js loads on demand
+        initGlobeLazy(); 
         const startRain = () => initCodeRain();
         if ('requestIdleCallback' in window) requestIdleCallback(startRain, { timeout: 4000 });
         else setTimeout(startRain, 2000);

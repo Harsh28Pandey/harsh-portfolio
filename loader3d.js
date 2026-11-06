@@ -1,13 +1,3 @@
-/* =====================================================
-   LOADER 3D BADGE
-   A tiny, cheap Three.js scene (own renderer, ~150x150px)
-   that spins a wireframe icosahedron with a glowing core
-   inside the loader card. Exposes window.loaderBadge with
-   show()/hide()/setProgress(0-100) so loader.js can drive it.
-   Only renders frames while the loader is actually visible —
-   zero cost the rest of the time.
-===================================================== */
-
 (function () {
     if (typeof THREE === "undefined") {
         window.loaderBadge = { show() { }, hide() { }, setProgress() { } };
@@ -46,16 +36,13 @@
 
     let rafId = null;
     let visible = false;
-    let progress = 0; // 0-100, animated externally via GSAP
+    let progress = 0; 
 
     function render() {
         outer.rotation.x += 0.014;
         outer.rotation.y += 0.02;
         core.rotation.x -= 0.01;
         core.rotation.y += 0.016;
-
-        // Progress subtly changes the badge's spin speed & scale, so it
-        // "feels" tied to loading rather than just decorative.
         const s = 1 + (progress / 100) * 0.15;
         core.scale.setScalar(s);
 

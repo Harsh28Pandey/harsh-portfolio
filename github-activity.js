@@ -5,12 +5,6 @@
     var MAX_REPOS = 6;
     var CACHE_MIN = 30;
 
-    // var FALLBACK_REPOS = [
-    //     { name: 'RepoSense', description: 'AI assistant that auto-generates READMEs, reviews PRs and tracks repo health.', language: 'JavaScript' },
-    //     { name: 'think-flow', description: 'Intelligent agent platform built with LangGraph and LangChain.', language: 'Python' },
-    //     { name: 'Library-Management', description: 'Library Management System in Python with Tkinter and SQLite.', language: 'Python' }
-    // ];
-
     var LANG_COLORS = {
         JavaScript: '#f1e05a', TypeScript: '#3178c6', Python: '#3572A5', 'C++': '#f34b7d',
         C: '#9aa0a6', Java: '#b07219', HTML: '#e34c26', CSS: '#563d7c', Shell: '#89e051'
@@ -31,7 +25,6 @@
     var langList = $('#ghLangs');
     var card = graphEl ? graphEl.closest('.gh-card') : null;
 
-    /* ---------------- helpers ---------------- */
     function esc(s) {
         return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
             return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -84,7 +77,6 @@
         })(start);
     }
 
-    /* ---------------- contribution graph ---------------- */
     var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     function parseDay(str) { return new Date(str + 'T00:00:00'); }
@@ -116,7 +108,6 @@
         graphEl.innerHTML = '';
         graphEl.appendChild(frag);
 
-        // month labels
         monthsEl.innerHTML = '';
         var lastMonth = -1, lastCol = -10;
         for (var w = 0; w < weeks; w++) {
@@ -150,7 +141,6 @@
         return { longest: longest, current: current };
     }
 
-    /* tooltip */
     var tip = null;
     function ensureTip() {
         if (tip || !card) return;
@@ -203,7 +193,6 @@
         graphEl.appendChild(img);
     }
 
-    /* ---------------- languages + repos ---------------- */
     function renderLanguages(repos) {
         if (!langCard) return;
         var counts = {}, total = 0;
@@ -267,7 +256,6 @@
         reposEl.innerHTML = list.map(repoCard).join('');
     }
 
-    /* ---------------- load ---------------- */
     var loaded = false;
 
     function load() {
@@ -323,7 +311,6 @@
         });
     }
 
-    // skeletons while waiting
     if (reposEl && !reposEl.children.length) {
         reposEl.innerHTML = '<div class="gh-skeleton"></div><div class="gh-skeleton"></div><div class="gh-skeleton"></div>';
     }

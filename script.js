@@ -216,8 +216,6 @@ arrowLeft.addEventListener('click', () => {
 });
 
 
-
-// ================= EASTER EGG TERMINAL LOGIC =================
 const terminalUI = document.getElementById('terminal-ui');
 const terminalInput = document.getElementById('terminal-input');
 const terminalBody = document.getElementById('terminal-body');
@@ -234,7 +232,6 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// Open terminal with Double Click/Tap on the Logo (Mobile Friendly)
 document.querySelector('.logo').addEventListener('dblclick', (e) => {
     e.preventDefault();
     terminalUI.classList.toggle('terminal-hidden');
@@ -243,12 +240,10 @@ document.querySelector('.logo').addEventListener('dblclick', (e) => {
     }
 });
 
-// Close terminal button
 closeTerminal.addEventListener('click', () => {
     terminalUI.classList.add('terminal-hidden');
 });
 
-// Execute command on Enter
 terminalInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         const command = terminalInput.value.trim().toLowerCase();
@@ -289,9 +284,6 @@ function processCommand(cmd) {
             }, 600);
             return;
 
-        // ==========================================
-        // 1. PROFILE & INFO COMMANDS
-        // ==========================================
         case 'whoami':
             response.innerText = "> Harsh Pandey | B.Tech CSE | MERN Stack Developer";
             break;
@@ -320,9 +312,6 @@ function processCommand(cmd) {
             response.innerText = "> Current Location: Lal Bangla, Kanpur, Uttar Pradesh, India 📍";
             break;
 
-        // ==========================================
-        // 2. NAVIGATION & LINK COMMANDS
-        // ==========================================
         case 'home':
             response.innerText = "> Returning to base... Navigating to Home!";
             document.querySelector('a[href="#intro"]').click();
@@ -368,9 +357,6 @@ function processCommand(cmd) {
             window.open("https://drive.google.com/file/d/1frmmg6MYvkJsfw9fA57RjVb_KsdzOT4G/view?usp=sharing", "_blank");
             break;
 
-        // ==========================================
-        // 3. SYSTEM & UTILITY COMMANDS
-        // ==========================================
         case 'ls':
             response.innerHTML = "> Directory listing:<br>&nbsp;&nbsp; <span style='color: #27c93f'>intro/</span> &nbsp; <span style='color: #27c93f'>services/</span> &nbsp; <span style='color: #27c93f'>overview/</span> &nbsp; <span style='color: #27c93f'>projects/</span> &nbsp; <span style='color: #27c93f'>connect/</span>";
             break;
@@ -402,9 +388,6 @@ function processCommand(cmd) {
             setTimeout(() => terminalUI.classList.add('terminal-hidden'), 500);
             return;
 
-        // ==========================================
-        // 4. DEVELOPER UTILITIES (New Section Added)
-        // ==========================================
         case 'neofetch':
             response.innerHTML = `
             <div style="display:flex; gap: 15px; margin-top: 5px;">
@@ -446,9 +429,6 @@ function processCommand(cmd) {
             response.innerText = "> Warning: You cannot escape Vim. Just kidding! Use 'exit' to close terminal.";
             break;
 
-        // ==========================================
-        // 5. MINI GAMES (Fun Section)
-        // ==========================================
         case 'coin':
             const toss = Math.random() < 0.5 ? 'Heads' : 'Tails';
             response.innerText = `> Tossing a coin... It's ${toss}! 🪙`;
@@ -459,9 +439,6 @@ function processCommand(cmd) {
             response.innerText = `> Rolling a dice... You got a ${dice}! 🎲`;
             break;
 
-        // ==========================================
-        // 6. EXTRA FUN & UTILITY COMMANDS
-        // ==========================================
         case 'joke':
             const jokes = [
                 "Why do programmers prefer dark mode? Because light attracts bugs. 🐛",
@@ -482,9 +459,6 @@ function processCommand(cmd) {
             response.innerHTML = "> 🎯 <b>Why Hire Me?</b><br>> - Proficient in MERN Stack & C++<br>> - Strong Data Structures & Algorithms (DSA)<br>> - Quick learner & problem solver<br>> Type <b>'contact'</b> to get in touch!";
             break;
 
-        // ==========================================
-        // 7. HELP COMMAND (Updated with Mini Games)
-        // ==========================================
         case 'help':
         case 'commands':
             response.innerHTML = `> Available commands:<br><br>
@@ -502,9 +476,6 @@ function processCommand(cmd) {
             &nbsp;&nbsp; search, find, ls, date, pwd, ping, theme, echo, clear, cls, exit, help, commands`;
             break;
 
-        // ==========================================
-        // 8. DEFAULT / INVALID COMMANDS / COMPLEX GAMES
-        // ==========================================
         default:
             if (cmd.startsWith("sudo ")) {
                 response.style.color = "#ffbd2e";
@@ -512,7 +483,6 @@ function processCommand(cmd) {
             } else if (cmd.startsWith("echo ")) {
                 response.innerText = "> " + cmd.substring(5);
             } else if (cmd.startsWith("rps ")) {
-                // Rock Paper Scissors Game Logic
                 const userChoice = cmd.split(" ")[1];
                 const choices = ['rock', 'paper', 'scissors'];
 
@@ -530,10 +500,10 @@ function processCommand(cmd) {
                         (userChoice === 'scissors' && botChoice === 'paper')
                     ) {
                         result = "You win! 🎉";
-                        response.style.color = "#27c93f"; // Green for win
+                        response.style.color = "#27c93f"; 
                     } else {
                         result = "I win! 😈";
-                        response.style.color = "#ff5f56"; // Red for lose
+                        response.style.color = "#ff5f56"; 
                     }
 
                     response.innerHTML = `> You chose: <b>${userChoice}</b><br>> I chose: <b>${botChoice}</b><br>> Result: ${result}`;
@@ -545,17 +515,10 @@ function processCommand(cmd) {
     }
 
     terminalBody.appendChild(response);
-
-    // Auto-scroll to bottom
     terminalBody.scrollTop = terminalBody.scrollHeight;
 }
 
-/* ================================================= */
-/* 🕵️ ELITE CONSOLE.LOG ASCII ART & EASTER EGG       */
-/* ================================================= */
-
 (function () {
-    // 1. Sleek ASCII Art
     const asciiArt = `
  ██╗  ██╗ █████╗ ██████╗ ███████╗██╗  ██╗
  ██║  ██║██╔══██╗██╔══██╗██╔════╝██║  ██║
@@ -565,17 +528,14 @@ function processCommand(cmd) {
  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
     `;
 
-    // 2. Clean Status Badge
     console.log(
         "\n%c 🚀 HARSH.DEV %c SYSTEM ONLINE \n",
         "background: #ff8c00; color: #000; font-weight: bold; padding: 4px 8px; border-radius: 4px 0 0 4px; font-size: 12px;",
         "background: #222; color: #27c93f; font-weight: bold; padding: 4px 8px; border-radius: 0 4px 4px 0; font-size: 12px;"
     );
 
-    // 3. ASCII with Neon Glow
     console.log(asciiArt, "color: #ff8c00; font-weight: 900; font-size: 12px; text-shadow: 0 0 8px rgba(255, 140, 0, 0.4);");
 
-    // 4. Minimalist Prompt
     console.log(
         "%c> Hello, curious dev. Type %csudo.hire_harsh()%c and press ENTER.",
         "color: #a0a0a0; font-size: 14px;",
@@ -583,7 +543,6 @@ function processCommand(cmd) {
         "color: #a0a0a0; font-size: 14px;"
     );
 
-    // 5. The Command Implementation (Clean Fake Boot)
     window.sudo = {
         hire_harsh: function () {
             console.clear();
@@ -591,7 +550,6 @@ function processCommand(cmd) {
             const logStyle = "color: #ffbd2e; font-family: 'Consolas', monospace; font-size: 13px;";
             const successStyle = "color: #27c93f; font-weight: bold; font-size: 16px; text-shadow: 0 0 5px rgba(39,201,63,0.5);";
 
-            // Clean Card Styles
             const lbl = "color: #777; font-size: 14px; font-family: sans-serif;";
             const val = "color: #fff; font-size: 14px; font-weight: bold; font-family: sans-serif;";
             const lnk = "color: #3498db; font-size: 14px; font-weight: bold; text-decoration: underline; font-family: sans-serif;";
@@ -606,7 +564,6 @@ function processCommand(cmd) {
                 console.clear();
                 console.log("%c[+] ACCESS GRANTED\n", successStyle);
 
-                // Elite Developer Card (Short, Crisp, Readable)
                 console.log(
                     "%c HARSH PANDEY %c Full-Stack Developer \n\n" +
                     "%c📍 Location : %cKanpur, India\n" +
@@ -644,17 +601,3 @@ terminalFab.addEventListener('click', () => {
 });
 
 new MutationObserver(syncFab).observe(terminalUI, { attributes: true, attributeFilter: ['class'] });
-
-
-
-// window.addEventListener("load", () => {
-//     const loader = document.getElementById("loader");
-
-//     // Fade out loader
-//     loader.style.opacity = "0";
-
-//     // After 500ms (transition time), hide it from layout
-//     setTimeout(() => {
-//         loader.style.visibility = "hidden";
-//     }, 500);
-// });

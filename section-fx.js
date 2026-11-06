@@ -1,14 +1,3 @@
-/* =====================================================
-   SECTION ENTRANCE CHOREOGRAPHY
-   This site swaps between full-screen <section> panels
-   (adds/removes the "active" class) rather than doing a
-   continuous page scroll, so classic ScrollTrigger reveals
-   don't apply page-wide. Instead: whenever a section gains
-   "active", we run a GSAP stagger/3D-tilt-in timeline on its
-   cards, synced to the section's own CSS fade timing so
-   nothing double-animates or flashes.
-===================================================== */
-
 (function () {
     if (typeof gsap === "undefined") return;
 
@@ -39,9 +28,6 @@
         const cards = section.querySelectorAll(selector);
         if (!cards.length) return;
 
-        // Sync with whatever animation-delay is currently set on the
-        // section (3.4s on the very first load, 0s on subsequent
-        // section switches — see script.js's activePage()).
         const delayMs = msFromCSSTime(getComputedStyle(section).animationDelay);
 
         gsap.killTweensOf(cards);
@@ -58,13 +44,11 @@
         });
     }
 
-    // Run once for whichever section starts active (home, on first load).
     document.querySelectorAll("section.active").forEach((section) => {
         section.dataset.fxSeenActive = "1";
         animateSection(section);
     });
-
-    // React to every future section switch.
+3
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((m) => {
             if (m.attributeName !== "class") return;
