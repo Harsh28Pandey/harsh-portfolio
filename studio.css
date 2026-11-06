@@ -1,0 +1,598 @@
+.studio .st-intro {
+    text-align: center;
+    font-size: 1.6rem;
+    max-width: 80rem;
+    margin: 0 auto 2.5rem;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
+.st-switch,
+.st-projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.st-pill {
+    padding: 0.9rem 2.2rem;
+    border-radius: 4rem;
+    background: var(--second-bg-color);
+    border: 0.15rem solid var(--second-bg-color);
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.st-pill:hover,
+.st-pill.active {
+    border-color: var(--main-color);
+    color: var(--main-color);
+    box-shadow: 0 0 1rem rgba(255, 140, 0, 0.35);
+}
+
+.st-panel {
+    display: none;
+}
+
+.st-panel.active {
+    display: block;
+}
+
+.st-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
+    gap: 2rem;
+}
+
+.st-card {
+    background: var(--second-bg-color);
+    border: 0.1rem solid rgba(255, 255, 255, 0.06);
+    border-radius: 2.5rem;
+    padding: 2.5rem;
+    transition: 0.4s ease;
+}
+
+.st-card:hover {
+    border-color: var(--main-color);
+}
+
+.st-card.wide {
+    grid-column: 1 / -1;
+}
+
+.st-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.st-card h3 i {
+    color: var(--main-color);
+    margin-right: 0.6rem;
+    vertical-align: middle;
+}
+
+.st-card .st-hint {
+    font-size: 1.3rem;
+    color: #9a9a9a;
+    margin-bottom: 1.8rem;
+}
+
+.st-label {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    margin: 1.2rem 0 0.5rem;
+}
+
+.st-input,
+.st-select,
+.st-textarea {
+    width: 100%;
+    background: var(--bg-color);
+    color: var(--white-color);
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.2rem;
+    padding: 1rem 1.3rem;
+    font-size: 1.4rem;
+}
+
+.st-input:focus,
+.st-select:focus,
+.st-textarea:focus {
+    border-color: var(--main-color);
+}
+
+.st-textarea {
+    height: 20rem;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.st-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.st-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 3rem;
+    background: var(--main-color);
+    color: var(--bg-color);
+    border: 0.15rem solid var(--main-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.st-btn:hover {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.st-btn.ghost {
+    background: transparent;
+    color: var(--white-color);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.st-btn.ghost:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.st-status {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    min-height: 1.8rem;
+    color: #27c93f;
+}
+
+.st-status.err {
+    color: #ff5f56;
+}
+
+.st-calc-display {
+    background: var(--bg-color);
+    border-radius: 1.4rem;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.2rem;
+    text-align: right;
+}
+
+.st-calc-display input {
+    width: 100%;
+    background: transparent;
+    color: var(--white-color);
+    font-size: 2.6rem;
+    text-align: right;
+}
+
+.st-calc-sub {
+    font-size: 1.2rem;
+    color: #888;
+    min-height: 1.6rem;
+}
+
+.st-calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+.st-key {
+    padding: 1.2rem 0;
+    border-radius: 1.2rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.st-key:hover {
+    background: rgba(255, 140, 0, 0.18);
+    color: var(--main-color);
+}
+
+.st-key.op {
+    color: var(--main-color);
+}
+
+.st-key.eq {
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-weight: 700;
+}
+
+.st-key.eq:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+.st-flex-layout {
+    display: grid;
+    grid-template-columns: 26rem 1fr;
+    gap: 2rem;
+}
+
+.st-code {
+    margin-top: 1.5rem;
+    background: #111;
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.3rem;
+    color: #27c93f;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.st-case {
+    display: none;
+}
+
+.st-case.active {
+    display: block;
+}
+
+.st-case-head h3 {
+    font-size: 3.2rem;
+}
+
+.st-case-head .st-tag {
+    display: inline-block;
+    margin: 0.8rem 0 1.2rem;
+    padding: 0.4rem 1.3rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    background: rgba(255, 140, 0, 0.12);
+    color: var(--main-color);
+    border: 0.1rem solid rgba(255, 140, 0, 0.3);
+}
+
+.st-case-head p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #cccccc;
+}
+
+.st-block {
+    margin-top: 2.2rem;
+}
+
+.st-block>h4 {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    margin-bottom: 1.2rem;
+}
+
+.st-block p,
+.st-block li {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #d6d6d6;
+}
+
+.st-block ul {
+    padding-left: 2rem;
+}
+
+.st-arch {
+    display: flex;
+    align-items: stretch;
+}
+
+.st-tier {
+    flex: 1;
+    border: 0.1rem dashed rgba(255, 140, 0, 0.45);
+    border-radius: 1.6rem;
+    padding: 1.3rem;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.st-tier h5 {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--main-color);
+}
+
+.st-node {
+    margin-top: 0.7rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.9rem;
+    background: var(--bg-color);
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+    font-size: 1.3rem;
+}
+
+.st-link {
+    display: flex;
+    align-items: center;
+    padding: 0 0.8rem;
+    color: var(--main-color);
+    font-size: 2.4rem;
+}
+
+.st-arch-note {
+    margin-top: 1rem;
+    font-size: 1.3rem !important;
+    color: #9a9a9a !important;
+}
+
+.st-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 1.2rem;
+}
+
+.st-stack div {
+    background: var(--bg-color);
+    border-radius: 1.2rem;
+    padding: 1.3rem 1.5rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.05);
+}
+
+.st-stack b {
+    display: block;
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.st-stack span {
+    font-size: 1.35rem;
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+.st-challenge {
+    border-left: 0.3rem solid var(--main-color);
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.st-challenge strong {
+    display: block;
+    font-size: 1.55rem;
+    color: var(--white-color);
+}
+
+.st-challenge span {
+    font-size: 1.4rem;
+    color: #cfcfcf;
+    line-height: 1.7;
+}
+
+.st-links {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-top: 2.2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .st-arch {
+        flex-direction: column;
+    }
+
+    .st-link {
+        justify-content: center;
+        padding: 0.6rem 0;
+        transform: rotate(90deg);
+    }
+
+    .st-flex-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .st-widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .st-case-head h3 {
+        font-size: 2.6rem;
+    }
+}
+
+.st-colorsmall {
+    width: 100%;
+    height: 4.4rem;
+    padding: 0;
+    border-radius: 1rem;
+    background: none;
+    cursor: pointer;
+}
+
+.st-grad-prev {
+    min-height: 22rem;
+    border-radius: 1.5rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+}
+
+.st-preview-box {
+    min-height: 24rem;
+    border-radius: 1.5rem;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.st-demo {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 2rem;
+    background: var(--second-bg-color);
+}
+
+.st-checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+}
+
+.st-check {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.st-check input {
+    accent-color: var(--main-color);
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.st-btn:disabled,
+.st-pill:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.st-pill-sm {
+    padding: 0.5rem 1.4rem;
+    font-size: 1.3rem;
+    background: var(--bg-color);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.st-chips {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.st-mini {
+    padding: 0.3rem 1rem;
+}
+
+.st-mini-color {
+    width: 3.6rem;
+    height: 3rem;
+    padding: 0;
+    border-radius: 0.8rem;
+    background: none;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.st-history-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.8rem 0 0.8rem;
+}
+
+.st-link-btn {
+    background: none;
+    color: #9a9a9a;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.st-link-btn:hover {
+    color: var(--main-color);
+}
+
+.st-history {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.st-hist-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+    border-radius: 1rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: 0.1rem solid transparent;
+}
+
+.st-hist-item:hover {
+    border-color: var(--main-color);
+}
+
+.st-hist-item b {
+    color: var(--main-color);
+}
+
+.st-hist-empty {
+    font-size: 1.3rem;
+    color: #777;
+}
+
+.st-meter {
+    height: 0.7rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+
+.st-meter span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 1rem;
+    background: #ff5f56;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.st-meter span[data-level="2"] {
+    background: #ffbd2e;
+}
+
+.st-meter span[data-level="3"] {
+    background: #9be564;
+}
+
+.st-meter span[data-level="4"] {
+    background: #27c93f;
+}
+
+.st-stop-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.st-stop-row input[type="range"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.st-stop-color {
+    width: 4rem;
+    height: 3.4rem;
+    padding: 0;
+    border-radius: 0.8rem;
+    background: none;
+    cursor: pointer;
+}
+
+.st-stop-pos {
+    width: 4.2rem;
+    font-size: 1.2rem;
+    color: #9a9a9a;
+    text-align: right;
+}
