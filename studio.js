@@ -1,16 +1,6 @@
-/* =====================================================
-   ENGINEERING STUDIO
-   Self-contained: builds its own <section class="studio">
-   and inserts it before <section class="connect">.
-   Load this file BEFORE script.js so the section order
-   matches the nav link order.
-   ===================================================== */
 (function () {
     'use strict';
 
-    /* ---------------------------------------------------
-       1. CASE STUDY DATA  (edit freely)
-       --------------------------------------------------- */
     const STUDIES = [
         {
             id: 'interview-buddy',
@@ -139,9 +129,6 @@
         }
     ];
 
-    /* ---------------------------------------------------
-       2. HELPERS
-       --------------------------------------------------- */
     function esc(s) {
         return String(s).replace(/[&<>"']/g, function (c) {
             return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -172,9 +159,6 @@
         }
     }
 
-    /* ---------------------------------------------------
-       3. MARKUP BUILDERS
-       --------------------------------------------------- */
     function caseHTML(c, i) {
         const arch = c.arch.map(function (t, idx) {
             return (idx ? '<div class="st-link" aria-hidden="true">&rarr;</div>' : '') +
@@ -222,7 +206,6 @@
     const WIDGETS_HTML = '' +
         '<div class="st-widgets">' +
 
-        /* ---- Calculator ---- */
         '<div class="st-card" id="stCalc">' +
         '<h3><i class="bx bx-calculator"></i>Mini Calculator</h3>' +
         '<p class="st-hint">Safe expression parser (no eval). Live preview, ^ power, &radic; root, ANS and history. Keyboard works too.</p>' +
@@ -235,7 +218,6 @@
         '<div class="st-history" id="stCalcHist"></div>' +
         '</div>' +
 
-        /* ---- Password generator ---- */
         '<div class="st-card" id="stPass">' +
         '<h3><i class="bx bx-lock-alt"></i>Password Generator</h3>' +
         '<p class="st-hint">Uses the browser crypto API, nothing leaves your device.</p>' +
@@ -256,7 +238,6 @@
         '<div class="st-status" id="stPassStatus"></div>' +
         '</div>' +
 
-        /* ---- JSON formatter ---- */
         '<div class="st-card wide" id="stJson">' +
         '<h3><i class="bx bx-code-curly"></i>JSON Formatter</h3>' +
         '<p class="st-hint">Live validation with error line/column, format, minify, sort keys and download.</p>' +
@@ -276,7 +257,6 @@
         '<div class="st-status" id="stJsonStatus"></div>' +
         '</div>' +
 
-        /* ---- Gradient generator ---- */
         '<div class="st-card wide" id="stGrad">' +
         '<h3><i class="bx bx-water"></i>CSS Gradient Generator</h3>' +
         '<p class="st-hint">Linear, radial or conic. Up to 5 color stops with positions, plus random and reverse.</p>' +
@@ -304,7 +284,6 @@
         '</div>' +
         '</div>' +
 
-        /* ---- Box shadow generator ---- */
         '<div class="st-card wide" id="stShadow">' +
         '<h3><i class="bx bx-layer"></i>Box Shadow Generator</h3>' +
         '<p class="st-hint">Stack up to 4 shadow layers, start from a preset, tweak the card and background.</p>' +
@@ -354,9 +333,6 @@
 
         '</div>';
 
-    /* ---------------------------------------------------
-       4. BUILD + INSERT SECTION
-       --------------------------------------------------- */
     const section = document.createElement('section');
     section.className = 'studio';
     section.id = 'studio';
@@ -387,9 +363,6 @@
         document.body.appendChild(section);
     }
 
-    /* ---------------------------------------------------
-       5. TABS (panels + case study selector)
-       --------------------------------------------------- */
     section.querySelectorAll('.st-switch .st-pill').forEach(function (btn) {
         btn.addEventListener('click', function () {
             section.querySelectorAll('.st-switch .st-pill').forEach(function (b) { b.classList.remove('active'); });
@@ -410,9 +383,6 @@
         });
     });
 
-    /* ---------------------------------------------------
-       6. MINI CALCULATOR  (recursive-descent parser, no eval)
-       --------------------------------------------------- */
     (function () {
         const display = section.querySelector('#stCalcInput');
         const sub = section.querySelector('#stCalcSub');
@@ -566,16 +536,12 @@
             preview();
         });
         display.addEventListener('keydown', function (e) {
-            /* keep global shortcuts (` / Ctrl+J terminal) from hijacking typing */
             e.stopPropagation();
             if (e.key === 'Enter') { e.preventDefault(); run(); }
         });
         renderHistory();
     })();
 
-    /* ---------------------------------------------------
-       7. PASSWORD GENERATOR  (crypto, rejection sampling)
-       --------------------------------------------------- */
     (function () {
         const $ = function (id) { return section.querySelector(id); };
         const out = $('#stPassOut'), len = $('#stPassLen'), lenVal = $('#stPassLenVal'), status = $('#stPassStatus');
@@ -641,9 +607,6 @@
         generate();
     })();
 
-    /* ---------------------------------------------------
-       8. JSON FORMATTER
-       --------------------------------------------------- */
     (function () {
         const box = section.querySelector('#stJson');
         const input = section.querySelector('#stJsonInput');
@@ -661,7 +624,6 @@
         }
         function bytes(text) { return new Blob([text]).size; }
 
-        /* some engines omit the position, so find the first broken character by binary search */
         function findErrorPos(text) {
             const incomplete = /end of|EOF|unterminated/i;
             function good(n) {
@@ -762,9 +724,6 @@
         input.addEventListener('keydown', function (e) { e.stopPropagation(); });
     })();
 
-    /* ---------------------------------------------------
-       9. GRADIENT GENERATOR  (multi-stop)
-       --------------------------------------------------- */
     (function () {
         const $ = function (id) { return section.querySelector(id); };
         const type = $('#stGType'), ang = $('#stGAng'), angVal = $('#stGAngVal'), angWrap = $('#stGAngWrap');
@@ -858,9 +817,6 @@
         renderStops();
     })();
 
-    /* ---------------------------------------------------
-       10. BOX SHADOW GENERATOR  (multi-layer + presets)
-       --------------------------------------------------- */
     (function () {
         const $ = function (id) { return section.querySelector(id); };
         const x = $('#stSX'), y = $('#stSY'), blur = $('#stSB'), spread = $('#stSS'), op = $('#stSO');
